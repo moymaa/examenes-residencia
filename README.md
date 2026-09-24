@@ -10,7 +10,7 @@ Una carpeta por examen; cada carpeta es autocontenida y conserva su propio backe
 | Carpeta | Examen | Estado |
 |---|---|---|
 | `genetica/` | Genética en Psiquiatría, Bloque B (sep-2026) | cerrado |
-| `tcc/` | Psicoterapia, Módulo 1: Terapia Cognitivo-Conductual | en preparación |
+| `tcc/` | Psicoterapia, Módulo 1: Terapia Cognitivo-Conductual (sep-2026) | abierto del 24 al 27 de septiembre |
 
 El proyecto completo de cada examen (banco de reactivos, generadores, backend) vive fuera de este repositorio:
 
