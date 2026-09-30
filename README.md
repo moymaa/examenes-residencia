@@ -10,12 +10,14 @@ Una carpeta por examen; cada carpeta es autocontenida y conserva su propio backe
 | Carpeta | Examen | Estado |
 |---|---|---|
 | `genetica/` | Genética en Psiquiatría, Bloque B (sep-2026) | cerrado |
+| `simulador-puem/` | Simulador PUEM de práctica (bancos rescatados R1–R4, Consejo 2021, infanto-juvenil 2016) | siempre abierto, sin backend ni registro |
 | `tcc/` | Psicoterapia, Módulo 1: Terapia Cognitivo-Conductual (sep-2026) | abierto del 24 al 27 de septiembre |
 
 El proyecto completo de cada examen (banco de reactivos, generadores, backend) vive fuera de este repositorio:
 
 - Genética: `~/Documents/Profesor/Examen Genetica Psiquiatrica 2026/`
 - TCC: `~/Documents/Profesor/Examen Psicoterapia TCC 2026/`
+- Simulador PUEM: `~/Documents/Profesor/Banco PUEM/` (banco respondido en Markdown; `simulador/build_json.py` regenera `banco.json`)
 
 ## Reglas
 
@@ -23,3 +25,5 @@ El proyecto completo de cada examen (banco de reactivos, generadores, backend) v
 - La clave de respuestas vive **solo** en el backend de Apps Script, nunca aquí.
 - Un examen = su propio proyecto de Apps Script y su propia hoja. El backend es append-only: nunca se borran respuestas de residentes.
 - El repositorio original `moymaa/examen-genetica` se conserva como archivo; la aplicación de septiembre sigue resolviendo en su URL antigua.
+
+- Excepción: `simulador-puem/` es material de estudio, no examen. Publica preguntas y respuestas en claro, no tiene backend y no guarda nombres ni resultados.

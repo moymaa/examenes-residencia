@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Simulador PUEM · Psiquiatría</title>
+<style>
+:root{--bg:#faf9f7;--card:#fff;--fg:#1d1b19;--mut:#6b655e;--line:#e4e0da;--acc:#6d2233;--acc-soft:#f4e9ec;
+--ok:#1f7a4d;--ok-soft:#e6f4ec;--bad:#b3261e;--bad-soft:#fbeae9;--warn:#8a5a00;--warn-soft:#fbf1dc;--shadow:0 1px 2px rgba(0,0,0,.04),0 4px 16px rgba(0,0,0,.05)}
+@media (prefers-color-scheme:dark){:root{--bg:#131211;--card:#1c1a19;--fg:#f2efea;--mut:#a39c93;--line:#2f2c29;--acc:#d08a9b;--acc-soft:#34222a;
+--ok:#5cc58f;--ok-soft:#16291f;--bad:#f08a82;--bad-soft:#321b19;--warn:#e7b85c;--warn-soft:#2f2614;--shadow:none}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;padding:max(24px,env(safe-area-inset-top)) 16px 64px}
+main{max-width:760px;margin:0 auto}
+h1{font-size:24px;line-height:1.25;margin:0 0 6px;letter-spacing:-.01em}
+h2{font-size:15px;margin:26px 0 10px;color:var(--mut);font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+p.sub{color:var(--mut);margin:0 0 6px;font-size:15px}
+.privacy{display:flex;gap:8px;align-items:flex-start;background:var(--acc-soft);border-radius:12px;padding:10px 14px;font-size:14px;margin:16px 0 4px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:999px;padding:8px 14px;font:inherit;font-size:14px;cursor:pointer;display:inline-flex;gap:6px;align-items:center;min-height:40px}
+.chip small{color:var(--mut)}
+.chip[aria-pressed=true]{border-color:var(--acc);background:var(--acc);color:#fff}
+.chip[aria-pressed=true] small{color:rgba(255,255,255,.8)}
+@media (prefers-color-scheme:dark){.chip[aria-pressed=true]{color:#1a1110}.chip[aria-pressed=true] small{color:rgba(26,17,16,.75)}}
+input[type=search]{width:100%;font:inherit;padding:11px 14px;border:1px solid var(--line);border-radius:12px;background:var(--card);color:var(--fg)}
+input[type=search]:focus,button:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.btn{font:inherit;font-weight:600;border:0;border-radius:12px;padding:12px 20px;cursor:pointer;background:var(--acc);color:#fff;min-height:46px}
+@media (prefers-color-scheme:dark){.btn{color:#1a1110}}
+.btn.sec{background:transparent;color:var(--acc);border:1px solid var(--line)}
+.btn:disabled{opacity:.45;cursor:default}
+.muted{color:var(--mut);font-size:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 18px;box-shadow:var(--shadow);margin-top:14px}
+.top{position:sticky;top:0;z-index:5;background:var(--bg);padding:8px 0 10px;margin-top:-8px}
+.bar{height:6px;border-radius:99px;background:var(--line);overflow:hidden;margin-top:8px}
+.bar i{display:block;height:100%;background:var(--acc);width:0;transition:width .25s}
+.meta{display:flex;justify-content:space-between;gap:10px;font-size:14px;color:var(--mut);align-items:center}
+.meta b{color:var(--fg)}
+.badge{display:inline-block;font-size:12.5px;font-weight:600;border-radius:999px;padding:3px 10px;background:var(--acc-soft);color:var(--acc)}
+.badge-note{font-size:12.5px;color:var(--mut);margin-left:6px}
+.case{border-left:3px solid var(--acc);background:var(--acc-soft);border-radius:0 12px 12px 0;padding:10px 14px;margin:12px 0 4px;font-size:15px}
+.case h3{margin:0 0 4px;font-size:13px;text-transform:uppercase;letter-spacing:.04em;color:var(--acc)}
+.case p{margin:.3em 0}
+.q{font-size:17px;font-weight:600;margin:14px 0 12px;line-height:1.5}
+.opts{display:flex;flex-direction:column;gap:8px}
+.opt{display:flex;gap:10px;align-items:flex-start;text-align:left;font:inherit;font-size:15.5px;color:var(--fg);background:var(--card);border:1px solid var(--line);border-radius:12px;padding:11px 14px;cursor:pointer;min-height:46px}
+.opt:hover:not(:disabled){border-color:var(--acc)}
+.opt .l{flex:none;width:24px;height:24px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;font-size:13px;font-weight:700;text-transform:uppercase;margin-top:1px}
+.opt:disabled{cursor:default}
+.opt.ok{border-color:var(--ok);background:var(--ok-soft)}.opt.ok .l{background:var(--ok);border-color:var(--ok);color:#fff}
+.opt.bad{border-color:var(--bad);background:var(--bad-soft)}.opt.bad .l{background:var(--bad);border-color:var(--bad);color:#fff}
+.verdict{font-weight:700;margin:16px 0 4px;font-size:16px}
+.verdict.ok{color:var(--ok)}.verdict.bad{color:var(--bad)}
+.exp{border-top:1px solid var(--line);margin-top:10px;padding-top:8px;font-size:15px}
+.exp p{margin:.55em 0}
+.exp p.cite{font-size:13.5px;color:var(--mut)}
+.exp p.warn{background:var(--warn-soft);color:var(--warn);border-radius:8px;padding:6px 10px;font-size:14px}
+.exp p.amb{font-size:14px;color:var(--mut)}
+.exp p.note{font-size:14px;color:var(--mut)}
+.exp a{color:var(--acc)}
+.sublist{display:flex;flex-direction:column;gap:10px;margin-top:10px}
+.subq{border:1px solid var(--line);border-radius:12px;padding:10px 14px}
+.subq .lbl{font-weight:600}
+.reveal{font:inherit;font-size:14px;border:1px dashed var(--line);background:transparent;color:var(--acc);border-radius:8px;padding:6px 10px;margin-top:6px;cursor:pointer}
+.ans{margin-top:6px;background:var(--ok-soft);border-radius:8px;padding:6px 10px;font-size:15px}
+.nav{display:flex;justify-content:space-between;gap:10px;margin-top:18px;flex-wrap:wrap}
+.hidden{display:none!important}
+.stat{font-size:40px;font-weight:700;letter-spacing:-.02em;margin:4px 0}
+.revlist{padding-left:18px;margin:8px 0}
+.revlist li{margin:4px 0;font-size:14.5px}
+footer{color:var(--mut);font-size:12.5px;margin-top:36px;border-top:1px solid var(--line);padding-top:14px}
+kbd{font:12px ui-monospace,Menlo,monospace;border:1px solid var(--line);border-radius:5px;padding:1px 5px}
+@media (max-width:520px){.card{padding:14px}.q{font-size:16px}.hide-sm{display:none}}
+</style>
+</head>
+<body>
+<main>
+
+<section id="home">
+  <h1>Simulador PUEM · Psiquiatría</h1>
+  <p class="sub">Práctica con las preguntas que los residentes han rescatado de exámenes anteriores. Respondes y enseguida ves la respuesta correcta, la explicación y las referencias de PubMed.</p>
+  <p class="sub">Las preguntas salen mezcladas. Cada una dice de qué banco viene (por ejemplo, «Banco R2»), pero en el examen puede aparecer en cualquier año.</p>
+  <div class="privacy"><span>🔒</span><span>No pide tu nombre ni guarda tus respuestas o calificaciones. Todo se queda en esta pestaña y se borra al cerrarla.</span></div>
+
+  <h2>Bancos</h2>
+  <div class="chips" id="banks"></div>
+
+  <h2>Tema (opcional)</h2>
+  <input type="search" id="search" placeholder="Ej.: litio, delirium, TDAH, esquizofrenia…" autocomplete="off">
+
+  <h2>Número de preguntas</h2>
+  <div class="chips" id="sizes"></div>
+
+  <p class="muted" id="avail" style="margin-top:14px"></p>
+  <div class="row" style="margin-top:10px"><button class="btn" id="start">Empezar</button></div>
+</section>
+
+<section id="quiz" class="hidden">
+  <div class="top">
+    <div class="meta"><span>Pregunta <b id="pos">1</b> de <b id="tot">1</b></span><span>Aciertos <b id="score">0</b><span class="hide-sm"> · Contestadas <b id="done">0</b></span></span></div>
+    <div class="bar"><i id="barfill"></i></div>
+  </div>
+  <div class="card" id="qcard"></div>
+  <div class="nav">
+    <button class="btn sec" id="quit">Terminar</button>
+    <button class="btn" id="next" disabled>Siguiente</button>
+  </div>
+  <p class="muted" style="margin-top:12px">Atajos: <kbd>A</kbd>–<kbd>E</kbd> para contestar, <kbd>Enter</kbd> para seguir.</p>
+</section>
+
+<section id="end" class="hidden">
+  <h1>Resultado de esta ronda</h1>
+  <div class="card">
+    <div class="stat" id="pct"></div>
+    <div class="muted" id="sumline"></div>
+    <div id="bybank" style="margin-top:10px"></div>
+  </div>
+  <div class="card" id="failbox">
+    <b>Para repasar</b>
+    <ol class="revlist" id="faillist"></ol>
+  </div>
+  <div class="nav">
+    <button class="btn sec" id="again">Cambiar opciones</button>
+    <button class="btn" id="retry">Repetir solo las falladas</button>
+  </div>
+  <p class="muted" style="margin-top:12px">Este resultado no se guarda en ningún lado.</p>
+</section>
+
+<footer>Dr. Deldhy N. Moya Sánchez · Servicio de Psiquiatría, CMN «20 de Noviembre», ISSSTE.<br>
+Material de estudio. Las claves se revisaron contra la literatura; cuando la respuesta del banco original estaba mal se indica con ⚠️ y cuando la pregunta es ambigua, con ⚖️.</footer>
+</main>
+
+<script>
+(()=>{
+const BANK_ORDER=["R1","R2","R3","R4","R3–R4 repaso","Consejo 2021","Infanto-juvenil 2016"];
+const BANK_LABEL={"R1":"Banco R1","R2":"Banco R2","R3":"Banco R3","R4":"Banco R4","R3–R4 repaso":"Casos de repaso R3–R4","Consejo 2021":"Banco Consejo 2021","Infanto-juvenil 2016":"Infanto-juvenil 2016"};
+const SIZES=[20,50,100,0];
+let DATA=[], sel=new Set(BANK_ORDER), size=20, round=[], i=0, score=0, done=0, fails=[], perBank={};
+const $=id=>document.getElementById(id);
+const strip=h=>h.replace(/<[^>]+>/g," ");
+const norm=s=>s.normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase();
+
+fetch("banco.json").then(r=>r.json()).then(d=>{
+  DATA=d.map((it,k)=>{it.id=k;it.hay=norm(strip((it.case?it.case.text:"")+" "+(it.vig||"")+" "+(it.q||"")+" "+(it.topic||"")+" "+(it.opts||[]).map(o=>o.t).join(" ")+" "+(it.sub&&it.sub.map?it.sub.map(s=>s.q+" "+s.a).join(" "):"")));return it});
+  drawBanks();drawSizes();updAvail();
+}).catch(()=>{$("avail").textContent="No se pudo cargar el banco de preguntas. Recarga la página."});
+
+function drawBanks(){
+  const c={};DATA.forEach(d=>c[d.bank]=(c[d.bank]||0)+1);
+  $("banks").innerHTML=BANK_ORDER.filter(b=>c[b]).map(b=>`<button class="chip" data-b="${b}" aria-pressed="${sel.has(b)}">${BANK_LABEL[b]} <small>${c[b]}</small></button>`).join("");
+  $("banks").querySelectorAll(".chip").forEach(el=>el.onclick=()=>{const b=el.dataset.b;sel.has(b)?sel.delete(b):sel.add(b);el.setAttribute("aria-pressed",sel.has(b));updAvail()});
+}
+function drawSizes(){
+  $("sizes").innerHTML=SIZES.map(s=>`<button class="chip" data-s="${s}" aria-pressed="${s===size}">${s||"Todas"}</button>`).join("");
+  $("sizes").querySelectorAll(".chip").forEach(el=>el.onclick=()=>{size=+el.dataset.s;$("sizes").querySelectorAll(".chip").forEach(x=>x.setAttribute("aria-pressed",x===el));updAvail()});
+}
+const ckey=it=>it.case?it.bank+"|"+it.sub+"|"+it.case.title+"|"+it.case.text.slice(0,60):"s"+it.id;
+// si una pregunta de un caso coincide con el tema, entra el caso completo
+function pool(){
+  const q=norm($("search").value.trim());const base=DATA.filter(d=>sel.has(d.bank));
+  if(!q)return base;
+  const hit=new Set(base.filter(d=>q.split(/\s+/).every(w=>d.hay.includes(w))).map(ckey));
+  return base.filter(d=>hit.has(ckey(d)));
+}
+function updAvail(){const n=pool().length;$("avail").textContent=n?`${n} preguntas disponibles con estos filtros.`:"No hay preguntas con estos filtros.";$("start").disabled=!n}
+$("search").addEventListener("input",updAvail);
+
+function shuffle(a){for(let k=a.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[a[k],a[j]]=[a[j],a[k]]}return a}
+// agrupa por viñeta para que las preguntas de un mismo caso salgan juntas y en orden
+function build(items,n){
+  const groups=[],map=new Map();
+  items.forEach(it=>{const key=ckey(it);
+    if(!map.has(key)){map.set(key,[]);groups.push(map.get(key))}map.get(key).push(it)});
+  shuffle(groups);const out=[];
+  for(const g of groups){if(n&&out.length>=n)break;out.push(...g)}
+  return out;
+}
+function start(items){
+  round=items;i=0;score=0;done=0;fails=[];perBank={};
+  $("home").classList.add("hidden");$("end").classList.add("hidden");$("quiz").classList.remove("hidden");
+  $("tot").textContent=round.length;show();
+}
+$("start").onclick=()=>start(build(pool(),size));
+
+function hdr(it){
+  return `<div><span class="badge">${BANK_LABEL[it.bank]}</span><span class="badge-note">puede venir en cualquier año</span></div>`+
+   (it.case?`<div class="case"><h3>${it.case.title.replace(/^Caso:\s*/,"Caso · ")}</h3>${it.case.text}</div>`:"");
+}
+function show(){
+  const it=round[i];$("pos").textContent=i+1;$("score").textContent=score;$("done").textContent=done;
+  $("barfill").style.width=(100*i/round.length)+"%";$("next").disabled=true;
+  $("next").textContent=i===round.length-1?"Ver resultado":"Siguiente";
+  let h=hdr(it);
+  if(it.type==="mcq"){
+    h+=`<div class="q">${it.q}</div><div class="opts">`+it.opts.map((o,k)=>`<button class="opt" data-k="${k}"><span class="l">${o.l||k+1}</span><span>${o.t}</span></button>`).join("")+`</div><div id="fb"></div>`;
+  }else if(it.type==="abierta"){
+    h+=`<div class="q">${it.q}</div><p class="muted">Pregunta abierta: piensa tu respuesta y luego revísala.</p><button class="btn sec" id="rv">Ver respuesta</button><div id="fb"></div>`;
+  }else{
+    h+=`<div class="case"><h3>${it.topic||"Caso de repaso"} · caso ${it.n}</h3><p>${it.vig}</p></div><p class="muted">Contesta cada punto mentalmente o elige la opción, y luego revisa.</p><div class="sublist">`+
+      it.sub.map((s,k)=>s.opts?`<div class="subq"><div class="lbl">${s.q}</div><div class="opts" style="margin-top:8px">`+s.opts.map((o,m)=>`<button class="opt" data-s="${k}" data-m="${m}"><span class="l">${o.l||m+1}</span><span>${o.t}</span></button>`).join("")+`</div></div>`
+        :`<div class="subq"><div class="lbl">${s.q||"Dato clave"}</div><button class="reveal" data-r="${k}">Mostrar</button><div class="ans hidden" id="a${k}">${s.a}</div></div>`).join("")+
+      `</div><div class="row" style="margin-top:14px"><button class="btn sec" id="rv">Ver todas las respuestas y la explicación</button></div><div id="fb"></div>`;
+  }
+  $("qcard").innerHTML=h;window.scrollTo({top:0,behavior:"instant"});
+  if(it.type==="mcq")$("qcard").querySelectorAll(".opt").forEach(b=>b.onclick=()=>answer(+b.dataset.k));
+  if(it.type==="abierta")$("rv").onclick=()=>{$("rv").remove();feedback(null,`<div class="ans">`+it.opts.map(o=>o.t).join("<br>")+`</div>`)};
+  if(it.type==="repaso"){
+    $("qcard").querySelectorAll(".reveal").forEach(b=>b.onclick=()=>{$("a"+b.dataset.r).classList.remove("hidden");b.remove()});
+    $("qcard").querySelectorAll(".opt[data-s]").forEach(b=>b.onclick=()=>{const s=it.sub[+b.dataset.s];const box=b.parentElement;box.querySelectorAll(".opt").forEach((x,m)=>{x.disabled=true;if(s.opts[m].ok)x.classList.add("ok")});if(!s.opts[+b.dataset.m].ok)b.classList.add("bad")});
+    $("rv").onclick=()=>{$("qcard").querySelectorAll(".ans").forEach(a=>a.classList.remove("hidden"));$("qcard").querySelectorAll(".reveal").forEach(b=>b.remove());
+      $("qcard").querySelectorAll(".subq .opts").forEach((box,z)=>{box.querySelectorAll(".opt").forEach(x=>{x.disabled=true;const s=it.sub[+x.dataset.s];if(s.opts[+x.dataset.m].ok)x.classList.add("ok")})});
+      $("rv").parentElement.remove();feedback(null,"")};
+  }
+}
+function answer(k){
+  const it=round[i];const btns=$("qcard").querySelectorAll(".opt");if(btns[0].disabled)return;
+  btns.forEach((b,m)=>{b.disabled=true;if(it.opts[m].ok)b.classList.add("ok")});
+  const right=it.opts[k].ok;if(!right)btns[k].classList.add("bad");
+  done++;if(right)score++;else fails.push(it);
+  perBank[it.bank]=perBank[it.bank]||[0,0];perBank[it.bank][1]++;if(right)perBank[it.bank][0]++;
+  const none=!it.opts.some(o=>o.ok);
+  feedback(right,none?`<div class="verdict bad">Ninguna opción es correcta en esta pregunta.</div>`:"");
+}
+function feedback(right,extra){
+  const it=round[i];let v="";
+  if(right===true)v=`<div class="verdict ok">✓ Correcto</div>`;
+  else if(right===false&&it.opts.some(o=>o.ok)){const c=it.opts.find(o=>o.ok);v=`<div class="verdict bad">✗ La respuesta es ${c.l?c.l+")":""} ${strip(c.t).trim()}</div>`}
+  $("fb").innerHTML=v+extra+`<div class="exp">${it.exp}</div>`;
+  $("score").textContent=score;$("done").textContent=done;$("next").disabled=false;
+  $("fb").scrollIntoView({behavior:"smooth",block:"nearest"});
+}
+$("next").onclick=()=>{if(i<round.length-1){i++;show()}else end()};
+$("quit").onclick=()=>{if(!done||confirm("¿Terminar la ronda y ver el resultado?"))end()};
+function end(){
+  $("quiz").classList.add("hidden");$("end").classList.remove("hidden");window.scrollTo({top:0});
+  $("pct").textContent=done?Math.round(100*score/done)+" %":"—";
+  $("sumline").textContent=`${score} de ${done} preguntas de opción múltiple contestadas correctamente.`;
+  $("bybank").innerHTML=Object.entries(perBank).map(([b,[a,t]])=>`<div class="muted">${BANK_LABEL[b]}: ${a}/${t}</div>`).join("");
+  $("failbox").classList.toggle("hidden",!fails.length);$("retry").classList.toggle("hidden",!fails.length);
+  $("faillist").innerHTML=fails.map(f=>`<li>${BANK_LABEL[f.bank]} — ${strip(f.q).slice(0,140)}${strip(f.q).length>140?"…":""}</li>`).join("");
+}
+$("again").onclick=()=>{$("end").classList.add("hidden");$("home").classList.remove("hidden");updAvail()};
+$("retry").onclick=()=>start(fails.slice());
+document.addEventListener("keydown",e=>{
+  if($("quiz").classList.contains("hidden")||e.metaKey||e.ctrlKey||e.target.tagName==="INPUT")return;
+  const it=round[i];
+  if(e.key==="Enter"&&!$("next").disabled){e.preventDefault();$("next").click();return}
+  if(it&&it.type==="mcq"){const k="abcde".indexOf(e.key.toLowerCase());const k2="12345".indexOf(e.key);const idx=k>=0?k:k2;if(idx>=0&&idx<it.opts.length)answer(idx)}
+});
+})();
+</script>
+</body>
+</html>
