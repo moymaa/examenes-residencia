@@ -70,6 +70,19 @@ input[type=search]:focus,button:focus-visible{outline:2px solid var(--acc);outli
 .stat{font-size:40px;font-weight:700;letter-spacing:-.02em;margin:4px 0}
 .revlist{padding-left:18px;margin:8px 0}
 .revlist li{margin:4px 0;font-size:14.5px}
+.seg{display:flex;background:var(--line);border-radius:12px;padding:3px;margin:18px 0 6px;gap:3px}
+.seg button{flex:1;font:inherit;font-weight:600;font-size:15px;border:0;border-radius:10px;padding:10px 8px;background:transparent;color:var(--mut);cursor:pointer;min-height:44px}
+.seg button[aria-selected=true]{background:var(--card);color:var(--fg);box-shadow:var(--shadow)}
+.sim{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin-bottom:10px}
+.sim .head{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.sim .head b{font-size:16px}.sim .head span{color:var(--mut);font-size:13.5px}
+.sim details{margin-top:6px}.sim summary{cursor:pointer;color:var(--acc);font-size:14px}
+table.tm{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:8px}
+table.tm th,table.tm td{border-bottom:1px solid var(--line);padding:5px 4px;text-align:left;vertical-align:top}
+table.tm td.n,table.tm th.n{text-align:right;white-space:nowrap}
+table.tm td.lo{color:var(--bad);font-weight:600}
+.btn.sm{padding:8px 16px;min-height:38px;font-size:14.5px}
+.rowlbl{font-size:12.5px;color:var(--mut);margin-top:6px}
 footer{color:var(--mut);font-size:12.5px;margin-top:36px;border-top:1px solid var(--line);padding-top:14px}
 kbd{font:12px ui-monospace,Menlo,monospace;border:1px solid var(--line);border-radius:5px;padding:1px 5px}
 @media (max-width:520px){.card{padding:14px}.q{font-size:16px}.hide-sm{display:none}}
@@ -80,14 +93,37 @@ kbd{font:12px ui-monospace,Menlo,monospace;border:1px solid var(--line);border-r
 
 <section id="home">
   <h1>Simulador PUEM · Psiquiatría</h1>
-  <p class="sub">Práctica con las preguntas que los residentes han rescatado de exámenes anteriores. Respondes y enseguida ves la respuesta correcta, la explicación y las referencias de PubMed.</p>
-  <p class="sub">Las preguntas salen mezcladas. Cada una dice de qué banco viene (por ejemplo, «Banco R2»), pero en el examen puede aparecer en cualquier año.</p>
+  <p class="sub">Respondes y enseguida ves la respuesta correcta, la explicación y las referencias de PubMed.</p>
   <div class="privacy"><span>🔒</span><span>No pide tu nombre ni guarda tus respuestas o calificaciones. Todo se queda en esta pestaña y se borra al cerrarla.</span></div>
 
-  <h2>Bancos</h2>
-  <div class="chips" id="banks"></div>
+  <div class="seg" role="tablist">
+    <button role="tab" id="tabReal" aria-selected="true">Preguntas reales</button>
+    <button role="tab" id="tabSim" aria-selected="false">Preguntas simuladas</button>
+  </div>
 
-  <h2>Tema (opcional)</h2>
+  <div id="realIntro">
+    <p class="sub">Preguntas que los residentes han rescatado de exámenes anteriores. Cada una dice de qué banco viene (por ejemplo, «Banco R2»), pero en el examen puede aparecer en cualquier año.</p>
+    <h2>Simulacro por año</h2>
+    <p class="muted" style="margin:-4px 0 10px">Mismo número de preguntas y misma distribución por tema que el examen departamental de cada año (según los reportes de resultados de la UNAM). Se toman primero preguntas del banco de ese año y se completa con los demás bancos.</p>
+    <div id="sims"></div>
+  </div>
+
+  <div id="simIntro" class="hidden">
+    <p class="sub">Casos nuevos escritos para practicar, con el mismo estilo del examen: un caso clínico y cinco preguntas sobre el mismo paciente, cuatro opciones. Siguen el temario oficial de cada año. No son preguntas del examen real.</p>
+    <h2>Examen simulado por año</h2>
+    <div id="simsGen"></div>
+  </div>
+
+  <h2 style="margin-top:34px">Práctica libre</h2>
+  <p class="muted" style="margin:-4px 0 10px">Elige bancos, temas o busca una palabra.</p>
+  <div id="bankbox"><h2>Bancos</h2>
+  <div class="chips" id="banks"></div></div>
+
+  <h2>Temas</h2>
+  <div class="chips" id="tags"></div>
+  <div class="row" style="margin-top:8px"><button class="reveal" id="tagall" style="margin:0">Todos los temas</button><button class="reveal" id="tagnone" style="margin:0">Ninguno</button></div>
+
+  <h2>Buscar (opcional)</h2>
   <input type="search" id="search" placeholder="Ej.: litio, delirium, TDAH, esquizofrenia…" autocomplete="off">
 
   <h2>Número de preguntas</h2>
@@ -117,6 +153,7 @@ kbd{font:12px ui-monospace,Menlo,monospace;border:1px solid var(--line);border-r
     <div class="muted" id="sumline"></div>
     <div id="bybank" style="margin-top:10px"></div>
   </div>
+  <div class="card hidden" id="bytopic"></div>
   <div class="card" id="failbox">
     <b>Para repasar</b>
     <ol class="revlist" id="faillist"></ol>
@@ -137,15 +174,73 @@ Material de estudio. Las claves se revisaron contra la literatura; cuando la res
 const BANK_ORDER=["R1","R2","R3","R4","R3–R4 repaso","Consejo 2021","Infanto-juvenil 2016"];
 const BANK_LABEL={"R1":"Banco R1","R2":"Banco R2","R3":"Banco R3","R4":"Banco R4","R3–R4 repaso":"Casos de repaso R3–R4","Consejo 2021":"Banco Consejo 2021","Infanto-juvenil 2016":"Infanto-juvenil 2016"};
 const SIZES=[20,50,100,0];
-let DATA=[], sel=new Set(BANK_ORDER), size=20, round=[], i=0, score=0, done=0, fails=[], perBank={};
+const TAGS={AFECT:"Trastornos afectivos",ANSIE:"Ansiedad, TOC y TEPT",PSICOT:"Trastornos psicóticos",COGNI:"Demencias, delirium y amnésicos",PERSO:"Personalidad",IMPULS:"Control de impulsos",DISOC:"Disociativos",SOMAT:"Somatomorfos",TCA:"Conducta alimentaria",SUST:"Sustancias y alcoholismo",SUENO:"Sueño",
+  PSICOPATO:"Psicopatología general y examen mental",NEURO:"Neurología",NEUROPSIQ:"Manifestaciones neuropsiquiátricas",MEDENF:"Paciente médicamente enfermo",DOLOR:"Paciente con dolor",URG:"Urgencias",FARMA:"Psicofarmacología y TEC",GEN:"Genética",
+  INF_TDAH:"TDAH y conducta",INF_ELIM:"Eliminación",INF_APREND:"Aprendizaje y discapacidad intelectual",INF_TEA:"Autismo y TGD",INF_TICS:"Tics",INF_AFANS:"Ansiedad y afecto en infancia",INF_OTROS:"Otros de infancia",SEXUAL:"Sexualidad y género",PSICOTER:"Psicoterapia",OTROS:"Ética, legal y otros"};
+let DATA=[], SIMD=[], mode="real", simGen=null, perTag={}, TM={}, sel=new Set(BANK_ORDER), tsel=new Set(Object.keys(TAGS)), size=20, round=[], i=0, score=0, done=0, fails=[], perBank={}, sim=null, rowOf=new Map(), perRow=[];
 const $=id=>document.getElementById(id);
 const strip=h=>h.replace(/<[^>]+>/g," ");
 const norm=s=>s.normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase();
 
-fetch("banco.json").then(r=>r.json()).then(d=>{
-  DATA=d.map((it,k)=>{it.id=k;it.hay=norm(strip((it.case?it.case.text:"")+" "+(it.vig||"")+" "+(it.q||"")+" "+(it.topic||"")+" "+(it.opts||[]).map(o=>o.t).join(" ")+" "+(it.sub&&it.sub.map?it.sub.map(s=>s.q+" "+s.a).join(" "):"")));return it});
-  drawBanks();drawSizes();updAvail();
+const prep=(it,k)=>{it.id=k;it.tag=it.tag||"OTROS";it.hay=norm(strip((it.case?it.case.text:"")+" "+(it.vig||"")+" "+(it.q||"")+" "+(it.topic||"")+" "+(it.opts||[]).map(o=>o.t).join(" ")+" "+(it.sub&&it.sub.map?it.sub.map(s=>s.q+" "+s.a).join(" "):"")));return it};
+const SRC=()=>mode==="real"?DATA:SIMD;
+Promise.all([fetch("banco.json").then(r=>r.json()),fetch("temario.json").then(r=>r.json()),fetch("simulados.json").then(r=>r.ok?r.json():[]).catch(()=>[])]).then(([d,t,sd])=>{
+  TM=t;DATA=d.map(prep);SIMD=sd.map((it,k)=>{it.simu=true;return prep(it,100000+k)});
+  drawSims();drawSimsGen();drawBanks();drawTags();drawSizes();updAvail();
 }).catch(()=>{$("avail").textContent="No se pudo cargar el banco de preguntas. Recarga la página."});
+
+// ——— simulacro por año con la distribución oficial ———
+const mcqs=()=>DATA.filter(d=>d.type==="mcq");
+function planSim(y){
+  const used=new Set(),plan=[];
+  TM[y].filas.forEach((f,r)=>{
+    const cand=mcqs().filter(d=>f[3].includes(d.tag)&&!used.has(d.id));
+    const mine=shuffle(cand.filter(d=>d.bank===y)),rest=shuffle(cand.filter(d=>d.bank!==y));
+    // dentro de cada grupo, primero la etiqueta principal de la fila
+    const pri=a=>a.sort((p,q)=>(p.tag===f[3][0]?0:1)-(q.tag===f[3][0]?0:1));
+    const pick=pri(mine).concat(pri(rest)).slice(0,f[2]);
+    pick.forEach(d=>{used.add(d.id);plan.push([d,r])});
+  });
+  return plan;
+}
+function drawSims(){
+  $("sims").innerHTML=Object.entries(TM).map(([y,v])=>{
+    const tot=v.filas.reduce((a,f)=>a+f[2],0);
+    const avail=v.filas.map(f=>mcqs().filter(d=>f[3].includes(d.tag)).length);
+    return `<div class="sim"><div class="head"><div><b>Simulacro ${y} · ${v.titulo}</b><br><span>${tot} preguntas · ${v.fuente}</span></div><button class="btn sm" data-y="${y}">Empezar ${y}</button></div>
+      <details><summary>Ver temario oficial</summary><table class="tm"><tr><th>Tema · subtema</th><th class="n">Reactivos</th><th class="n">En el banco</th></tr>`+
+      v.filas.map((f,r)=>`<tr><td><b>${f[0]}</b><br>${f[1]}</td><td class="n">${f[2]}</td><td class="n${avail[r]<f[2]?" lo":""}">${avail[r]}</td></tr>`).join("")+
+      `</table><p class="muted" style="margin:6px 0 0">«En el banco» cuenta las preguntas de ese tema en todos los bancos. En rojo: hay menos de las que pide el examen y el simulacro saldrá con menos.</p></details></div>`}).join("");
+  $("sims").querySelectorAll("button[data-y]").forEach(b=>b.onclick=()=>{
+    const y=b.dataset.y,plan=planSim(y);rowOf=new Map(plan.map(([d,r])=>[d.id,r]));
+    sim=y;perRow=TM[y].filas.map(()=>[0,0]);
+    // mantener juntas las preguntas de un mismo caso
+    start(build(plan.map(p=>p[0]),0),true);
+  });
+}
+function setMode(m){
+  mode=m;$("tabReal").setAttribute("aria-selected",m==="real");$("tabSim").setAttribute("aria-selected",m==="sim");
+  $("realIntro").classList.toggle("hidden",m!=="real");$("simIntro").classList.toggle("hidden",m!=="sim");$("bankbox").classList.toggle("hidden",m!=="real");
+  tsel=new Set(Object.keys(TAGS));drawTags();updAvail();
+}
+$("tabReal").onclick=()=>setMode("real");$("tabSim").onclick=()=>setMode("sim");
+function drawSimsGen(){
+  const ys=["R1","R2","R3","R4"].filter(y=>SIMD.some(d=>d.bank===y));
+  if(!ys.length){$("simsGen").innerHTML=`<p class="muted">Todavía no hay preguntas simuladas publicadas.</p>`;return}
+  $("simsGen").innerHTML=ys.map(y=>{
+    const it=SIMD.filter(d=>d.bank===y),cases=new Set(it.map(ckey)).size;
+    const temas=[...new Set(it.map(d=>TAGS[d.tag]))].join(" · ");
+    return `<div class="sim"><div class="head"><div><b>Simulado ${y} · ${(TM[y]||{}).titulo||""}</b><br><span>${cases} casos · ${it.length} preguntas</span></div><button class="btn sm" data-g="${y}">Empezar ${y}</button></div>
+      <details><summary>Ver temas</summary><p class="muted" style="margin:6px 0 0">${temas}</p></details></div>`}).join("");
+  $("simsGen").querySelectorAll("button[data-g]").forEach(b=>b.onclick=()=>{const y=b.dataset.g;start(build(SIMD.filter(d=>d.bank===y),0),false,y)});
+}
+function drawTags(){
+  const c={};SRC().forEach(d=>c[d.tag]=(c[d.tag]||0)+1);
+  $("tags").innerHTML=Object.keys(TAGS).filter(t=>c[t]).map(t=>`<button class="chip" data-t="${t}" aria-pressed="${tsel.has(t)}">${TAGS[t]} <small>${c[t]}</small></button>`).join("");
+  $("tags").querySelectorAll(".chip").forEach(el=>el.onclick=()=>{const t=el.dataset.t;tsel.has(t)?tsel.delete(t):tsel.add(t);el.setAttribute("aria-pressed",tsel.has(t));updAvail()});
+}
+$("tagall").onclick=()=>{tsel=new Set(Object.keys(TAGS));drawTags();updAvail()};
+$("tagnone").onclick=()=>{tsel=new Set();drawTags();updAvail()};
 
 function drawBanks(){
   const c={};DATA.forEach(d=>c[d.bank]=(c[d.bank]||0)+1);
@@ -159,7 +254,7 @@ function drawSizes(){
 const ckey=it=>it.case?it.bank+"|"+it.sub+"|"+it.case.title+"|"+it.case.text.slice(0,60):"s"+it.id;
 // si una pregunta de un caso coincide con el tema, entra el caso completo
 function pool(){
-  const q=norm($("search").value.trim());const base=DATA.filter(d=>sel.has(d.bank));
+  const q=norm($("search").value.trim());const base=SRC().filter(d=>(mode!=="real"||sel.has(d.bank))&&tsel.has(d.tag));
   if(!q)return base;
   const hit=new Set(base.filter(d=>q.split(/\s+/).every(w=>d.hay.includes(w))).map(ckey));
   return base.filter(d=>hit.has(ckey(d)));
@@ -177,15 +272,20 @@ function build(items,n){
   for(const g of groups){if(n&&out.length>=n)break;out.push(...g)}
   return out;
 }
-function start(items){
-  round=items;i=0;score=0;done=0;fails=[];perBank={};
+function start(items,isSim,gen){
+  if(!isSim){sim=null;rowOf=new Map()}
+  simGen=gen||null;
+  round=items;i=0;score=0;done=0;fails=[];perBank={};perTag={};if(sim)perRow=TM[sim].filas.map(()=>[0,0]);
   $("home").classList.add("hidden");$("end").classList.add("hidden");$("quiz").classList.remove("hidden");
   $("tot").textContent=round.length;show();
 }
 $("start").onclick=()=>start(build(pool(),size));
 
 function hdr(it){
-  return `<div><span class="badge">${BANK_LABEL[it.bank]}</span><span class="badge-note">puede venir en cualquier año</span></div>`+
+  const r=sim&&rowOf.has(it.id)?TM[sim].filas[rowOf.get(it.id)]:null;
+  return (it.simu?`<div><span class="badge">Pregunta simulada · ${it.bank}</span><span class="badge-note">para practicar; no es del examen real</span></div>`
+    :`<div><span class="badge">${BANK_LABEL[it.bank]}</span><span class="badge-note">puede venir en cualquier año</span></div>`)+
+   `<div class="rowlbl">${r?r[0]+" · "+r[1]:TAGS[it.tag]||""}</div>`+
    (it.case?`<div class="case"><h3>${it.case.title.replace(/^Caso:\s*/,"Caso · ")}</h3>${it.case.text}</div>`:"");
 }
 function show(){
@@ -220,6 +320,8 @@ function answer(k){
   const right=it.opts[k].ok;if(!right)btns[k].classList.add("bad");
   done++;if(right)score++;else fails.push(it);
   perBank[it.bank]=perBank[it.bank]||[0,0];perBank[it.bank][1]++;if(right)perBank[it.bank][0]++;
+  perTag[it.tag]=perTag[it.tag]||[0,0];perTag[it.tag][1]++;if(right)perTag[it.tag][0]++;
+  if(sim&&rowOf.has(it.id)){const pr=perRow[rowOf.get(it.id)];pr[1]++;if(right)pr[0]++}
   const none=!it.opts.some(o=>o.ok);
   feedback(right,none?`<div class="verdict bad">Ninguna opción es correcta en esta pregunta.</div>`:"");
 }
@@ -237,9 +339,14 @@ function end(){
   $("quiz").classList.add("hidden");$("end").classList.remove("hidden");window.scrollTo({top:0});
   $("pct").textContent=done?Math.round(100*score/done)+" %":"—";
   $("sumline").textContent=`${score} de ${done} preguntas de opción múltiple contestadas correctamente.`;
-  $("bybank").innerHTML=Object.entries(perBank).map(([b,[a,t]])=>`<div class="muted">${BANK_LABEL[b]}: ${a}/${t}</div>`).join("");
+  $("bybank").innerHTML=(sim?`<div class="muted">Simulacro ${sim} · ${TM[sim].titulo}</div>`:simGen?`<div class="muted">Examen simulado ${simGen}</div>`:"")+(simGen?"":Object.entries(perBank).map(([b,[a,t]])=>`<div class="muted">${BANK_LABEL[b]}: ${a}/${t}</div>`).join(""));
+  $("bytopic").classList.toggle("hidden",!sim&&!simGen);
+  if(simGen)$("bytopic").innerHTML=`<b>Resultados por tema</b><table class="tm"><tr><th>Tema</th><th class="n">Contestadas</th><th class="n">Correctas</th><th class="n">%</th></tr>`+
+    Object.entries(perTag).map(([g,[a,t]])=>{const p=Math.round(100*a/t);return `<tr><td>${TAGS[g]||g}</td><td class="n">${t}</td><td class="n">${a}</td><td class="n${p<70?" lo":""}">${p}</td></tr>`}).join("")+`</table>`;
+  if(sim)$("bytopic").innerHTML=`<b>Resultados por tema y subtema</b><table class="tm"><tr><th>Tema · subtema</th><th class="n">Contestadas</th><th class="n">Correctas</th><th class="n">%</th></tr>`+
+    TM[sim].filas.map((f,r)=>{const [a,t]=perRow[r];const p=t?Math.round(100*a/t):null;return `<tr><td><b>${f[0]}</b><br>${f[1]}</td><td class="n">${t}</td><td class="n">${a}</td><td class="n${p!==null&&p<70?" lo":""}">${p===null?"—":p}</td></tr>`}).join("")+`</table>`;
   $("failbox").classList.toggle("hidden",!fails.length);$("retry").classList.toggle("hidden",!fails.length);
-  $("faillist").innerHTML=fails.map(f=>`<li>${BANK_LABEL[f.bank]} — ${strip(f.q).slice(0,140)}${strip(f.q).length>140?"…":""}</li>`).join("");
+  $("faillist").innerHTML=fails.map(f=>`<li>${f.simu?"Simulada "+f.bank:BANK_LABEL[f.bank]} — ${strip(f.q).slice(0,140)}${strip(f.q).length>140?"…":""}</li>`).join("");
 }
 $("again").onclick=()=>{$("end").classList.add("hidden");$("home").classList.remove("hidden");updAvail()};
 $("retry").onclick=()=>start(fails.slice());
