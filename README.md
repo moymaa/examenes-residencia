@@ -10,7 +10,7 @@ Una carpeta por examen; cada carpeta es autocontenida y conserva su propio backe
 | Carpeta | Examen | Estado |
 |---|---|---|
 | `genetica/` | Genética en Psiquiatría, Bloque B (sep-2026) | cerrado |
-| `simulador-puem/` | Simulador PUEM de práctica: preguntas reales rescatadas (R1–R4, Consejo 2021, infanto-juvenil 2016), simulacros por año con el temario oficial y 400 casos simulados (20 por año × 5 preguntas) | siempre abierto, sin backend ni registro |
+| `simulador-puem/` | Simulador PUEM de estudio: bancos de años previos (R1–R4, Consejo, infanto-juvenil), simulacros por año y 400 casos simulados (20 por año × 5 preguntas). Material creado por profesores del CMN "20 de Noviembre", coordinado por el Dr. Moya | siempre abierto, sin backend ni registro |
 | `tcc/` | Psicoterapia, Módulo 1: Terapia Cognitivo-Conductual (sep-2026) | abierto del 24 al 27 de septiembre |
 
 El proyecto completo de cada examen (banco de reactivos, generadores, backend) vive fuera de este repositorio:

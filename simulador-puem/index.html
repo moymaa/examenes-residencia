@@ -93,23 +93,23 @@ kbd{font:12px ui-monospace,Menlo,monospace;border:1px solid var(--line);border-r
 
 <section id="home">
   <h1>Simulador PUEM · Psiquiatría</h1>
-  <p class="sub">Respondes y enseguida ves la respuesta correcta, la explicación y las referencias de PubMed.</p>
+  <p class="sub">Material de estudio creado por profesores del CMN «20 de Noviembre» y coordinado por el Dr. Deldhy N. Moya Sánchez. Respondes y enseguida ves la respuesta correcta, la explicación y las referencias de PubMed.</p>
   <div class="privacy"><span>🔒</span><span>No pide tu nombre ni guarda tus respuestas o calificaciones. Todo se queda en esta pestaña y se borra al cerrarla.</span></div>
 
   <div class="seg" role="tablist">
-    <button role="tab" id="tabReal" aria-selected="true">Preguntas reales</button>
-    <button role="tab" id="tabSim" aria-selected="false">Preguntas simuladas</button>
+    <button role="tab" id="tabReal" aria-selected="true">Bancos de años previos</button>
+    <button role="tab" id="tabSim" aria-selected="false">Casos simulados</button>
   </div>
 
   <div id="realIntro">
-    <p class="sub">Preguntas que los residentes han rescatado de exámenes anteriores. Cada una dice de qué banco viene (por ejemplo, «Banco R2»), pero en el examen puede aparecer en cualquier año.</p>
+    <p class="sub">Bancos de estudio creados en años previos para preparar cada año de residencia. Cada pregunta dice de qué banco viene (por ejemplo, «Banco R2»), pero puede tocarte en cualquier año.</p>
     <h2>Simulacro por año</h2>
-    <p class="muted" style="margin:-4px 0 10px">Mismo número de preguntas y misma distribución por tema que el examen departamental de cada año (según los reportes de resultados de la UNAM). Se toman primero preguntas del banco de ese año y se completa con los demás bancos.</p>
+    <p class="muted" style="margin:-4px 0 10px">Mismo número de preguntas y misma distribución por tema que se usa para preparar cada año. Se toman primero preguntas del banco de ese año y se completa con los demás bancos.</p>
     <div id="sims"></div>
   </div>
 
   <div id="simIntro" class="hidden">
-    <p class="sub">Casos nuevos escritos para practicar, con el mismo estilo del examen: un caso clínico y cinco preguntas sobre el mismo paciente, cuatro opciones. Siguen el temario oficial de cada año. No son preguntas del examen real.</p>
+    <p class="sub">Casos nuevos escritos para practicar: un caso clínico y cinco preguntas sobre el mismo paciente, cuatro opciones. Siguen el temario de cada año y son material de estudio original.</p>
     <h2>Examen simulado por año</h2>
     <div id="simsGen"></div>
   </div>
@@ -166,7 +166,7 @@ kbd{font:12px ui-monospace,Menlo,monospace;border:1px solid var(--line);border-r
 </section>
 
 <footer>Dr. Deldhy N. Moya Sánchez · Servicio de Psiquiatría, CMN «20 de Noviembre», ISSSTE.<br>
-Material de estudio. Las claves se revisaron contra la literatura; cuando la respuesta del banco original estaba mal se indica con ⚠️ y cuando la pregunta es ambigua, con ⚖️.</footer>
+Material de estudio creado por profesores del CMN «20 de Noviembre» y coordinado por el Dr. Deldhy N. Moya Sánchez. Las claves se revisaron contra la literatura; cuando la respuesta del banco original estaba mal se indica con ⚠️ y cuando la pregunta es ambigua, con ⚖️.</footer>
 </main>
 
 <script>
@@ -207,10 +207,10 @@ function drawSims(){
   $("sims").innerHTML=Object.entries(TM).map(([y,v])=>{
     const tot=v.filas.reduce((a,f)=>a+f[2],0);
     const avail=v.filas.map(f=>mcqs().filter(d=>f[3].includes(d.tag)).length);
-    return `<div class="sim"><div class="head"><div><b>Simulacro ${y} · ${v.titulo}</b><br><span>${tot} preguntas · ${v.fuente}</span></div><button class="btn sm" data-y="${y}">Empezar ${y}</button></div>
-      <details><summary>Ver temario oficial</summary><table class="tm"><tr><th>Tema · subtema</th><th class="n">Reactivos</th><th class="n">En el banco</th></tr>`+
+    return `<div class="sim"><div class="head"><div><b>Simulacro ${y} · ${v.titulo}</b><br><span>${tot} preguntas</span></div><button class="btn sm" data-y="${y}">Empezar ${y}</button></div>
+      <details><summary>Ver temario</summary><table class="tm"><tr><th>Tema · subtema</th><th class="n">Reactivos</th><th class="n">En el banco</th></tr>`+
       v.filas.map((f,r)=>`<tr><td><b>${f[0]}</b><br>${f[1]}</td><td class="n">${f[2]}</td><td class="n${avail[r]<f[2]?" lo":""}">${avail[r]}</td></tr>`).join("")+
-      `</table><p class="muted" style="margin:6px 0 0">«En el banco» cuenta las preguntas de ese tema en todos los bancos. En rojo: hay menos de las que pide el examen y el simulacro saldrá con menos.</p></details></div>`}).join("");
+      `</table><p class="muted" style="margin:6px 0 0">«En el banco» cuenta las preguntas de ese tema en todos los bancos. En rojo: hay menos de las que pide el temario y el simulacro saldrá con menos.</p></details></div>`}).join("");
   $("sims").querySelectorAll("button[data-y]").forEach(b=>b.onclick=()=>{
     const y=b.dataset.y,plan=planSim(y);rowOf=new Map(plan.map(([d,r])=>[d.id,r]));
     sim=y;perRow=TM[y].filas.map(()=>[0,0]);
@@ -283,8 +283,8 @@ $("start").onclick=()=>start(build(pool(),size));
 
 function hdr(it){
   const r=sim&&rowOf.has(it.id)?TM[sim].filas[rowOf.get(it.id)]:null;
-  return (it.simu?`<div><span class="badge">Pregunta simulada · ${it.bank}</span><span class="badge-note">para practicar; no es del examen real</span></div>`
-    :`<div><span class="badge">${BANK_LABEL[it.bank]}</span><span class="badge-note">puede venir en cualquier año</span></div>`)+
+  return (it.simu?`<div><span class="badge">Caso simulado · ${it.bank}</span><span class="badge-note">creado para practicar</span></div>`
+    :`<div><span class="badge">${BANK_LABEL[it.bank]}</span><span class="badge-note">puede tocarte en cualquier año</span></div>`)+
    `<div class="rowlbl">${r?r[0]+" · "+r[1]:TAGS[it.tag]||""}</div>`+
    (it.case?`<div class="case"><h3>${it.case.title.replace(/^Caso:\s*/,"Caso · ")}</h3>${it.case.text}</div>`:"");
 }
