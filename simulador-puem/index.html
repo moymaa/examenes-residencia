@@ -210,6 +210,35 @@ html[data-tema="rosa"]{color-scheme:light;--bg:#fdf1f6;--card:#fff;--fg:#3a1a2a;
 html[data-tema="ambar"]{color-scheme:light;--bg:#fbf3e6;--card:#fffaf2;--fg:#2b1a0f;--mut:#7a5a3d;--line:#ecd9bb;--acc:#c2661a;--acc-soft:#f8e3c8;--on-acc:#fff}
 html[data-tema="menta"]{color-scheme:light;--bg:#eefaf4;--card:#fff;--fg:#10291e;--mut:#4f7a66;--line:#cde9db;--acc:#2fa876;--acc-soft:#dcf3e8;--on-acc:#fff}
 html[data-tema="rosa"],html[data-tema="ambar"],html[data-tema="menta"]{--ok:#1f7a4d;--ok-soft:#e6f4ec;--bad:#b3261e;--bad-soft:#fbeae9;--warn:#8a5a00;--warn-soft:#fbf1dc;--shadow:0 1px 2px rgba(0,0,0,.04),0 4px 16px rgba(0,0,0,.05)}
+/* tema La Academia (regalo desde Chicharrones): fresco, marfil, azul noche, terracota y bronce */
+html[data-tema="academia"]{color-scheme:light;--bg:#f4eee2;--card:#fbf7ef;--fg:#1c2335;--mut:#6a604f;--line:#d9ccb2;--acc:#1f3a68;--acc-soft:#e3e6ee;--ok:#2f6b45;--ok-soft:#e5efe5;--bad:#a8402a;--bad-soft:#f6e4dc;--warn:#8a6a2c;--warn-soft:#f3ead6;--on-acc:#fbf7ef;--bronce:#a07a3c;--terra:#b5532e;--noche:#121c33}
+html[data-tema="academia"] body{font-family:"Source Sans 3",-apple-system,"Segoe UI",Arial,sans-serif!important}
+html[data-tema="academia"] h1,html[data-tema="academia"] h2,html[data-tema="academia"] h3,html[data-tema="academia"] .qh,html[data-tema="academia"] .tile b,html[data-tema="academia"] .count .d,html[data-tema="academia"] .bigmsg{font-family:"Cormorant Garamond",Georgia,"Times New Roman",serif!important;letter-spacing:0!important}
+html[data-tema="academia"] .qh{font-size:26px;font-weight:600}
+html[data-tema="academia"] .card,html[data-tema="academia"] .tile,html[data-tema="academia"] .count{border-color:color-mix(in srgb,var(--bronce) 45%,transparent)!important}
+html[data-tema="academia"] .tile:hover{border-color:var(--terra)!important}
+html[data-tema="academia"] .count .d{color:var(--terra)!important}
+html[data-tema="academia"] .btn{background:linear-gradient(180deg,#2a4a80,var(--acc))!important}
+html[data-tema="academia"] .btn.sec{background:transparent!important;border:1px solid var(--bronce)!important}
+html[data-tema="academia"]::before{background:radial-gradient(40vmax 40vmax at 6% 0%,color-mix(in srgb,#1f3a68 14%,transparent),transparent 70%),radial-gradient(44vmax 44vmax at 92% 100%,color-mix(in srgb,#b5532e 12%,transparent),transparent 70%)!important}
+#acaHero{display:none}
+html[data-tema="academia"] #home>h1,html[data-tema="academia"] #home>p.sub{display:none}
+html[data-tema="academia"] #acaHero{display:block;position:relative;margin:0 0 18px;border-radius:22px;overflow:hidden;background:var(--noche);color:#f4eee2;box-shadow:0 18px 44px rgba(18,28,51,.28);border:1px solid color-mix(in srgb,var(--bronce) 55%,transparent)}
+#acaHero .ahimg{display:block;width:100%;aspect-ratio:16/8.6;object-fit:cover;object-position:62% 30%}
+#acaHero .ahtx{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:22px 24px;max-width:44%;background:linear-gradient(90deg,rgba(18,28,51,.9) 0%,rgba(18,28,51,.6) 65%,transparent 100%)}
+#acaHero .ahem{display:flex;align-items:center;gap:8px;font:600 13px/1 "Source Sans 3",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#e7d2a6;margin-bottom:auto}
+#acaHero .ahem i{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;border:1px solid #c9a96a;font:600 17px/1 "Cormorant Garamond",serif;font-style:normal;color:#f4eee2}
+#acaHero h2{margin:0;font:600 clamp(26px,4.2vw,40px)/1.05 "Cormorant Garamond",Georgia,serif;color:#f4eee2;text-transform:none;letter-spacing:0}
+#acaHero p{margin:8px 0 0;font-size:14px;color:#d9cfbd}
+@media (max-width:620px){#acaHero .ahtx{position:static;max-width:none;background:var(--noche);padding:16px 18px}#acaHero .ahem{margin-bottom:10px}#acaHero .ahimg{aspect-ratio:16/10;object-position:66% 28%}}
+.tsw.lock{opacity:.55;cursor:not-allowed}.tsw.lock small{display:block;font-size:11px;color:var(--mut)}
+#acaAnun{position:fixed;inset:0;z-index:60;display:grid;place-items:center;padding:16px;background:rgba(10,14,26,.55);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+#acaAnun .aa{width:100%;max-width:460px;background:#f4eee2;color:#1c2335;border-radius:24px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.4);border:1px solid #c9a96a}
+#acaAnun img{display:block;width:100%;aspect-ratio:3/2;object-fit:cover;object-position:60% 30%}
+#acaAnun .ab{padding:16px 20px 20px}#acaAnun small{font:600 12px/1 sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#b5532e}
+#acaAnun h3{margin:6px 0 4px;font:600 28px/1.1 "Cormorant Garamond",Georgia,serif}#acaAnun p{margin:0 0 14px;color:#6a604f;font-size:14.5px}
+#acaAnun .row{display:flex;gap:8px}#acaAnun button{flex:1;font:inherit;font-weight:600;border-radius:14px;min-height:46px;cursor:pointer;border:1px solid #a07a3c;background:transparent;color:#1f3a68}
+#acaAnun button.si{background:#1f3a68;color:#fbf7ef;border-color:#1f3a68}
 html[data-tema] .btn,html[data-tema] .chip[aria-pressed=true],html[data-tema] .lvlb,html[data-tema] .combo,html[data-tema] .rt th,html[data-tema] #acc button{color:var(--on-acc)!important}
 html[data-tema] .chip[aria-pressed=true] small{color:var(--on-acc)!important;opacity:.8}
 html[data-tema] .btn.sec{color:var(--acc)!important}
@@ -573,6 +602,7 @@ html[data-tema="barrio"] :is([data-back],#rdBack,#rBackMenu,#rCancel){border:3px
 <main>
 
 <section id="home">
+  <div id="acaHero" aria-label="Tema La Academia"><img class="ahimg" id="acaImg" alt=""><div class="ahtx"><div class="ahem"><i>A</i>La Academia</div><h2>¿Qué quieres aprender hoy?</h2><p>Preguntas, diálogos y lecturas para llegar al PUEM pensando como filósofo.</p></div></div>
   <h1>Simulador PUEM · Psiquiatría</h1>
   <p class="sub">Material de estudio para la residencia de Psiquiatría. Respondes y enseguida ves la respuesta correcta, la explicación y las referencias de PubMed.</p>
   <div id="countdown"></div>
@@ -1060,20 +1090,29 @@ function showRanks(){
 $("rkGo").onclick=()=>{$("ranks").classList.add("hidden");sv(PFX+"ranks_seen_v1",{d:todayStr()})};
 $("ranks").onclick=e=>{if(e.target.id==="ranks")$("rkGo").click()};
 $("seeRanks").onclick=showRanks;$("rkHelp").onclick=()=>{$("rkGo").click();$("tHelp").click()};
-ACCESO.ready().then(()=>{if(!ld(PFX+"ranks_seen_v1",null)&&ld(PFX+"jugador_v1",null))setTimeout(showRanks,700)});
+ACCESO.ready().then(()=>{if(!ld(PFX+"ranks_seen_v1",null)&&ld(PFX+"jugador_v1",null))setTimeout(showRanks,700);setTimeout(()=>{try{acaAnuncio()}catch(e){}},ld(PFX+"jugador_v1",null)?7000:0)});
 
 // ——— temas de color (como el simulador de paido) ———
-const TEMAS=[["","Automático","linear-gradient(135deg,#faf9f7 50%,#131211 50%)"],["claro","Vino claro","linear-gradient(135deg,#faf9f7,#6d2233)"],["oscuro","Vino oscuro","linear-gradient(135deg,#131211,#d08a9b)"],["azul","Azul","linear-gradient(135deg,#071a2e,#4a9be8)"],["morado","Morado","linear-gradient(135deg,#170b2e,#a970ff)"],["verde","Verde","linear-gradient(135deg,#06231b,#2fbf8f)"],["medianoche","Medianoche","linear-gradient(135deg,#000,#5aa9ff)"],["moka","Moka","linear-gradient(135deg,#2b1a0f,#e2962e)"],["neon","Neón","linear-gradient(135deg,#000,#39ff14)"],["rosa","Rosa pastel","linear-gradient(135deg,#fdf1f6,#d94f8c)"],["ambar","Ámbar","linear-gradient(135deg,#fbf3e6,#c2661a)"],["menta","Menta","linear-gradient(135deg,#eefaf4,#2fa876)"],["halloween","Halloween 🎃","linear-gradient(135deg,#150d20,#ff7518)"],["navidad","Navidad 🎄","linear-gradient(135deg,#0b2418 50%,#e23b3b 50%)"],["barrio","Los chicos del barrio 🛹","linear-gradient(135deg,#f1e2bf 50%,#e63b2e 50%)"]];
+const TEMAS=[["","Automático","linear-gradient(135deg,#faf9f7 50%,#131211 50%)"],["claro","Vino claro","linear-gradient(135deg,#faf9f7,#6d2233)"],["oscuro","Vino oscuro","linear-gradient(135deg,#131211,#d08a9b)"],["azul","Azul","linear-gradient(135deg,#071a2e,#4a9be8)"],["morado","Morado","linear-gradient(135deg,#170b2e,#a970ff)"],["verde","Verde","linear-gradient(135deg,#06231b,#2fbf8f)"],["medianoche","Medianoche","linear-gradient(135deg,#000,#5aa9ff)"],["moka","Moka","linear-gradient(135deg,#2b1a0f,#e2962e)"],["neon","Neón","linear-gradient(135deg,#000,#39ff14)"],["rosa","Rosa pastel","linear-gradient(135deg,#fdf1f6,#d94f8c)"],["ambar","Ámbar","linear-gradient(135deg,#fbf3e6,#c2661a)"],["menta","Menta","linear-gradient(135deg,#eefaf4,#2fa876)"],["halloween","Halloween 🎃","linear-gradient(135deg,#150d20,#ff7518)"],["navidad","Navidad 🎄","linear-gradient(135deg,#0b2418 50%,#e23b3b 50%)"],["academia","La Academia 🏛️","linear-gradient(135deg,#f4eee2 50%,#1f3a68 50%)"],["barrio","Los chicos del barrio 🛹","linear-gradient(135deg,#f1e2bf 50%,#e63b2e 50%)"]];
 document.body.prepend($("deco")); // la decoración va detrás del contenido
 function foco(on){const h=document.documentElement;if(on===h.classList.contains("foco"))return;h.classList.toggle("foco",on);
   if(on){h.removeAttribute("data-tema");$("deco").innerHTML=""}else{if(TEMA)h.setAttribute("data-tema",TEMA);deco()}}
 const K_TEMA=PFX+"tema_v1";let TEMA=(ld(K_TEMA,{t:""}).t)||"";
-function setTema(t){TEMA=TEMAS.some(x=>x[0]===t)?t:"";
+const ACA_PTS=300,acaOk=()=>((ld(PFX+"xp_v1",{xp:0})||{}).xp||0)>=ACA_PTS;let TEMAIMG=null;
+function acaImg(){if(TEMAIMG)return Promise.resolve(TEMAIMG);return ACCESO.ready().then(()=>ACCESO.json("temas.enc")).then(t=>{TEMAIMG=t||{};const i=$("acaImg");if(i&&TEMAIMG.academia)i.src=TEMAIMG.academia;return TEMAIMG})}
+function tgridRender(){$("tgrid").innerHTML=TEMAS.map(([k,n,g])=>k==="academia"&&!acaOk()?`<button type="button" class="tsw lock" data-t="${k}" aria-disabled="true"><i style="background:${g}"></i><span>🔒 ${n}<small>desde Chicharrones morados</small></span></button>`:`<button type="button" class="tsw" data-t="${k}"><i style="background:${g}"></i>${n}</button>`).join("");
+  $("tgrid").querySelectorAll(".tsw").forEach(b=>{b.setAttribute("aria-pressed",b.dataset.t===TEMA);b.onclick=()=>{if(b.classList.contains("lock")){big("🔒 La Academia","se abre en el rango Chicharrones morados");return}setTema(b.dataset.t);$("tpanel").classList.add("hidden");if(TEMA==="barrio")big("🛹 ¡MISIÓN ACEPTADA!","Operación P.U.E.M. en marcha");if(TEMA==="academia")big("🏛️ Bienvenido a La Academia","conócete a ti mismo… y el DSM")}})}
+function setTema(t){TEMA=TEMAS.some(x=>x[0]===t)?t:"";if(TEMA==="academia"&&!acaOk())TEMA="";
+  if(TEMA==="academia"){acaImg().catch(()=>{});if(!document.getElementById("fontAca")){const l=document.createElement("link");l.id="fontAca";l.rel="stylesheet";l.href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Source+Sans+3:wght@400;600&display=swap";document.head.appendChild(l)}}
   if(TEMA==="barrio"&&!document.getElementById("fontBarrio")){const l=document.createElement("link");l.id="fontBarrio";l.rel="stylesheet";l.href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Fredoka:wght@500;600;700&display=swap";document.head.appendChild(l)}sv(K_TEMA,{t:TEMA});if(TEMA)document.documentElement.setAttribute("data-tema",TEMA);else document.documentElement.removeAttribute("data-tema");
   $("tgrid").querySelectorAll(".tsw").forEach(b=>b.setAttribute("aria-pressed",b.dataset.t===TEMA));deco();try{renderCountdown()}catch(e){}}
-$("tgrid").innerHTML=TEMAS.map(([k,n,g])=>`<button type="button" class="tsw" data-t="${k}"><i style="background:${g}"></i>${n}</button>`).join("");
-$("tgrid").querySelectorAll(".tsw").forEach(b=>b.onclick=()=>{setTema(b.dataset.t);$("tpanel").classList.add("hidden");if(TEMA==="barrio")big("🛹 ¡MISIÓN ACEPTADA!","Operación P.U.E.M. en marcha")});
-$("fabTema").onclick=e=>{e.stopPropagation();$("tpanel").classList.toggle("hidden")};
+tgridRender();
+$("fabTema").onclick=e=>{e.stopPropagation();tgridRender();$("tpanel").classList.toggle("hidden")};
+// anuncio del tema de regalo: una sola vez, a quien ya es Chicharrones o más (el Polloatun solo lo ve bloqueado)
+function acaAnuncio(){if(!acaOk()||ld(PFX+"aca_anuncio_v1",null)||document.getElementById("acaAnun")||document.documentElement.classList.contains("foco"))return;
+  acaImg().then(t=>{if(!t.academia||document.getElementById("acaAnun"))return;sv(PFX+"aca_anuncio_v1",{d:todayStr()});const w=document.createElement("div");w.id="acaAnun";w.setAttribute("role","dialog");w.setAttribute("aria-modal","true");
+    w.innerHTML=`<div class="aa"><img src="${t.academia}" alt=""><div class="ab"><small>🎁 Tema de regalo</small><h3>La Academia</h3><p>Desbloqueado por llegar a Chicharrones morados: un tema griego para estudiar como en la escuela de Atenas. Y de pilón, dos personajes nuevos: <b>vampiro socrático</b> y <b>soto sócrates</b>.</p><div class="row"><button type="button" class="si">Ponerlo</button><button type="button" class="no">Después</button></div></div></div>`;
+    document.body.appendChild(w);const c=()=>w.remove();w.querySelector(".si").onclick=()=>{c();setTema("academia");big("🏛️ Bienvenido a La Academia","conócete a ti mismo… y el DSM");confetti(90)};w.querySelector(".no").onclick=c;w.onclick=e=>{if(e.target===w)c()}}).catch(()=>{})}
 $("fabNavidad").onclick=()=>{setTema(TEMA==="navidad"?"":"navidad");if(TEMA==="navidad"){big("🎄 ¡Felices fiestas!","que el regalo sea pasar el PUEM");confetti(120)}};
 $("fabCalabaza").onclick=()=>{setTema(TEMA==="halloween"?"":"halloween");if(TEMA==="halloween"){big("🎃 ¡Feliz Halloween!","que los únicos sustos sean del examen");}};
 document.addEventListener("click",e=>{if(!e.target.closest("#tpanel,#fabTema"))$("tpanel").classList.add("hidden")});
@@ -1152,11 +1191,12 @@ const PJ_FREE=5,PJ_STEP=150,K_PJU=PFX+"pj_desbloq_v1",K_PJORD=PFX+"pj_orden_v1";
 // orden al azar y propio de cada navegador (los 5 primeros y el resto del desbloqueo); los personajes nuevos se acomodan al final
 let PJO=[];function pjOrden(){let o=ld(K_PJORD,null);const ids=PJS.map(p=>p.id);if(!Array.isArray(o))o=shuffle(ids.slice());
   o=o.filter(id=>ids.includes(id));const nuevos=shuffle(ids.filter(id=>!o.includes(id)));o=o.concat(nuevos);sv(K_PJORD,o);PJO=o.map(id=>PJS.find(p=>p.id===id))}
-const pjAbiertos=()=>Math.min(PJO.length,PJ_FREE+Math.floor(((XP&&XP.xp)||0)/PJ_STEP));
-const pjLibre=id=>id==="yo"||(PJ&&PJ.id===id)||PJO.findIndex(p=>p.id===id)<pjAbiertos();
-const pjPts=id=>Math.max(0,(PJO.findIndex(p=>p.id===id)-PJ_FREE+1)*PJ_STEP);
+const pjN=()=>PJO.filter(p=>!p.r),pjIx=id=>pjN().findIndex(p=>p.id===id); // los de regalo (r) no gastan lugar en la fila del desbloqueo
+const pjAbiertos=()=>Math.min(pjN().length,PJ_FREE+Math.floor(((XP&&XP.xp)||0)/PJ_STEP));
+const pjLibre=id=>id==="yo"||(PJ&&PJ.id===id)||(PJO.find(p=>p.id===id)||{}).r||pjIx(id)<pjAbiertos();
+const pjPts=id=>Math.max(0,(pjIx(id)-PJ_FREE+1)*PJ_STEP);
 function pjCheck(){if(!PJS.length)return;const n=pjAbiertos(),prev=ld(K_PJU,{n:PJ_FREE}).n||PJ_FREE;
-  if(n>prev){for(let k=prev;k<n;k++){const p=PJO[k];if(p)xbox(`<img src="${p.img}" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:50%">`,"Nuevo personaje: "+p.n,"🥊")}}
+  if(n>prev){for(let k=prev;k<n;k++){const p=pjN()[k];if(p)xbox(`<img src="${p.img}" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:50%">`,"Nuevo personaje: "+p.n,"🥊")}}
   if(n!==prev)sv(K_PJU,{n})}
 const pjOf=id=>id==="yo"?(MIPJ&&MIPJ.img?{id:"yo",n:MIPJ.nombre||"Yo",img:MIPJ.img,yo:1}:null):PJS.find(p=>p.id===id);
 function fotoPropia(file){if(!file)return;const url=URL.createObjectURL(file),im=new Image();
@@ -1194,7 +1234,7 @@ $("selOk").onclick=()=>{if(!selPick){$("selRnd").click();return}const p=pjOf(sel
   const first=!PJ;PJ={id:selPick,nombre:nm};sv(K_PJ,PJ);if(selPick==="yo"&&MIPJ){MIPJ.nombre=nm;sv(K_MIPJ,MIPJ)}selClose();hud();big(`<img src="${p.img}" class="lvbig" alt="">${nm.toUpperCase()}`,"¡a estudiar!");
   if(first&&!ld(PFX+"ranks_seen_v1",null))setTimeout(showRanks,1700)};
 $("hud").onclick=selOpen;
-ACCESO.ready().then(()=>ACCESO.json("personajes.enc")).then(l=>{PJS=l||[];pjOrden();if(!ld(K_PJU,null))sv(K_PJU,{n:pjAbiertos()});if(PJ&&!pjOf(PJ.id))PJ=null;hud();if(!PJ)setTimeout(()=>{$("ranks").classList.add("hidden");selOpen()},600)}).catch(()=>{});
+ACCESO.ready().then(()=>ACCESO.json("personajes.enc")).then(l=>{PJS=l||[];pjOrden();if(!ld(K_PJU,null))sv(K_PJU,{n:pjAbiertos()});{const vis=ld(PFX+"pj_regalo_v1",[]),nv=PJS.filter(p=>p.r&&!vis.includes(p.id));if(nv.length&&ld(K_PJ,null)){nv.forEach((p,k)=>setTimeout(()=>xbox(`<img src="${p.img}" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:50%">`,"Personaje de regalo: "+p.n,"🎁"),1200+k*2600))}sv(PFX+"pj_regalo_v1",vis.concat(nv.map(p=>p.id)))}if(PJ&&!pjOf(PJ.id))PJ=null;hud();if(!PJ)setTimeout(()=>{$("ranks").classList.add("hidden");selOpen()},600)}).catch(()=>{});
 
 // ——— versus en vivo (tipo Kahoot): salas de 4 dígitos en el worker simpsiq-versus ———
 const VS_URL=/^(localhost|127\.0\.0\.1)$/.test(location.hostname)?"ws://127.0.0.1:8787":"wss://simpsiq-salas.pages.dev";
@@ -1203,7 +1243,7 @@ const vesc=t=>String(t==null?"":t).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;"
 const vsMe=()=>({nombre:(PJ&&PJ.nombre)||"Jugador",pj:PJ&&PJ.id!=="yo"?String(PJ.id):""});
 function vsAv(pj,nombre){const p=pj&&PJS.find(x=>String(x.id)===String(pj));return p?`<img class="vsav" src="${p.img}" alt="">`:`<span class="vsav">${vesc((nombre||"?").trim().split(/\s+/).map(w=>w[0]).slice(0,2).join("").toUpperCase())}</span>`}
 function vsView(){despierto(true);["home","quiz","end","read","real"].forEach(x=>$(x).classList.add("hidden"));$("vs").classList.remove("hidden");window.scrollTo({top:0,behavior:"instant"})}
-function vsSalir(msg){despierto(false);if(VS){clearInterval(VS.tick);clearTimeout(VS.auto);try{VS.ws.onclose=null;VS.ws.close()}catch(e){}}VS=null;$("vs").classList.add("hidden");$("home").classList.remove("hidden");showPane("vs");if(msg)toast(msg)}
+function vsSalir(msg){despierto(false);if(VS){clearInterval(VS.tick);clearInterval(VS.qtick);clearTimeout(VS.auto);try{VS.ws.onclose=null;VS.ws.close()}catch(e){}}VS=null;$("vs").classList.add("hidden");$("home").classList.remove("hidden");showPane("vs");if(msg)toast(msg)}
 function vsDraw(h){$("vsBox").innerHTML=h;const x=$("vsX");if(x)x.onclick=()=>{if(!VS||confirm("¿Salir de la sala?"))vsSalir()}}
 function vsLobby(){const L=VS.host?Object.values(VS.jug):VS.lista||[];
   vsDraw(`<div class="vsh">${VS.host?"Comparte este código":"Estás en la sala"}</div><div class="vscode">${VS.code}</div><p class="vss">${VS.host?"Tus compañeros entran en «⚔️ Versus en vivo → Unirme con código».":"Espera a que el anfitrión empiece…"}</p>
@@ -1252,8 +1292,8 @@ function vsPregunta(q,on){VS.ans=null;VS.qn=q.n;const t0=Date.now();
    <div class="vsops">${q.ops.map((t,k)=>`<button class="vso c${k}" data-k="${k}"><span class="sh">${VSC[k]}</span><span>${t}</span></button>`).join("")}</div>
    <p class="vss" id="vsW" style="margin-top:12px"></p><div class="vsbtns"><button class="sec" id="vsX">Salir</button></div>`);
   $("vsBox").querySelectorAll(".vso").forEach(b=>b.onclick=()=>{if(VS.ans!=null)return;VS.ans=+b.dataset.k;$("vsBox").querySelectorAll(".vso").forEach(x=>{x.disabled=true;if(x!==b)x.classList.add("dim")});$("vsW").textContent="¡Respuesta enviada! Esperando a los demás…";on(VS.ans)});
-  clearInterval(VS.qtick);VS.qtick=setInterval(()=>{const left=Math.max(0,q.seg-(Date.now()-t0)/1000);if(!$("vsT")){clearInterval(VS.qtick);return}$("vsT").textContent=Math.ceil(left);$("vsB").style.width=(100*left/q.seg)+"%";
-    if(left<=0){clearInterval(VS.qtick);$("vsBox").querySelectorAll(".vso").forEach(x=>x.disabled=true);if(VS.ans==null)$("vsW").textContent="⏱ Se acabó el tiempo"}},200)}
+  clearInterval(VS.qtick);const tk=VS.qtick=setInterval(()=>{const left=Math.max(0,q.seg-(Date.now()-t0)/1000);if(!VS||!$("vsT")){clearInterval(tk);return}$("vsT").textContent=Math.ceil(left);$("vsB").style.width=(100*left/q.seg)+"%";
+    if(left<=0){clearInterval(tk);$("vsBox").querySelectorAll(".vso").forEach(x=>x.disabled=true);if(VS.ans==null)$("vsW").textContent="⏱ Se acabó el tiempo"}},200)}
 function vsRevela(r,myId){clearInterval(VS.qtick);const yo=r.yo||{};
   if(yo.ok){try{addXP(10)}catch(e){}}
   vsDraw(`<div class="vsres"><div class="big">${yo.ok?"✅ ¡Correcto!":yo.contesto?"❌ Incorrecto":"⏱ Sin respuesta"}</div><div class="pts">${yo.ok?"+"+yo.pts+" pts":"+0"}</div></div>
@@ -1419,7 +1459,7 @@ let roundXP=0,roundBestCombo=0,roundCorrect=0;
 const mult=()=>Math.min(3,1+Math.max(0,qStreak-1)*0.2);
 function addXP(n){const before=lvlOf(XP.xp);XP.xp+=n;roundXP+=n;sv(K_XP,XP);try{pjCheck()}catch(e){}const after=lvlOf(XP.xp);
   const el=$("qpts");el.textContent="⭐ "+XP.xp.toLocaleString("es-MX");el.classList.add("pop");setTimeout(()=>el.classList.remove("pop"),220);
-  if(after>before)setTimeout(()=>{big(lvlPic(after,true)+"¡Subiste de nivel!",LEVELS[after][1]);confetti(140)},500);}
+  if(after>before)setTimeout(()=>{big(lvlPic(after,true)+"¡Subiste de nivel!",LEVELS[after][1]);confetti(140)},500);if(after>before&&after>=1)setTimeout(()=>{try{acaAnuncio()}catch(e){}},2600);}
 function fly(txt,el,crit){const r=el?el.getBoundingClientRect():{left:innerWidth/2,width:0,top:innerHeight/2};const f=document.createElement("div");f.className="fly"+(crit?" crit":"");f.textContent=txt;f.style.left=(r.left+r.width/2)+"px";f.style.top=(r.top-6)+"px";document.body.appendChild(f);setTimeout(()=>f.remove(),1200)}
 function big(t,s){const b=document.createElement("div");b.className="bigmsg";b.innerHTML=t+(s?`<small>${s}</small>`:"");document.body.appendChild(b);setTimeout(()=>b.remove(),1700)}
 function confetti(n){
