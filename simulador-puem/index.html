@@ -232,6 +232,27 @@ html[data-tema="academia"] #acaHero{display:block;position:relative;margin:0 0 1
 #acaHero p{margin:8px 0 0;font-size:14px;color:#d9cfbd}
 @media (max-width:620px){#acaHero .ahtx{position:static;max-width:none;background:var(--noche);padding:16px 18px}#acaHero .ahem{margin-bottom:10px}#acaHero .ahimg{aspect-ratio:16/10;object-position:66% 28%}}
 .tsw.lock{opacity:.55;cursor:not-allowed}.tsw.lock small{display:block;font-size:11px;color:var(--mut)}
+.colp .ci .cpb{display:block;position:static;width:100%;height:6px;border-radius:99px;background:var(--line);overflow:hidden;margin-top:2px;padding:0}.colp .ci .cpb b{display:block;height:100%;background:linear-gradient(90deg,var(--acc),#e2a72e);border-radius:99px}
+#colRev .rev{width:100%;max-width:360px;background:var(--card);color:var(--fg);border-radius:26px;padding:22px 20px 18px;text-align:center;border:3px solid;box-shadow:0 30px 90px rgba(0,0,0,.5)}
+#colRev .rev small{font-weight:800;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--acc)}
+#colRev .caja{position:relative;width:170px;height:170px;margin:14px auto 12px;perspective:600px}
+#colRev .caja img{width:100%;height:100%;object-fit:cover;border-radius:22px;background:#fff;transform:scale(.4) rotate(-12deg);opacity:0;transition:transform .7s cubic-bezier(.34,1.56,.64,1),opacity .4s}
+#colRev .tapa{position:absolute;inset:0;border-radius:22px;display:grid;place-items:center;font-size:70px;font-weight:900;color:#fff;background:linear-gradient(135deg,var(--acc),#e2a72e);animation:tiembla .5s ease-in-out infinite;transition:transform .5s,opacity .5s;z-index:1}
+@keyframes tiembla{0%,100%{transform:rotate(0)}25%{transform:rotate(-6deg) scale(1.04)}75%{transform:rotate(6deg) scale(1.04)}}
+#colRev.abre .tapa{animation:none;transform:rotateX(90deg) translateY(-40px);opacity:0}#colRev.abre .caja img{transform:none;opacity:1}
+#colRev .rev.r-l .caja img{box-shadow:0 0 40px rgba(226,167,46,.8)}#colRev .rev.r-e .caja img{box-shadow:0 0 34px rgba(169,112,255,.7)}#colRev .rev.r-r .caja img{box-shadow:0 0 28px rgba(74,155,232,.6)}
+#colRev b{display:block;font-size:22px}#colRev .rar{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--mut)}#colRev .f{font-style:italic;color:var(--mut);margin:6px 0}#colRev .hb{font-weight:600;margin:0 0 14px}
+#colRev .row{display:grid;gap:8px}
+@media (prefers-reduced-motion:reduce){#colRev .tapa{animation:none}#colRev .caja img{transition:none}}
+.colp .colg{display:grid;grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:10px;margin:8px 0 12px;max-height:52vh;overflow:auto;padding:2px}
+.colp .ci{font:inherit;color:var(--fg);background:var(--bg);border:2px solid var(--line);border-radius:16px;padding:6px;display:flex;flex-direction:column;align-items:center;gap:3px;position:relative;cursor:pointer;text-align:center}
+.colp .ci img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:12px;background:#fff}.colp .ci span{font-size:11px;line-height:1.15;font-weight:600}.colp .ci small{font-size:9.5px;color:var(--mut);letter-spacing:0;text-transform:none;font-weight:500}
+.colp .ci.lock{cursor:default}.colp .ci.lock img{filter:blur(9px) grayscale(1) brightness(.75);transform:scale(.92)}.colp .ci.lock{overflow:hidden}
+.colp .ci.on{box-shadow:0 0 0 3px var(--acc)}.colp .ci i{position:absolute;top:4px;right:6px;font-style:normal;background:var(--acc);color:var(--on-acc,#fff);border-radius:50%;width:20px;height:20px;display:grid;place-items:center;font-size:12px}
+.r-c{border-color:#b9b2a7!important}.r-r{border-color:#4a9be8!important}.r-e{border-color:#a970ff!important}.r-l{border-color:#e2a72e!important;box-shadow:0 0 14px rgba(226,167,46,.45)}
+.colp .cold{display:flex;gap:14px;align-items:flex-start;border:2px solid;border-radius:18px;padding:12px;margin:6px 0 12px;background:var(--bg)}.colp .cold img{width:120px;height:120px;object-fit:cover;border-radius:14px;background:#fff;flex:none}
+.colp .cold b{font-size:18px;display:block}.colp .cold .rar{font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--mut)}.colp .cold .f{font-style:italic;margin:6px 0}.colp .cold .hb{color:var(--fg);font-weight:600;margin:0}
+@media (max-width:420px){.colp .cold{flex-direction:column;align-items:center;text-align:center}}
 .tq .tqj{display:flex;gap:8px;margin-top:10px}.tq .tqj input{flex:1;min-width:0;font:inherit;font-size:18px;letter-spacing:.2em;text-align:center;padding:10px;border:1px solid var(--line);border-radius:14px;background:var(--bg);color:var(--fg)}
 .tq .tqj button{font:inherit;font-weight:700;border:1px solid var(--acc);color:var(--acc);background:transparent;border-radius:14px;padding:0 16px;cursor:pointer}
 .tq .tqcode{font-size:48px;font-weight:800;letter-spacing:.18em;text-align:center;color:var(--acc);margin:4px 0 8px}
@@ -653,6 +674,7 @@ html[data-tema="barrio"] :is([data-back],#rdBack,#rBackMenu,#rCancel){border:3px
     <button class="tile" data-pane="temas"><span class="ti">🎯</span><span><b>Practicar por tema</b><small>Tus 29 temas con su barra de avance: toca uno y empieza</small></span></button>
     <button class="tile" data-pane="libre"><span class="ti">🔎</span><span><b>Práctica libre</b><small>Elige bancos, temas o busca una palabra</small></span></button>
     <button class="tile" id="tHelp"><span class="ti">❓</span><span><b>Cómo funciona</b><small>Guía rápida: formas de practicar, puntos, logros y cómo no perder tu avance</small></span></button>
+    <button class="tile" id="tCol"><span class="ti">🎒</span><span><b>Coleccionables</b><small id="tColN">Objetos con poderes que se ganan estudiando</small></span></button>
     <button class="tile" id="tWeak"><span class="ti">🔁</span><span><b>Repasar mis falladas</b><small id="tWeakN">Las que contestaste mal</small></span></button>
   </div>
 
@@ -993,7 +1015,7 @@ function aplicaAnio(){const b=bancosOk();DATA=b?DATA_ALL.filter(d=>b.has(d.bank)
 function anioBar(){const el=$("anioBar");if(!el)return;
   el.innerHTML=ANIO?`<span>🎓 Eres <b>${ANIO.y}</b> · ${ALC[ANIO.a]}${ANIO.y==="R4"&&ANIO.a!=="todo"?" + Consejo":""} · <b>${DATA.filter(d=>d.type==="mcq").length.toLocaleString("es-MX")}</b> preguntas</span><button type="button" id="anioCambia">Cambiar</button>`:`<span>🎓 ¿En qué año vas? Así te ponemos solo tus preguntas.</span><button type="button" id="anioCambia">Elegir</button>`;
   $("anioCambia").onclick=()=>anioDlg()}
-function dlgAbierto(){return !!document.querySelector("#anioDlg,#novDlg")}
+function dlgAbierto(){return !!document.querySelector("#anioDlg,#novDlg,#colDlg,#tqDlg")}
 function anioDlg(despues){if(document.getElementById("anioDlg"))return;const w=document.createElement("div");w.id="anioDlg";w.className="dlgq";w.setAttribute("role","dialog");w.setAttribute("aria-modal","true");
   let y=ANIO?ANIO.y:null,a=ANIO?ANIO.a:"acum";
   const draw=()=>{w.innerHTML=`<div class="sp"><small>🎓 Tu año de residencia</small><h3>¿En qué año vas?</h3><p>Te ponemos las preguntas de tu examen. Lo puedes cambiar cuando quieras y tu avance no se pierde.</p>
@@ -1008,8 +1030,8 @@ function anioDlg(despues){if(document.getElementById("anioDlg"))return;const w=d
   draw();if(ANIO)w.onclick=e=>{if(e.target===w)w.remove()};document.body.appendChild(w)}
 // ——— novedades: al publicar una actualización, todos ven qué cambió (su avance se queda igual) ———
 // Para anunciar algo nuevo: subir VERSION y poner los cambios arriba de NOVEDADES.
-const VERSION="2026-11-06d",K_VER=PFX+"version_v1";
-const NOVEDADES=[["🎓","Elige tu año (R1–R4): R1 ya no ve preguntas de R2–R4 y R4 trae también el Consejo. Arriba del inicio dice qué año eres y lo cambias con un toque."],
+const VERSION="2026-11-06e",K_VER=PFX+"version_v1";
+const NOVEDADES=[["🎒","¡Llegaron los <b>Coleccionables</b>! Para empezar, a todos les regalamos la <b>Pluma de adri</b> 🌸. Hay 12 objetos más con poderes pequeños (más puntos a cierta hora, escudo de racha, cofres más gordos…). Son difíciles: se ganan con muchos puntos, rachas largas o logros, y uno sale escondido en los cofres. Se equipa uno y se pueden intercambiar."],["🎓","Elige tu año (R1–R4): R1 ya no ve preguntas de R2–R4 y R4 trae también el Consejo. Arriba del inicio dice qué año eres y lo cambias con un toque."],
   ["🔁","Intercambia personajes con un compañero con un código de 4 dígitos (en «Elige tu personaje» → 🔁 Intercambiar). El que das se te va y el que recibes es tuyo."],
   ["🏛️","Tema secreto La Academia 🏛️ y 10 personajes nuevos por desbloquear 👀 (ya son 45)."],
   ["🧭","¿Te perdiste? Arriba de cada pantalla está el botón <b>← ¿Qué quieres practicar?</b> para volver al inicio, y en el inicio está <b>❓ Cómo funciona</b>."],
@@ -1042,7 +1064,7 @@ function openLect(k){
   ["home","quiz","end"].forEach(s=>$(s).classList.add("hidden"));$("read").classList.remove("hidden");window.scrollTo({top:0,behavior:"instant"});
   const io=new IntersectionObserver(e=>{if(e[0].isIntersecting){markRead(c);io.disconnect()}});io.observe($("rdEnd"));
 }
-function markRead(c){if(!READ[c.n]){READ[c.n]=todayStr();sv(K_READ,READ);toast("📖 Tema "+c.n+" leído")}}
+function markRead(c){if(!READ[c.n]){READ[c.n]=todayStr();sv(K_READ,READ);const H=colHab();if(H&&H.k==="lectura"){addXP(H.v);toast("📖 Tema "+c.n+" leído · +"+H.v+" pts")}else toast("📖 Tema "+c.n+" leído")}}
 $("rdBack").onclick=()=>{$("read").classList.add("hidden");$("home").classList.remove("hidden");curLect=null;drawLect();renderMine();showPane("lec")};
 $("rdGo").onclick=()=>{const c=LECT[curLect];markRead(c);pendingLect=curLect;start(build(lectItems(c),rdSize))};
 $("rdWeak").onclick=()=>{const c=LECT[curLect];pendingLect=curLect;start(build(lectItems(c).filter(d=>d.key&&status(d)==="bad"),0))};
@@ -1313,7 +1335,8 @@ function selSet(id){selPick=id;const p=pjOf(id);
   $("selG").querySelectorAll(".pj[data-id]").forEach(b=>b.classList.toggle("on",(b.dataset.id==="yo"?"yo":+b.dataset.id)===id));selPrev(p);try{chime()}catch(e){}}
 function selOpen(){if(!PJS.length)return;selPick=PJ?PJ.id:null;$("selName").value=PJ?(PJ.nombre||""):"";{const c=PJ&&pjOf(PJ.id);selNameEditado=!!(PJ&&c&&PJ.nombre&&PJ.nombre!==c.n)}selDraw();$("sel").classList.remove("hidden");document.documentElement.style.overflow="hidden"}
 function selClose(){$("sel").classList.add("hidden");document.documentElement.style.overflow=""}
-$("selTq").onclick=()=>{tqCerrar();tqDraw()};
+$("selTq").onclick=()=>tqInicia("pj");
+$("tCol").onclick=()=>{if(!COLS.length){toast("Cargando coleccionables…");return}colSel=null;colDraw()};
 $("selRnd").onclick=()=>{const L=PJO.filter(p=>pjLibre(p.id)),p=L[Math.floor(Math.random()*L.length)];if(!p)return;selSet(p.id);$("selG").querySelector(`[data-id="${p.id}"]`).scrollIntoView({block:"nearest",behavior:"smooth"})};
 $("selOk").onclick=()=>{if(!selPick){$("selRnd").click();return}const p=pjOf(selPick),nm=$("selName").value.trim()||p.n;
   const first=!PJ;PJ={id:selPick,nombre:nm};sv(K_PJ,PJ);if(selPick==="yo"&&MIPJ){MIPJ.nombre=nm;sv(K_MIPJ,MIPJ)}selClose();hud();big(`<img src="${p.img}" class="lvbig" alt="">${nm.toUpperCase()}`,"¡a estudiar!");
@@ -1321,16 +1344,22 @@ $("selOk").onclick=()=>{if(!selPick){$("selRnd").click();return}const p=pjOf(sel
 $("hud").onclick=selOpen;
 ACCESO.ready().then(()=>ACCESO.json("personajes.enc")).then(l=>{PJS=l||[];pjOrden();if(!ld(K_PJU,null))sv(K_PJU,{n:pjAbiertos()});{const vis=ld(PFX+"pj_regalo_v1",[]),nv=PJS.filter(p=>p.r&&!vis.includes(p.id));if(nv.length&&ld(K_PJ,null)){nv.forEach((p,k)=>setTimeout(()=>xbox(`<img src="${p.img}" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:50%">`,"Personaje de regalo: "+p.n,"🎁"),1200+k*2600))}sv(PFX+"pj_regalo_v1",vis.concat(nv.map(p=>p.id)))}if(PJ&&!pjOf(PJ.id))PJ=null;if(PJ&&[43,44].includes(PJ.id)&&!TQX().in.includes(PJ.id)&&pjIx(PJ.id)>=pjAbiertos()){PJ=null;sv(K_PJ,null)}hud();if(!PJ)setTimeout(()=>{$("ranks").classList.add("hidden");selOpen()},600)}).catch(()=>{});
 
-// ——— intercambio de personajes con un código de 4 dígitos (como cromos): el que das se te va y te llega el del otro ———
-// Usa las mismas salas del versus (el worker solo reenvía mensajes). Los de regalo y tu foto no se intercambian.
-let TQ=null;
-const tqMios=()=>PJO.filter(p=>!p.r&&pjLibre(p.id));
+// ——— intercambio con un código de 4 dígitos (como cromos): personajes o coleccionables; el que das se te va y te llega el del otro ———
+// Usa las mismas salas del versus (el worker solo reenvía mensajes). Los personajes de regalo y tu foto no se intercambian.
+let TQ=null,TQK="pj";
+const tqNid=v=>TQK==="col"?String(v):Number(v);
+const tqItem=id=>TQK==="col"?colOf(id):PJS.find(p=>p.id===id);
+const tqTengo=id=>TQK==="col"?colTengo(id):pjLibre(id);
+const tqMios=()=>TQK==="col"?COLS.filter(c=>c.x&&colTengo(c.id)):PJO.filter(p=>!p.r&&pjLibre(p.id));
+const tqQue=()=>TQK==="col"?"coleccionables":"personajes";
 function tqCerrar(){if(TQ){TQ.fin=true;try{TQ.ws.close()}catch(e){}}TQ=null;const w=document.getElementById("tqDlg");if(w)w.remove()}
 function tqSend(o){if(!TQ||!TQ.ws||TQ.ws.readyState!==1)return;TQ.ws.send(JSON.stringify(TQ.host?{d:o}:o))}
-function tqYo(){tqSend({t:"yo",nombre:(PJ&&PJ.nombre)||"Jugador",tengo:tqMios().map(p=>p.id)})}
-function tqAplica(dar,recibir){const x=TQX();x.out=x.out.filter(i=>i!==recibir);x.in=x.in.filter(i=>i!==dar);if(!x.out.includes(dar))x.out.push(dar);if(!x.in.includes(recibir))x.in.push(recibir);
-  x.h.push({d:dar,r:recibir,f:todayStr()});sv(K_TQ,x);const pr=PJS.find(p=>p.id===recibir),pd=PJS.find(p=>p.id===dar);
-  if(PJ&&PJ.id===dar){const c=pjOf(dar);PJ={id:recibir,nombre:(!PJ.nombre||(c&&PJ.nombre===c.n))?pr.n:PJ.nombre};sv(K_PJ,PJ);try{hud()}catch(e){}}
+function tqYo(){tqSend({t:"yo",k:TQK,nombre:(PJ&&PJ.nombre)||"Jugador",tengo:tqMios().map(p=>p.id)})}
+function tqAplica(dar,recibir){const pr=tqItem(recibir),pd=tqItem(dar);
+  if(TQK==="col"){COL.have=COL.have.filter(i=>i!==dar);if(!COL.have.includes(recibir))COL.have.push(recibir);COL.out=COL.out.filter(i=>i!==recibir);if(!COL.out.includes(dar))COL.out.push(dar);if(COL.eq===dar)COL.eq=null;COL.h.push({d:dar,r:recibir,f:todayStr()});colSv();try{colTile()}catch(e){}}
+  else{const x=TQX();x.out=x.out.filter(i=>i!==recibir);x.in=x.in.filter(i=>i!==dar);if(!x.out.includes(dar))x.out.push(dar);if(!x.in.includes(recibir))x.in.push(recibir);
+    x.h.push({d:dar,r:recibir,f:todayStr()});sv(K_TQ,x);
+    if(PJ&&PJ.id===dar){const c=pjOf(dar);PJ={id:recibir,nombre:(!PJ.nombre||(c&&PJ.nombre===c.n))?pr.n:PJ.nombre};sv(K_PJ,PJ);try{hud()}catch(e){}}}
   TQ.hecho={dar:pd,rec:pr};tqDraw();try{confetti(100);chime()}catch(e){}
   xbox(`<img src="${pr.img}" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:50%">`,"Intercambio: te llegó "+pr.n,"🔁")}
 function tqOn(o){if(!TQ)return;
@@ -1340,35 +1369,82 @@ function tqOn(o){if(!TQ)return;
   if(o.t==="hola"){if(!TQ.host){TQ.peer={nombre:"tu compañero"};tqYo()}tqDraw();return}
   if(o.t==="error"){if(TQ.host&&(TQ.intento||0)<4){TQ.intento=(TQ.intento||0)+1;try{TQ.ws.onclose=null;TQ.ws.close()}catch(e){}tqAbrir(true);return}TQ.msg=o.m;TQ.err=true;tqDraw();return}
   if(o.t==="fin"){if(!TQ.hecho){TQ.msg="Se cerró la sala. El intercambio no se hizo.";TQ.err=true;tqDraw()}return}
-  if(o.t==="yo"){TQ.peer=Object.assign(TQ.peer||{},{nombre:String(o.nombre||"Jugador").slice(0,28),tengo:(o.tengo||[]).map(Number)});tqDraw();return}
-  if(o.t==="of"){TQ.theirs=PJS.some(p=>p.id===+o.id)&&!pjLibre(+o.id)?+o.id:null;TQ.okT=false;TQ.okM=false;tqDraw();return}
-  if(o.t==="ok"){TQ.okT=+o.mine===TQ.theirs&&+o.theirs===TQ.mine;tqDraw();
+  if(o.t==="yo"){if((o.k||"pj")!==TQK){TQ.msg=`Tu compañero abrió el intercambio de ${o.k==="col"?"coleccionables":"personajes"} y tú el de ${tqQue()}. Abran los dos el mismo.`;TQ.err=true;tqDraw();return}
+    TQ.peer=Object.assign(TQ.peer||{},{nombre:String(o.nombre||"Jugador").slice(0,28),tengo:(o.tengo||[]).map(tqNid)});tqDraw();return}
+  if(o.t==="of"){const id=tqNid(o.id);TQ.theirs=tqItem(id)&&!tqTengo(id)?id:null;TQ.okT=false;TQ.okM=false;tqDraw();return}
+  if(o.t==="ok"){TQ.okT=tqNid(o.mine)===TQ.theirs&&tqNid(o.theirs)===TQ.mine;tqDraw();
     if(TQ.host&&TQ.okT&&TQ.okM&&!TQ.hecho){const a=TQ.mine,b=TQ.theirs;tqSend({t:"go",a,b});tqAplica(a,b)}return}
-  if(o.t==="go"){if(!TQ.host&&!TQ.hecho&&TQ.okM&&+o.a===TQ.theirs&&+o.b===TQ.mine&&pjLibre(TQ.mine))tqAplica(TQ.mine,TQ.theirs);return}}
-function tqAbrir(host,code){const prev=TQ;TQ=Object.assign(prev&&prev.host===host?prev:{},{host,code:host?String(1000+Math.floor(Math.random()*9000)):code,mine:null,theirs:null,okM:false,okT:false,msg:"",err:false,fin:false});
+  if(o.t==="go"){if(!TQ.host&&!TQ.hecho&&TQ.okM&&tqNid(o.a)===TQ.theirs&&tqNid(o.b)===TQ.mine&&tqTengo(TQ.mine))tqAplica(TQ.mine,TQ.theirs);return}}
+function tqAbrir(host,code){const prev=TQ;TQ=Object.assign(prev&&prev.host===host?prev:{},{host,kind:TQK,code:host?String(1000+Math.floor(Math.random()*9000)):code,mine:null,theirs:null,okM:false,okT:false,msg:"",err:false,fin:false});
   const m=vsMe();const ws=new WebSocket(`${VS_URL}/sala/${TQ.code}?rol=${host?"host":"jugador"}&nombre=${encodeURIComponent(m.nombre)}&pj=${encodeURIComponent(m.pj)}`);TQ.ws=ws;
   ws.onmessage=e=>{let o;try{o=JSON.parse(e.data)}catch(x){return}if(TQ&&TQ.ws===ws)tqOn(o)};
   ws.onclose=()=>{if(TQ&&TQ.ws===ws&&!TQ.fin&&!TQ.hecho&&!TQ.err){TQ.msg="Se perdió la conexión. El intercambio no se hizo.";TQ.err=true;tqDraw()}};tqDraw()}
 function tqDraw(){let w=document.getElementById("tqDlg");if(!w){w=document.createElement("div");w.id="tqDlg";w.className="dlgq";w.setAttribute("role","dialog");w.setAttribute("aria-modal","true");document.body.appendChild(w);w.onclick=e=>{if(e.target===w)tqCerrar()}}
-  const pic=p=>p?`<img src="${p.img}" alt="">`:"";let h=`<div class="sp tq"><small>🔁 Intercambio de personajes</small>`;
-  if(!TQ){h+=`<h3>Cambia un personaje con un compañero</h3><p>Como cromos: tú das uno, te dan otro. <b>El que das se te va</b> y el que recibes se queda desbloqueado para siempre. Los de regalo y tu foto no se cambian.</p>
+  const pic=p=>p?`<img src="${p.img}" alt="">`:"",col=TQK==="col";let h=`<div class="sp tq${col?" tqc":""}"><small>🔁 Intercambio de ${tqQue()}</small>`;
+  if(!TQ){h+=`<h3>Cambia ${col?"un coleccionable":"un personaje"} con un compañero</h3><p>Como cromos: tú das uno, te dan otro. <b>El que das se te va</b> y el que recibes es tuyo.${col?" Si lo tenías equipado, se desequipa.":" Los de regalo y tu foto no se cambian."} Los dos tienen que abrir el intercambio de ${tqQue()}.</p>
     <button type="button" class="ok" id="tqNew">Crear intercambio</button><div class="tqj"><input id="tqCode" inputmode="numeric" maxlength="4" placeholder="Código de 4 dígitos" aria-label="Código del intercambio"><button type="button" id="tqJoin">Unirme</button></div>`}
   else if(TQ.hecho){h+=`<h3>¡Intercambio hecho!</h3><div class="tqx"><div>${pic(TQ.hecho.dar)}<span>Se fue<br><b>${TQ.hecho.dar.n}</b></span></div><i>⇄</i><div>${pic(TQ.hecho.rec)}<span>Te llegó<br><b>${TQ.hecho.rec.n}</b></span></div></div><button type="button" class="ok" id="tqFin">Listo</button>`}
   else if(TQ.err){h+=`<h3>No se pudo</h3><p>${TQ.msg}</p><button type="button" class="ok" id="tqFin">Cerrar</button>`}
-  else if(!TQ.peer||!TQ.peer.tengo){h+=TQ.host?`<h3>Tu código</h3><div class="tqcode">${TQ.code}</div><p>Dile a tu compañero que abra «🔁 Intercambiar» y escriba este código.</p>`:`<h3>Conectando…</h3><p>Entrando al intercambio ${TQ.code}.</p>`;
+  else if(!TQ.peer||!TQ.peer.tengo){h+=TQ.host?`<h3>Tu código</h3><div class="tqcode">${TQ.code}</div><p>Dile a tu compañero que abra «🔁 Intercambiar» en ${col?"🎒 Coleccionables":"Elige tu personaje"} y escriba este código.</p>`:`<h3>Conectando…</h3><p>Entrando al intercambio ${TQ.code}.</p>`;
     if(TQ.msg)h+=`<p class="nota">${TQ.msg}</p>`;h+=`<button type="button" class="ok sec2" id="tqFin">Cancelar</button>`}
-  else{const mios=tqMios(),suyo=TQ.theirs!=null?PJS.find(p=>p.id===TQ.theirs):null;
-    h+=`<h3>Con ${TQ.peer.nombre}</h3><p class="nota">Elige cuál das. Los que tu compañero ya tiene salen apagados.</p><div class="tqg">${mios.map(p=>{const ya=TQ.peer.tengo.includes(p.id);return `<button type="button" data-id="${p.id}" aria-pressed="${TQ.mine===p.id}" ${ya?"disabled title='Ya lo tiene'":""}>${pic(p)}<span>${p.n}</span></button>`}).join("")||"<p>No tienes personajes para cambiar.</p>"}</div>
-    <div class="tqx"><div>${TQ.mine!=null?pic(PJS.find(p=>p.id===TQ.mine)):"<em>?</em>"}<span>Das</span></div><i>⇄</i><div>${suyo?pic(suyo):"<em>?</em>"}<span>${suyo?"Recibes <b>"+suyo.n+"</b>":"Esperando a que elija…"}</span></div></div>
+  else{const mios=tqMios(),suyo=TQ.theirs!=null?tqItem(TQ.theirs):null;
+    h+=`<h3>Con ${TQ.peer.nombre}</h3><p class="nota">Elige cuál das. Los que tu compañero ya tiene salen apagados.</p><div class="tqg">${mios.map(p=>{const ya=TQ.peer.tengo.includes(p.id);return `<button type="button" data-id="${p.id}" aria-pressed="${TQ.mine===p.id}" ${ya?"disabled title='Ya lo tiene'":""}>${pic(p)}<span>${p.n}</span></button>`}).join("")||`<p>No tienes ${tqQue()} para cambiar.</p>`}</div>
+    <div class="tqx"><div>${TQ.mine!=null?pic(tqItem(TQ.mine)):"<em>?</em>"}<span>Das</span></div><i>⇄</i><div>${suyo?pic(suyo):"<em>?</em>"}<span>${suyo?"Recibes <b>"+suyo.n+"</b>":"Esperando a que elija…"}</span></div></div>
     <p class="nota">${TQ.okT?"✅ Tu compañero ya aceptó.":TQ.okM?"Esperando a que tu compañero acepte…":""}</p>
     <button type="button" class="ok" id="tqOk" ${TQ.mine!=null&&suyo&&!TQ.okM?"":"disabled"}>${TQ.okM?"Aceptado ✓":"Aceptar intercambio"}</button><button type="button" class="ok sec2" id="tqFin">Cancelar</button>`}
   w.innerHTML=h+`</div>`;
   const b=id=>w.querySelector("#"+id);
-  if(b("tqNew"))b("tqNew").onclick=()=>{if(!tqMios().length){toast("No tienes personajes para cambiar");return}tqAbrir(true)};
+  if(b("tqNew"))b("tqNew").onclick=()=>{if(!tqMios().length){toast(`No tienes ${tqQue()} para cambiar`);return}tqAbrir(true)};
   if(b("tqJoin"))b("tqJoin").onclick=()=>{const c=b("tqCode").value.replace(/\D/g,"");if(c.length!==4){toast("El código tiene 4 dígitos");return}tqAbrir(false,c)};
-  if(b("tqFin"))b("tqFin").onclick=()=>{const h=TQ&&TQ.hecho;tqCerrar();if(h)try{selDraw()}catch(e){}};
+  if(b("tqFin"))b("tqFin").onclick=()=>{const h=TQ&&TQ.hecho;tqCerrar();if(h){try{selDraw()}catch(e){}try{colDraw()}catch(e){}}};
   if(b("tqOk"))b("tqOk").onclick=()=>{TQ.okM=true;tqSend({t:"ok",mine:TQ.mine,theirs:TQ.theirs});tqDraw();if(TQ.host&&TQ.okT&&!TQ.hecho){const a=TQ.mine,c=TQ.theirs;tqSend({t:"go",a,b:c});tqAplica(a,c)}};
-  w.querySelectorAll(".tqg button[data-id]").forEach(x=>x.onclick=()=>{TQ.mine=+x.dataset.id;TQ.okM=false;TQ.okT=false;tqSend({t:"of",id:TQ.mine});tqDraw()})}
+  w.querySelectorAll(".tqg button[data-id]").forEach(x=>x.onclick=()=>{TQ.mine=tqNid(x.dataset.id);TQ.okM=false;TQ.okT=false;tqSend({t:"of",id:TQ.mine});tqDraw()})}
+function tqInicia(k){if(TQ&&!TQ.hecho&&!TQ.err&&TQ.kind!==k){tqCerrar()}TQK=k;tqCerrar();tqDraw()}
+
+// ——— coleccionables: objetos con una ayuda mínima que se ganan estudiando; se equipa uno; se pueden intercambiar ———
+// Nunca aplican en simulador real, modo examen ni versus; no cambian el % dominado.
+const K_COL=PFX+"col_v1";let COLS=[];
+let COL=(()=>{const x=ld(K_COL,null)||{};return {have:x.have||[],out:x.out||[],eq:x.eq||null,esc:x.esc||null,h:x.h||[],near:x.near||[]}})();
+const colSv=()=>sv(K_COL,COL),colOf=id=>COLS.find(c=>c.id===id),colTengo=id=>COL.have.includes(id);
+const RAR={"Común":"c","Rara":"r","Épica":"e","Legendaria":"l"};
+function colEq(){if(!COL.eq||!colTengo(COL.eq))return null;const c=colOf(COL.eq);return c?c.hab:null}
+function colHab(){if((typeof EXAM!=="undefined"&&EXAM)||document.documentElement.classList.contains("foco"))return null;return colEq()}
+function colDa(c,como){if(colTengo(c.id)||COL.out.includes(c.id))return;COL.have.push(c.id);COL.h.push({g:c.id,f:todayStr(),como});colSv();try{colTile()}catch(e){}
+  if(document.documentElement.classList.contains("foco"))xbox(`<img src="${c.img}" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:50%">`,"Coleccionable: "+c.n,"🎒");else setTimeout(()=>colRevela(c),900)}
+function colRevela(c){if(dlgAbierto()||document.getElementById("colRev")){setTimeout(()=>colRevela(c),2500);return}const w=document.createElement("div");w.id="colRev";w.className="dlgq";w.setAttribute("role","dialog");w.setAttribute("aria-modal","true");
+  w.innerHTML=`<div class="rev r-${RAR[c.rar]||"c"}"><small>🎒 ¡Nuevo coleccionable!</small><div class="caja"><div class="tapa">?</div><img src="${c.img}" alt=""></div><b>${c.n}</b><span class="rar">${c.rar}</span><p class="f">${c.f||""}</p><p class="hb">✨ ${c.txt}</p><div class="row"><button type="button" class="ok" id="revEq">Equipar ahora</button><button type="button" class="ok sec2" id="revNo">Después</button></div></div>`;
+  document.body.appendChild(w);setTimeout(()=>{w.classList.add("abre");try{confetti(c.rar==="Legendaria"?260:c.rar==="Épica"?180:110);chime()}catch(e){}},700);
+  w.querySelector("#revEq").onclick=()=>{COL.eq=c.id;colSv();colTile();w.remove();big("🎒 Equipado",c.n)};w.querySelector("#revNo").onclick=()=>w.remove()}
+// qué tan cerca vas de cada uno (solo puntos y racha; los logros y el cofre son sorpresa)
+function colProg(c){const k=c.como||{};if(k.t==="puntos")return Math.min(1,((XP&&XP.xp)||0)/k.v);if(k.t==="racha")return Math.min(1,dayStreak()/k.v);return null}
+function colCheck(){if(!COLS.length)return;const xp=(XP&&XP.xp)||0,rch=dayStreak();
+  COLS.forEach(c=>{const k=c.como||{};if((k.t==="puntos"&&xp>=k.v)||(k.t==="racha"&&rch>=k.v)||(k.t==="logro"&&ACH[k.v])||k.t==="regalo")colDa(c,k.t)});
+  const near=COL.near||(COL.near=[]);COLS.forEach(c=>{if(colTengo(c.id)||COL.out.includes(c.id)||near.includes(c.id))return;const k=c.como||{};
+    if(k.t==="puntos"&&xp>=k.v*0.9){near.push(c.id);colSv();setTimeout(()=>toast(`🎒 ¡Casi! Te faltan ${(k.v-xp).toLocaleString("es-MX")} pts para un coleccionable`),1200)}
+    if(k.t==="racha"&&k.v>3&&rch===k.v-1){near.push(c.id);colSv();setTimeout(()=>toast("🎒 ¡Mañana! Un día más de racha y ganas un coleccionable"),1200)}})}
+function colCofre(){COLS.filter(c=>c.como&&c.como.t==="cofre"&&!colTengo(c.id)&&!COL.out.includes(c.id)).forEach(c=>{if(Math.random()<c.como.v)setTimeout(()=>{big("🎁 ¡El cofre traía algo!",c.n);colDa(c,"cofre")},1600)})}
+const colEscOk=t=>{const H=colEq();return H&&H.k==="escudo"&&(!COL.esc||dayDiff(COL.esc,t)>=H.dias)};
+const COMO_TXT={regalo:"🎁 Regalo",puntos:"🔒 Se gana con puntos",racha:"🔒 Se gana con días seguidos estudiando",logro:"🔒 Se gana con un logro",cofre:"🎁 Puede salir en un cofre"};
+let colSel=null;
+function colTile(){const el=$("tColN");if(!el||!COLS.length)return;const n=COLS.filter(c=>colTengo(c.id)).length,e=COL.eq&&colTengo(COL.eq)?colOf(COL.eq):null;
+  el.textContent=`${n} de ${COLS.length}`+(e?` · equipado: ${e.n}`:" · objetos con poderes que se ganan estudiando")}
+function colDraw(){let w=document.getElementById("colDlg");if(!w){w=document.createElement("div");w.id="colDlg";w.className="dlgq";w.setAttribute("role","dialog");w.setAttribute("aria-modal","true");document.body.appendChild(w);w.onclick=e=>{if(e.target===w){w.remove();colSel=null}}}
+  const n=COLS.filter(c=>colTengo(c.id)).length,sel=colSel&&colOf(colSel);
+  let h=`<div class="sp colp"><small>🎒 Coleccionables · ${n} de ${COLS.length}</small><h3>Tu mochila</h3>`;
+  if(sel&&colTengo(sel.id)){const eq=COL.eq===sel.id;
+    h+=`<div class="cold r-${RAR[sel.rar]||"c"}"><img src="${sel.img}" alt=""><div><b>${sel.n}</b><span class="rar">${sel.rar}</span><p class="f">${sel.f||""}</p><p class="hb">✨ ${sel.txt}</p></div></div>
+      <button type="button" class="ok" id="colEq">${eq?"Quitar":"Equipar"}</button><button type="button" class="ok sec2" id="colBack">← Ver todos</button>`}
+  else{h+=`<p class="nota">Toca uno para verlo y equiparlo. Solo puedes traer <b>uno</b> equipado y su poder no funciona en el simulador real, el modo examen ni el versus.</p><div class="colg">${COLS.map(c=>{const t=colTengo(c.id),dado=COL.out.includes(c.id);
+      return t?`<button type="button" class="ci r-${RAR[c.rar]||"c"}${COL.eq===c.id?" on":""}" data-c="${c.id}"><img src="${c.img}" alt=""><span>${c.n}</span>${COL.eq===c.id?"<i>✓</i>":""}</button>`
+      :`<div class="ci lock" title="${dado?"Lo intercambiaste":"Todavía no lo tienes"}"><img src="${c.img}" alt=""><span>${dado?"🔁 lo cambiaste":"???"}</span><small>${dado?"":COMO_TXT[(c.como||{}).t]||"🔒"}</small>${!dado&&colProg(c)!=null?`<span class="cpb"><b style="width:${Math.round(colProg(c)*100)}%"></b></span><small>${Math.round(colProg(c)*100)} %</small>`:""}</div>`}).join("")}</div>
+      <button type="button" class="ok" id="colTq">🔁 Intercambiar</button><button type="button" class="ok sec2" id="colX">Cerrar</button>`}
+  w.innerHTML=h+`</div>`;const b=id=>w.querySelector("#"+id);
+  w.querySelectorAll(".ci[data-c]").forEach(x=>x.onclick=()=>{colSel=x.dataset.c;colDraw()});
+  if(b("colBack"))b("colBack").onclick=()=>{colSel=null;colDraw()};
+  if(b("colEq"))b("colEq").onclick=()=>{COL.eq=COL.eq===sel.id?null:sel.id;colSv();colTile();if(COL.eq)big("🎒 Equipado",sel.n);colSel=null;colDraw()};
+  if(b("colX"))b("colX").onclick=()=>{w.remove();colSel=null};
+  if(b("colTq"))b("colTq").onclick=()=>{w.remove();colSel=null;tqInicia("col")}}
+ACCESO.ready().then(()=>ACCESO.json("coleccionables.enc")).then(l=>{COLS=Array.isArray(l)?l:[];colCheck();colTile()}).catch(()=>{});
 // ——— versus en vivo (tipo Kahoot): salas de 4 dígitos en el worker simpsiq-versus ———
 const VS_URL=/^(localhost|127\.0\.0\.1)$/.test(location.hostname)?"ws://127.0.0.1:8787":"wss://simpsiq-salas.pages.dev";
 const VSC=["▲","◆","●","■","★"];let VS=null;
@@ -1508,9 +1584,9 @@ const todayStr=()=>{const d=new Date();return d.getFullYear()+"-"+String(d.getMo
 const dayDiff=(a,b)=>Math.round((new Date(b+"T12:00")-new Date(a+"T12:00"))/864e5);
 function bumpDay(){
   const t=todayStr();if(DAY.last===t)return;
-  DAY.count=DAY.last&&dayDiff(DAY.last,t)===1?DAY.count+1:1;DAY.last=t;sv(K_DAY,DAY);
+  const dd=DAY.last?dayDiff(DAY.last,t):99;if(dd===2&&colEscOk(t)){COL.esc=t;colSv();setTimeout(()=>toast("🛡️ Tu coleccionable salvó tu racha"),600);DAY.count++}else DAY.count=dd===1?DAY.count+1:1;DAY.last=t;sv(K_DAY,DAY);
 }
-const dayStreak=()=>DAY.last&&dayDiff(DAY.last,todayStr())<=1?DAY.count:0;
+const dayStreak=()=>{if(!DAY.last)return 0;const d=dayDiff(DAY.last,todayStr());return d<=1||(d===2&&colEscOk(todayStr()))?DAY.count:0};
 const ACHS=[
   ["primeras","Primeros pasos","10 preguntas contestadas",s=>s.seen>=10],
   ["cien","Cien reactivos","100 preguntas contestadas",s=>s.seen>=100],
@@ -1559,7 +1635,7 @@ function snap(){
   return {tot:a.length,seen,ok,bad,best:ACH._best||0,days:dayStreak(),tema:Object.values(byT).some(([o,t])=>t>=5&&o===t),byT,allTags,read:Object.keys(READ||{}).length};
 }
 let toastT;function toast(m){const el=$("toast");el.textContent=m;el.classList.add("on");clearTimeout(toastT);toastT=setTimeout(()=>el.classList.remove("on"),2600)}
-function unlock(id,t){ACH[id]=todayStr();sv(K_ACH,ACH);const ic=id.startsWith("tema_")?(TAG_IC[id.slice(5)]||"🎯"):(ACH_IC[id]||"🏆");roundAch.push([ic,t,id]);xbox(ic,t,gOf(id))}
+function unlock(id,t){ACH[id]=todayStr();sv(K_ACH,ACH);const ic=id.startsWith("tema_")?(TAG_IC[id.slice(5)]||"🎯"):(ACH_IC[id]||"🏆");roundAch.push([ic,t,id]);xbox(ic,t,gOf(id));setTimeout(()=>{try{colCheck()}catch(e){}},1800)}
 function checkAch(){const s=snap();ACHS.forEach(([id,t,,f])=>{if(!ACH[id]&&f(s))unlock(id,t)});
   Object.entries(s.byT).forEach(([g,[o,n]])=>{const id="tema_"+g;if(!ACH[id]&&n>=3&&o===n)unlock(id,TAG_ACH[g]||("Dominaste "+(TAGS[g]||g)))});
   const h=new Date().getHours();if(!ACH.nocturno&&h<5&&s.seen){ACH.nocturno=1}
@@ -1588,9 +1664,9 @@ const LEVELS=[[0,"Polloatun del comedor"],[300,"Chicharrones morados Bitz"],[120
 const LVIMG={1:"niveles/1.png",2:"niveles/2.jpg",3:"niveles/3.jpg",4:"niveles/4.jpg",5:"niveles/5.png"},LVEMO=["🥗","🌶️","🧔","🐶","🙏"];
 const lvlPic=(k,big)=>LVIMG[k+1]?`<img src="${LVIMG[k+1]}" alt="" class="${big?"lvbig":""}">`:`<span class="${big?"lvbig":""}">${LVEMO[k]}</span>`;
 const lvlOf=x=>{let k=0;LEVELS.forEach((l,j)=>{if(x>=l[0])k=j});return k};
-let roundXP=0,roundBestCombo=0,roundCorrect=0;
+let roundXP=0,roundBestCombo=0,roundCorrect=0,roundShield=false;
 const mult=()=>Math.min(3,1+Math.max(0,qStreak-1)*0.2);
-function addXP(n){const before=lvlOf(XP.xp);XP.xp+=n;roundXP+=n;sv(K_XP,XP);try{pjCheck()}catch(e){}const after=lvlOf(XP.xp);
+function addXP(n){const before=lvlOf(XP.xp);XP.xp+=n;roundXP+=n;sv(K_XP,XP);try{pjCheck()}catch(e){}try{colCheck()}catch(e){}const after=lvlOf(XP.xp);
   const el=$("qpts");el.textContent="⭐ "+XP.xp.toLocaleString("es-MX");el.classList.add("pop");setTimeout(()=>el.classList.remove("pop"),220);
   if(after>before)setTimeout(()=>{big(lvlPic(after,true)+"¡Subiste de nivel!",LEVELS[after][1]);confetti(140)},500);if(after>before&&after>=1)setTimeout(()=>{try{fabAca();acaAnuncio()}catch(e){}},2600);}
 function fly(txt,el,crit){const r=el?el.getBoundingClientRect():{left:innerWidth/2,width:0,top:innerHeight/2};const f=document.createElement("div");f.className="fly"+(crit?" crit":"");f.textContent=txt;f.style.left=(r.left+r.width/2)+"px";f.style.top=(r.top-6)+"px";document.body.appendChild(f);setTimeout(()=>f.remove(),1200)}
@@ -1607,16 +1683,17 @@ function reward(g,btn){
   if(!g)return;
   {const h=$("hud");h.classList.remove("hit","pow");void h.offsetWidth;h.classList.add(g.right?"pow":"hit");setTimeout(hud,450)}
   if(g.right){
-    let pts=10;const msgs=[];
-    if(g.prev==="bad"){pts+=15;msgs.push("¡Reconquistada!")}
+    let pts=10;const msgs=[];const H=colHab();
+    if(g.prev==="bad"){pts+=15+(H&&H.k==="reconq"?H.v:0);msgs.push("¡Reconquistada!")}
     const m=mult();pts=Math.round(pts*m);
-    const crit=Math.random()<0.1;if(crit){pts*=2}
+    if(H){const hr=new Date().getHours();let pc=0;if(H.k==="pct")pc=H.p;if(H.k==="hora"&&hr>=H.de&&hr<H.a)pc=H.p;if(H.k==="primeras"&&(XP.day.d!==todayStr()||XP.day.n<H.n))pc=H.p;if(pc)pts=Math.round(pts*(1+pc/100))}
+    const crit=Math.random()<0.1+(H&&H.k==="crit"?H.p/100:0);if(crit){pts*=2}
     roundCorrect++;
     fly((crit?"💥 ":"")+"+"+pts+(m>1?" ×"+m.toFixed(1):""),btn,crit);
     addXP(pts);
     if(crit)setTimeout(()=>toast("💥 ¡Golpe crítico! Puntos ×2"),300);
     else if(msgs.length)setTimeout(()=>toast("🏳️ "+msgs[0]+" +15"),300);
-    if(roundCorrect%10===0){const bonus=[25,40,50,75,100,150][Math.floor(Math.random()*6)];setTimeout(()=>{big("🎁 ¡Cofre!","+"+bonus+" pts");confetti(60);addXP(bonus)},700)}
+    if(roundCorrect%10===0){const bonus=[25,40,50,75,100,150][Math.floor(Math.random()*6)]+(H&&H.k==="cofre"?H.v:0);colCofre();setTimeout(()=>{big("🎁 ¡Cofre!","+"+bonus+" pts");confetti(60);addXP(bonus)},700)}
     try{if(navigator.vibrate&&navigator.userActivation&&navigator.userActivation.hasBeenActive)navigator.vibrate(12)}catch(e){}
   }else{
     fly("+1 · cada error enseña",btn,false);addXP(1);
@@ -1625,7 +1702,7 @@ function reward(g,btn){
   roundBestCombo=Math.max(roundBestCombo,qStreak);
   // meta diaria
   const t=todayStr();if(XP.day.d!==t)XP.day={d:t,n:0,hit:false};XP.day.n++;
-  if(!XP.day.hit&&XP.day.n>=GOAL){XP.day.hit=true;sv(K_XP,XP);setTimeout(()=>{big("🎯 ¡Meta del día!","30 preguntas · +100 pts");confetti(160);addXP(100)},900)}
+  if(!XP.day.hit&&XP.day.n>=GOAL){XP.day.hit=true;sv(K_XP,XP);const mb=100+((colHab()||{}).k==="meta"?colHab().v:0);setTimeout(()=>{big("🎯 ¡Meta del día!","30 preguntas · +"+mb+" pts");confetti(160);addXP(mb)},900)}
   sv(K_XP,XP);
 }
 function whyBox(it){
@@ -1669,7 +1746,7 @@ function record(it,right){
   PROG[it.key]={ok:right,n:((PROG[it.key]||{}).n||0)+1};sv(K_PROG,PROG);
   const s=STAT[it.tag]=STAT[it.tag]||{c:0,w:0,r:[]};right?s.c++:s.w++;s.r.push(right?1:0);if(s.r.length>RECENT)s.r.shift();sv(K_STAT,STAT);
   bumpDay();
-  qStreak=right?qStreak+1:0;
+  if(!right&&qStreak>0&&!roundShield&&(colHab()||{}).k==="escudocombo"){roundShield=true;setTimeout(()=>toast("🛡️ Tu coleccionable salvó el combo"),400)}else qStreak=right?qStreak+1:0;
   if(qStreak>(ACH._best||0)){ACH._best=qStreak;sv(K_ACH,ACH)}
   $("qstreak").textContent="🔥 "+qStreak;$("qstreak").classList.toggle("hidden",qStreak<3);
   if(qStreak>=5&&qStreak%5===0)setTimeout(()=>big("🔥 ¡"+qStreak+" seguidas!","combo ×"+mult().toFixed(1)),200);
@@ -1720,7 +1797,7 @@ const pick=f=>{const it=allMcq().filter(f);if(!it.length){toast("No hay pregunta
 $("goWeak").onclick=()=>pick(it=>status(it)==="bad");
 $("goNew").onclick=()=>pick(it=>status(it)==="new");
 $("exp").onclick=()=>{
-  const blob=new Blob([JSON.stringify({app:PFX,version:1,exportedAt:new Date().toISOString(),data:{progress:PROG,stats:STAT,ach:ACH,daily:DAY,xp:XP,read:READ,tema:TEMA,jugador:PJ,mipersonaje:MIPJ,anio:ANIO,pjOrden:ld(K_PJORD,null),trueque:ld(K_TQ,null)}},null,1)],{type:"application/json"});
+  const blob=new Blob([JSON.stringify({app:PFX,version:1,exportedAt:new Date().toISOString(),data:{progress:PROG,stats:STAT,ach:ACH,daily:DAY,xp:XP,read:READ,tema:TEMA,jugador:PJ,mipersonaje:MIPJ,anio:ANIO,pjOrden:ld(K_PJORD,null),trueque:ld(K_TQ,null),col:COL}},null,1)],{type:"application/json"});
   const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="puem_sim_progreso_"+todayStr()+".json";document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),1000);toast("💾 Avance exportado");
 };
 $("imp").onclick=()=>$("impf").click();
@@ -1731,7 +1808,7 @@ $("impf").onchange=ev=>{
     const o=x=>x&&typeof x==="object"&&!Array.isArray(x);
     if(!o(p)||p.app!==PFX||!o(p.data)||!o(p.data.progress)||!o(p.data.stats)){alert("Este archivo no es un avance de este simulador.");return}
     if(!confirm("Esto reemplaza el avance de este navegador por el del archivo. ¿Continuar?"))return;
-    if(o(p.data.xp)){XP=p.data.xp;sv(K_XP,XP)}if(o(p.data.read)){READ=p.data.read;sv(K_READ,READ)}if(typeof p.data.tema==="string")setTema(p.data.tema);if(o(p.data.mipersonaje)){MIPJ=p.data.mipersonaje;sv(K_MIPJ,MIPJ)}if(o(p.data.jugador)){PJ=p.data.jugador;sv(K_PJ,PJ);hud()}if(Array.isArray(p.data.pjOrden)){sv(K_PJORD,p.data.pjOrden);try{pjOrden()}catch(e){}}if(o(p.data.trueque))sv(K_TQ,p.data.trueque);if(o(p.data.anio)&&ANIOS.includes(p.data.anio.y)){ANIO=p.data.anio;sv(K_ANIO,ANIO);aplicaAnio()}
+    if(o(p.data.xp)){XP=p.data.xp;sv(K_XP,XP)}if(o(p.data.read)){READ=p.data.read;sv(K_READ,READ)}if(typeof p.data.tema==="string")setTema(p.data.tema);if(o(p.data.mipersonaje)){MIPJ=p.data.mipersonaje;sv(K_MIPJ,MIPJ)}if(o(p.data.jugador)){PJ=p.data.jugador;sv(K_PJ,PJ);hud()}if(Array.isArray(p.data.pjOrden)){sv(K_PJORD,p.data.pjOrden);try{pjOrden()}catch(e){}}if(o(p.data.trueque))sv(K_TQ,p.data.trueque);if(o(p.data.col)){const c=p.data.col;COL={have:Array.isArray(c.have)?c.have:[],out:Array.isArray(c.out)?c.out:[],eq:c.eq||null,esc:c.esc||null,h:Array.isArray(c.h)?c.h:[]};colSv();colTile()}if(o(p.data.anio)&&ANIOS.includes(p.data.anio.y)){ANIO=p.data.anio;sv(K_ANIO,ANIO);aplicaAnio()}
     PROG=p.data.progress;STAT=p.data.stats;ACH=o(p.data.ach)?p.data.ach:{};DAY=o(p.data.daily)?{count:+p.data.daily.count||0,last:typeof p.data.daily.last==="string"?p.data.daily.last:null}:{count:0,last:null};
     sv(K_PROG,PROG);sv(K_STAT,STAT);sv(K_ACH,ACH);sv(K_DAY,DAY);renderMine();toast("✅ Avance importado");
   };rd.readAsText(f);
@@ -1826,8 +1903,8 @@ function start(items,isSim,gen){
   if(!items||!items.length){toast("No hay preguntas con esas opciones. Prueba otro tema o año.");return}
   if(!isSim){sim=null;rowOf=new Map()}
   simGen=gen||null;
-  round=items;i=0;score=0;done=0;fails=[];roundAch=[];qStreak=0;$("qstreak").classList.add("hidden");$("qcombo").classList.add("hidden");roundXP=0;roundBestCombo=0;roundCorrect=0;tTimes=[];$("qpts").textContent="⭐ "+XP.xp.toLocaleString("es-MX");perBank={};perTag={};if(sim)perRow=TM[sim].filas.map(()=>[0,0]);
-  curLect=pendingLect;pendingLect=null;$("read").classList.add("hidden");foco(EXAM);
+  round=items;i=0;score=0;done=0;fails=[];roundAch=[];qStreak=0;$("qstreak").classList.add("hidden");$("qcombo").classList.add("hidden");roundXP=0;roundBestCombo=0;roundCorrect=0;roundShield=false;tTimes=[];$("qpts").textContent="⭐ "+XP.xp.toLocaleString("es-MX");perBank={};perTag={};if(sim)perRow=TM[sim].filas.map(()=>[0,0]);
+  curLect=pendingLect;pendingLect=null;$("read").classList.add("hidden");foco(EXAM);{const H=colHab();if(H&&H.k==="combo"){qStreak=H.v;const c=$("qcombo");c.textContent="🔥 ×"+mult().toFixed(1);c.classList.remove("hidden")}}
   $("home").classList.add("hidden");$("end").classList.add("hidden");$("quiz").classList.remove("hidden");
   $("tot").textContent=round.length;show();
 }
