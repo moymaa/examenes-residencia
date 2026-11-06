@@ -894,7 +894,7 @@ html[data-tema="barrio"] :is([data-back],#rdBack,#rBackMenu,#rCancel){border:3px
     <ol class="revlist" id="faillist"></ol>
   </div>
   <div class="nav">
-    <button class="btn sec" id="again">Cambiar opciones</button>
+    <button class="btn sec" id="again">← Volver al inicio</button>
     <button class="btn sec hidden" id="backRead">Volver a la lectura</button>
     <button class="btn sec" id="retrySame">Repetir esta ronda</button>
     <button class="btn" id="retry">Repetir solo las falladas</button>
@@ -1008,11 +1008,12 @@ function anioDlg(despues){if(document.getElementById("anioDlg"))return;const w=d
   draw();if(ANIO)w.onclick=e=>{if(e.target===w)w.remove()};document.body.appendChild(w)}
 // ——— novedades: al publicar una actualización, todos ven qué cambió (su avance se queda igual) ———
 // Para anunciar algo nuevo: subir VERSION y poner los cambios arriba de NOVEDADES.
-const VERSION="2026-11-06c",K_VER=PFX+"version_v1";
+const VERSION="2026-11-06d",K_VER=PFX+"version_v1";
 const NOVEDADES=[["🎓","Elige tu año (R1–R4): R1 ya no ve preguntas de R2–R4 y R4 trae también el Consejo. Arriba del inicio dice qué año eres y lo cambias con un toque."],
   ["🔁","Intercambia personajes con un compañero con un código de 4 dígitos (en «Elige tu personaje» → 🔁 Intercambiar). El que das se te va y el que recibes es tuyo."],
-  ["🏛️","Tema secreto La Academia y personajes nuevos por desbloquear."],
+  ["🏛️","Tema secreto La Academia 🏛️ y 10 personajes nuevos por desbloquear 👀 (ya son 45)."],
   ["🧭","¿Te perdiste? Arriba de cada pantalla está el botón <b>← ¿Qué quieres practicar?</b> para volver al inicio, y en el inicio está <b>❓ Cómo funciona</b>."],
+  ["🛠️","Arreglos: «← Volver al inicio» al terminar una ronda, el brain ya no tapa el menú en el celular y exportar/importar ahora se lleva también tu año, tus personajes e intercambios."],
   ["💾","Tu avance, puntos, rango y personajes siguen intactos."]];
 function novedades(){const v=ld(K_VER,null);const viejo=ld(PFX+"jugador_v1",null)||ld(PFX+"xp_v1",null);
   if(v&&v.v===VERSION)return;sv(K_VER,{v:VERSION,d:todayStr()});if(!viejo)return; // a quien entra por primera vez no le contamos novedades
@@ -1115,7 +1116,7 @@ function rxMenu(){
 function rxIntro(k){rxCur=k;const c=RX.cases[k];$("rIntroT").textContent="Caso "+(k+1);$("rIntroS").textContent=c.ids.length+" preguntas";rxView("rIntro")}
 $("rBackMenu").onclick=rxMenu;
 $("rOpen").onclick=()=>{
-  const c=RX.cases[rxCur];$("rCaseT").textContent="Caso "+(rxCur+1);
+  if(!RX||!RX.cases[rxCur])return;const c=RX.cases[rxCur];$("rCaseT").textContent="Caso "+(rxCur+1);
   $("rVig").innerHTML=c.v||`<p class="muted" style="margin:0">Preguntas independientes: cada una trae su propio caso.</p>`;
   $("rQs").innerHTML=c.ids.map((id,j)=>{const it=item(id),a=RX.ans[id]||{};
     return `<div class="rxq" data-id="${id}"><div class="qt">${j+1}. ${it.q}</div>`+it.opts.map((o,m)=>`<label class="op"><input type="radio" name="q${id}" value="${m}"${a.k===m?" checked":""}><span class="l">${String.fromCharCode(65+m)})</span><span>${o.t}</span></label>`).join("")+
@@ -1220,7 +1221,7 @@ const PUG={
   noche:["Ya es tarde: la memoria se consolida durmiendo. 5 preguntas más y a la cama. 😴","Guardia larga en el simulador. El café no sustituye a la mielina. ☕","¿Insomnio o vocación? Igual aquí sigo contigo."],
   cuida:["Pausa de hidratación. 💧","Hombros abajo, mandíbula suelta, espalda recta. 🧘","¿Más de 45 minutos? Mira un punto lejano 20 segundos.","Descansar también es estudiar.","No te compares: tu único rival es tu versión de ayer.","Respira: 4 segundos entra, 4 sostienes, 4 sale."]};
 let pugT;
-function pugSay(m,otro){if(["sel","ranks","help","agal"].some(id=>!$(id).classList.contains("hidden"))||document.documentElement.classList.contains("foco"))return;const b=$("pugb");b.innerHTML=`<button class="x" aria-label="Cerrar">×</button><b>🧠</b> ${m}`+(otro?`<div class="pmore"><button type="button" class="reveal" style="margin:6px 0 0">Otro dato ▶</button></div>`:"");b.classList.remove("hidden");b.querySelector(".x").onclick=()=>b.classList.add("hidden");if(otro)b.querySelector(".pmore button").onclick=()=>pugSay(sigDato(),true);clearTimeout(pugT);pugT=setTimeout(()=>b.classList.add("hidden"),otro?20000:9000)}
+function pugSay(m,otro){if(["sel","ranks","help","agal"].some(id=>!$(id).classList.contains("hidden"))||document.documentElement.classList.contains("foco")||document.querySelector("#anioDlg,#novDlg,#tqDlg,#sorp,#acaAnun"))return;const b=$("pugb");b.innerHTML=`<button class="x" aria-label="Cerrar">×</button><b>🧠</b> ${m}`+(otro?`<div class="pmore"><button type="button" class="reveal" style="margin:6px 0 0">Otro dato ▶</button></div>`:"");b.classList.remove("hidden");b.querySelector(".x").onclick=()=>b.classList.add("hidden");if(otro)b.querySelector(".pmore button").onclick=()=>pugSay(sigDato(),true);clearTimeout(pugT);pugT=setTimeout(()=>b.classList.add("hidden"),innerWidth<760?(otro?12000:7000):(otro?20000:9000))}
 // ——— «¿Sabías que…?» de examen: perlas, trampas, lo esencial y para memorizar del Manual (851); sin repetir hasta agotarlas ———
 let DATOS=[];const K_DORD=PFX+"datos_orden_v1",TIPO={perla:"Perla de examen",trampa:"Trampa frecuente",ess:"Lo esencial",memo:"Para memorizar"};
 function armaDatos(){DATOS=[];const tmp=document.createElement("div");
@@ -1231,7 +1232,7 @@ function sigDato(){if(!DATOS.length)return "¿Sabías que…? "+pick1(PUG.datos)
   return `<span class="pdk">¿Sabías que…? · ${TIPO[d.k]}</span>${d.h}<span class="pdt">Tema ${String(d.tema).padStart(2,"0")} · ${d.tt} · ${o.i}/${o.n}</span>`}
 const pick1=a=>a[Math.floor(Math.random()*a.length)];
 $("pugm").onclick=()=>{ACH._pug=(ACH._pug||0)+1;sv(K_ACH,ACH);const r=Math.random();if(r<.82)pugSay(sigDato(),true);else pugSay(r<.9?"¿Sabías que…? "+pick1(PUG.datos):r<.96?pick1(PUG.cuida):pick1(PUG.hola));checkAch()};
-ACCESO.ready().then(()=>setTimeout(()=>{if(!$("ranks").classList.contains("hidden"))return;const h=new Date().getHours();if(h>=23||h<5)pugSay(pick1(PUG.noche));else if(Math.random()<.6)pugSay(DATOS.length?sigDato():pick1(PUG.hola),!!DATOS.length)},3500));
+ACCESO.ready().then(()=>setTimeout(()=>{if(!$("ranks").classList.contains("hidden"))return;const h=new Date().getHours();if(h>=23||h<5)pugSay(pick1(PUG.noche));else if(Math.random()<.6)pugSay(DATOS.length?sigDato():pick1(PUG.hola),!!DATOS.length)},innerWidth<760?45000:3500));
 setInterval(()=>{if(!$("quiz").classList.contains("hidden")&&Math.random()<.35)pugSay(pick1(PUG.cuida))},25*60*1000);
 
 // ——— respaldo automático diario: si algo borra el avance, se puede recuperar ———
@@ -1715,11 +1716,11 @@ function renderMine(){
   backup();bakInfo();renderAchCount();try{hud()}catch(e){}
   $("achs").innerHTML=ACHS.map(([id,t,d])=>`<span class="ach${ACH[id]?" on":""}" title="${d}">${ACH[id]?"🏆":"🔒"} ${t}</span>`).join("");
 }
-const pick=f=>{const it=allMcq().filter(f);if(!it.length)return;start(build(it,size))};
+const pick=f=>{const it=allMcq().filter(f);if(!it.length){toast("No hay preguntas así por ahora 🎉");return}start(build(it,size))};
 $("goWeak").onclick=()=>pick(it=>status(it)==="bad");
 $("goNew").onclick=()=>pick(it=>status(it)==="new");
 $("exp").onclick=()=>{
-  const blob=new Blob([JSON.stringify({app:PFX,version:1,exportedAt:new Date().toISOString(),data:{progress:PROG,stats:STAT,ach:ACH,daily:DAY,xp:XP,read:READ,tema:TEMA,jugador:PJ,mipersonaje:MIPJ}},null,1)],{type:"application/json"});
+  const blob=new Blob([JSON.stringify({app:PFX,version:1,exportedAt:new Date().toISOString(),data:{progress:PROG,stats:STAT,ach:ACH,daily:DAY,xp:XP,read:READ,tema:TEMA,jugador:PJ,mipersonaje:MIPJ,anio:ANIO,pjOrden:ld(K_PJORD,null),trueque:ld(K_TQ,null)}},null,1)],{type:"application/json"});
   const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="puem_sim_progreso_"+todayStr()+".json";document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),1000);toast("💾 Avance exportado");
 };
 $("imp").onclick=()=>$("impf").click();
@@ -1730,7 +1731,7 @@ $("impf").onchange=ev=>{
     const o=x=>x&&typeof x==="object"&&!Array.isArray(x);
     if(!o(p)||p.app!==PFX||!o(p.data)||!o(p.data.progress)||!o(p.data.stats)){alert("Este archivo no es un avance de este simulador.");return}
     if(!confirm("Esto reemplaza el avance de este navegador por el del archivo. ¿Continuar?"))return;
-    if(o(p.data.xp)){XP=p.data.xp;sv(K_XP,XP)}if(o(p.data.read)){READ=p.data.read;sv(K_READ,READ)}if(typeof p.data.tema==="string")setTema(p.data.tema);if(o(p.data.mipersonaje)){MIPJ=p.data.mipersonaje;sv(K_MIPJ,MIPJ)}if(o(p.data.jugador)){PJ=p.data.jugador;sv(K_PJ,PJ);hud()}
+    if(o(p.data.xp)){XP=p.data.xp;sv(K_XP,XP)}if(o(p.data.read)){READ=p.data.read;sv(K_READ,READ)}if(typeof p.data.tema==="string")setTema(p.data.tema);if(o(p.data.mipersonaje)){MIPJ=p.data.mipersonaje;sv(K_MIPJ,MIPJ)}if(o(p.data.jugador)){PJ=p.data.jugador;sv(K_PJ,PJ);hud()}if(Array.isArray(p.data.pjOrden)){sv(K_PJORD,p.data.pjOrden);try{pjOrden()}catch(e){}}if(o(p.data.trueque))sv(K_TQ,p.data.trueque);if(o(p.data.anio)&&ANIOS.includes(p.data.anio.y)){ANIO=p.data.anio;sv(K_ANIO,ANIO);aplicaAnio()}
     PROG=p.data.progress;STAT=p.data.stats;ACH=o(p.data.ach)?p.data.ach:{};DAY=o(p.data.daily)?{count:+p.data.daily.count||0,last:typeof p.data.daily.last==="string"?p.data.daily.last:null}:{count:0,last:null};
     sv(K_PROG,PROG);sv(K_STAT,STAT);sv(K_ACH,ACH);sv(K_DAY,DAY);renderMine();toast("✅ Avance importado");
   };rd.readAsText(f);
@@ -1822,6 +1823,7 @@ function build(items,n){
   return out;
 }
 function start(items,isSim,gen){
+  if(!items||!items.length){toast("No hay preguntas con esas opciones. Prueba otro tema o año.");return}
   if(!isSim){sim=null;rowOf=new Map()}
   simGen=gen||null;
   round=items;i=0;score=0;done=0;fails=[];roundAch=[];qStreak=0;$("qstreak").classList.add("hidden");$("qcombo").classList.add("hidden");roundXP=0;roundBestCombo=0;roundCorrect=0;tTimes=[];$("qpts").textContent="⭐ "+XP.xp.toLocaleString("es-MX");perBank={};perTag={};if(sim)perRow=TM[sim].filas.map(()=>[0,0]);
