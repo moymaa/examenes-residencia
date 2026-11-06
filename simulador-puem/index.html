@@ -327,6 +327,10 @@ html.foco #xbq{display:none}
 .pj img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.85)}
 .pj span{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(transparent,rgba(0,0,0,.85));font:800 11.5px/1.15 system-ui,sans-serif;padding:14px 4px 4px;text-align:center;color:#fff;text-transform:uppercase}
 .pj:hover,.pj:focus-visible{transform:scale(1.08);border-color:#ffd400;box-shadow:0 0 18px #ffd400;z-index:2;outline:none}
+.pj.lock{cursor:not-allowed}.pj.lock img{filter:blur(5px) brightness(.45) saturate(.6);transform:scale(1.15)}
+.pj.lock span{color:#9aa6c2}.pj.lock::before{content:"🔒";position:absolute;inset:0;display:grid;place-items:center;font-size:26px;z-index:1;text-shadow:0 2px 6px #000}
+.pj.lock:hover,.pj.lock:focus-visible{transform:none;border-color:#2b3350;box-shadow:none}
+.selc{text-align:center;color:#c9d2e3;font-size:13.5px;margin:-6px 0 12px}.selc b{color:#ffd400}
 .pj.nuevo{background:repeating-linear-gradient(45deg,#1b2238 0 10px,#222a44 10px 20px);display:grid;place-items:center;color:#ffd400;font:italic 900 13px/1.15 "Arial Black",sans-serif;text-align:center;border-style:dashed;border-color:#ffd400}
 .pj.nuevo b{display:block;font-size:30px;line-height:1;margin-bottom:4px;font-style:normal}
 .pj .cam{position:absolute;top:4px;right:4px;background:#ffd400;color:#141414;border-radius:6px;font:800 10px system-ui,sans-serif;padding:2px 5px;border:2px solid #000}
@@ -684,6 +688,7 @@ html[data-tema] .tile.main{color:var(--on-acc)!important}html[data-tema] .tile.m
 <button id="hud" class="hidden" type="button" aria-label="Tu personaje (toca para cambiarlo)"><span class="hb"><span class="hn" id="hudN"></span><span class="hpct" id="hudP">0 %</span><span class="hl">dominado</span></span><img class="hp" id="hudI" alt=""></button>
 <div id="sel" class="hidden" role="dialog" aria-modal="true" aria-labelledby="selT">
   <div class="sh" id="selT">ELIGE A TU PERSONAJE</div>
+  <div class="selc" id="selC"></div>
   <div class="selg" id="selG"></div>
   <div class="selp" id="selP"><img id="selI" alt=""><div class="mid"><div class="nm" id="selN">¿Quién serás?</div><input id="selName" maxlength="28" placeholder="Tu nombre de jugador (opcional)" aria-label="Tu nombre de jugador"><div class="priv hidden" id="selPriv">🔒 Tu foto se queda solo en este navegador: no se sube a ningún lado.</div><input type="file" id="selFile" accept="image/*" class="hidden"></div>
     <div class="bt"><button type="button" id="selOk">¡LISTO!</button><button type="button" class="sec" id="selRnd">🎲 Al azar</button></div></div>
@@ -709,7 +714,7 @@ html[data-tema] .tile.main{color:var(--on-acc)!important}html[data-tema] .tile.m
     <h3>⭐ Puntos, rangos y 🔥 rachas</h3><p>Cada correcta da 10 puntos. Los aciertos seguidos multiplican hasta ×3, reconquistar una que fallaste da +15, hay golpes críticos ×2 al azar, un cofre sorpresa cada 10 correctas y +100 si cumples la meta de 30 preguntas en el día. Los puntos te suben de rango: Polloatun del comedor, Chicharrones morados Bitz, Freud con doctorado en TCC, Pug el psiquiatra enlacista y Dorime psiquia. La racha diaria cuenta los días seguidos que estudias.</p>
     <h3>🏆 Logros</h3><p>Se desbloquean con un aviso y suman puntos G: generales, rachas de 3 a 30 días y uno por cada tema que domines completo. Revísalos en «🏆 Logros».</p>
     <h3>📊 Estadísticas</h3><p>En «Tu avance» ves tu acierto por tema, cuánto has visto de cada uno, si vas mejorando (▲) o bajando (▼), y en qué enfocarte primero. Al fallar puedes marcar por qué (no me lo sabía, leí mal, dudé entre dos) y te da un consejo.</p>
-    <h3>🥊 Tu personaje</h3><p>Al entrar eliges un personaje y le pones tu nombre, o creas el tuyo con tu foto (📷): la foto se queda solo en tu navegador. Se queda en la esquina con tu % dominado: brinca cuando aciertas y se tambalea cuando fallas. Tócalo para cambiarlo.</p>
+    <h3>🥊 Tu personaje</h3><p>Al entrar eliges un personaje y le pones tu nombre, o creas el tuyo con tu foto (📷): la foto se queda solo en tu navegador. Empiezas con 5 personajes y se desbloquea uno nuevo cada 150 puntos. Se queda en la esquina con tu % dominado: brinca cuando aciertas y se tambalea cuando fallas. Tócalo para cambiarlo.</p>
     <h3>🎨 Colores y 🧠 cerebro</h3><p>Cambia el color con 🎨 (hay Halloween 🎃, Navidad 🎄 y Los chicos del barrio 🛹). Dale clic al cerebro de abajo para un «¿sabías que…?».</p>
     <h3>💾 Tu progreso</h3><p>Todo se guarda automáticamente en este navegador: no hay cuentas ni servidor, y no se borra cuando actualizamos el simulador. Además se hace un respaldo automático diario. Para cambiar de celular o computadora, usa «💾 Exportar progreso» (descarga un archivo) y en el otro dispositivo «📥 Importar progreso». Si borras los datos del navegador sin exportar, se pierde.</p>
     <button class="btn" id="hOk" style="width:100%;margin-top:12px">Entendido</button>
@@ -976,6 +981,14 @@ $("rstS").onclick=()=>{if(!confirm("¿Borrar solo tus estadísticas por tema? Tu
 // ——— personajes: selección estilo juego de peleas + marcador en la esquina ———
 const K_PJ=PFX+"jugador_v1",K_MIPJ=PFX+"mipersonaje_v1";let PJ=ld(K_PJ,null),PJS=[],selPick=null,MIPJ=ld(K_MIPJ,null);
 // personaje propio: su foto vive solo en este navegador (localStorage), nunca se sube
+// desbloqueo: 5 abiertos y uno más cada 150 puntos (en el orden de la lista)
+const PJ_FREE=5,PJ_STEP=150,K_PJU=PFX+"pj_desbloq_v1";
+const pjAbiertos=()=>Math.min(PJS.length,PJ_FREE+Math.floor(((XP&&XP.xp)||0)/PJ_STEP));
+const pjLibre=id=>id==="yo"||(PJ&&PJ.id===id)||PJS.findIndex(p=>p.id===id)<pjAbiertos();
+const pjPts=id=>Math.max(0,(PJS.findIndex(p=>p.id===id)-PJ_FREE+1)*PJ_STEP);
+function pjCheck(){if(!PJS.length)return;const n=pjAbiertos(),prev=ld(K_PJU,{n:PJ_FREE}).n||PJ_FREE;
+  if(n>prev){for(let k=prev;k<n;k++){const p=PJS[k];if(p)xbox(`<img src="${p.img}" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:50%">`,"Nuevo personaje: "+p.n,"🥊")}}
+  if(n!==prev)sv(K_PJU,{n})}
 const pjOf=id=>id==="yo"?(MIPJ&&MIPJ.img?{id:"yo",n:MIPJ.nombre||"Yo",img:MIPJ.img,yo:1}:null):PJS.find(p=>p.id===id);
 function fotoPropia(file){if(!file)return;const url=URL.createObjectURL(file),im=new Image();
   im.onload=()=>{const m=Math.min(im.width,im.height),c=document.createElement("canvas");c.width=c.height=256;
@@ -992,7 +1005,9 @@ function hud(){const p=PJ&&pjOf(PJ.id);$("hud").classList.toggle("hidden",!p);if
 function selDraw(){
   const yo=pjOf("yo");
   $("selG").innerHTML=(yo?`<button type="button" class="pj${selPick==="yo"?" on":""}" data-id="yo"><img src="${yo.img}" alt=""><span></span><em class="cam" data-cam>📷 cambiar</em></button>`:`<button type="button" class="pj nuevo" id="pjNew"><span style="position:static;background:none;padding:0;font:inherit;color:inherit"><b>📷</b>CREA TU PERSONAJE<br>con tu foto</span></button>`)+
-    PJS.map(p=>`<button type="button" class="pj${selPick===p.id?" on":""}" data-id="${p.id}"><img src="${p.img}" alt=""><span></span></button>`).join("");
+    PJS.map(p=>pjLibre(p.id)?`<button type="button" class="pj${selPick===p.id?" on":""}" data-id="${p.id}"><img src="${p.img}" alt=""><span></span></button>`:`<button type="button" class="pj lock" data-lock="${p.id}" aria-label="Bloqueado: se desbloquea con ${pjPts(p.id)} puntos"><img src="${p.img}" alt=""><span>${pjPts(p.id).toLocaleString("es-MX")} pts</span></button>`).join("");
+  {const ab=PJS.filter(p=>pjLibre(p.id)).length,sig=PJS.find(p=>!pjLibre(p.id));$("selC").innerHTML=`<b>${ab} de ${PJS.length}</b> desbloqueados`+(sig?` · el siguiente sale con <b>${pjPts(sig.id).toLocaleString("es-MX")} pts</b> (llevas ${((XP&&XP.xp)||0).toLocaleString("es-MX")})`:" · ¡todos!");}
+  $("selG").querySelectorAll(".pj.lock").forEach(b=>b.onclick=()=>{toast("🔒 Se desbloquea con "+pjPts(+b.dataset.lock).toLocaleString("es-MX")+" puntos. ¡Sigue contestando!")});
   if($("pjNew"))$("pjNew").onclick=()=>$("selFile").click();
   $("selG").querySelectorAll(".pj[data-id]").forEach(b=>{const id=b.dataset.id==="yo"?"yo":+b.dataset.id,p=pjOf(id);b.querySelector("span").textContent=p.n;b.setAttribute("aria-label",p.n);
     b.onclick=e=>{if(e.target.closest("[data-cam]")){$("selFile").click();return}selSet(p.id)};b.onmouseenter=()=>selPrev(p)});
@@ -1003,12 +1018,12 @@ function selSet(id){const prevDefault=selPick&&pjOf(selPick)?pjOf(selPick).n:"";
   $("selG").querySelectorAll(".pj[data-id]").forEach(b=>b.classList.toggle("on",(b.dataset.id==="yo"?"yo":+b.dataset.id)===id));selPrev(p);try{chime()}catch(e){}}
 function selOpen(){if(!PJS.length)return;selPick=PJ?PJ.id:null;$("selName").value=PJ?(PJ.nombre||""):"";selDraw();$("sel").classList.remove("hidden");document.documentElement.style.overflow="hidden"}
 function selClose(){$("sel").classList.add("hidden");document.documentElement.style.overflow=""}
-$("selRnd").onclick=()=>{const p=PJS[Math.floor(Math.random()*PJS.length)];if(!p)return;selSet(p.id);$("selG").querySelector(`[data-id="${p.id}"]`).scrollIntoView({block:"nearest",behavior:"smooth"})};
+$("selRnd").onclick=()=>{const L=PJS.filter(p=>pjLibre(p.id)),p=L[Math.floor(Math.random()*L.length)];if(!p)return;selSet(p.id);$("selG").querySelector(`[data-id="${p.id}"]`).scrollIntoView({block:"nearest",behavior:"smooth"})};
 $("selOk").onclick=()=>{if(!selPick){$("selRnd").click();return}const p=pjOf(selPick),nm=$("selName").value.trim()||p.n;
   const first=!PJ;PJ={id:selPick,nombre:nm};sv(K_PJ,PJ);if(selPick==="yo"&&MIPJ){MIPJ.nombre=nm;sv(K_MIPJ,MIPJ)}selClose();hud();big(`<img src="${p.img}" class="lvbig" alt="">${nm.toUpperCase()}`,"¡a estudiar!");
   if(first&&!ld(PFX+"ranks_seen_v1",null))setTimeout(showRanks,1700)};
 $("hud").onclick=selOpen;
-ACCESO.ready().then(()=>ACCESO.json("personajes.enc")).then(l=>{PJS=l||[];if(PJ&&!pjOf(PJ.id))PJ=null;hud();if(!PJ)setTimeout(()=>{$("ranks").classList.add("hidden");selOpen()},600)}).catch(()=>{});
+ACCESO.ready().then(()=>ACCESO.json("personajes.enc")).then(l=>{PJS=l||[];if(!ld(K_PJU,null))sv(K_PJU,{n:pjAbiertos()});if(PJ&&!pjOf(PJ.id))PJ=null;hud();if(!PJ)setTimeout(()=>{$("ranks").classList.add("hidden");selOpen()},600)}).catch(()=>{});
 
 // ——— calculadora científica (como la del examen) ———
 (()=>{
@@ -1096,7 +1111,7 @@ function chime(){try{if(document.documentElement.classList.contains("foco")||!(n
   const C=window.AudioContext||window.webkitAudioContext;if(!C)return;const c=chime.c=chime.c||new C(),t=c.currentTime;
   [[880,0],[1318.5,.12]].forEach(([f,d])=>{const o=c.createOscillator(),g=c.createGain();o.type="sine";o.frequency.value=f;g.gain.setValueAtTime(0,t+d);g.gain.linearRampToValueAtTime(.12,t+d+.02);g.gain.exponentialRampToValueAtTime(.001,t+d+.5);o.connect(g).connect(c.destination);o.start(t+d);o.stop(t+d+.55)})}catch(e){}}
 function xbShow(){if(xbBusy||!xbQ.length)return;xbBusy=true;const [ic,ti,g]=xbQ.shift();
-  const el=document.createElement("div");el.className="xb";el.innerHTML=`<span class="xc">${ic}</span><span class="xt"><small>🏆 Logro desbloqueado</small><b></b></span><span class="xg">${g} G</span>`;el.querySelector("b").textContent=ti;
+  const el=document.createElement("div");el.className="xb";const pj=g==="🥊";el.innerHTML=`<span class="xc"${pj?' style="background:#141414;overflow:hidden"':""}>${ic}</span><span class="xt"><small>${pj?"🥊 Personaje desbloqueado":"🏆 Logro desbloqueado"}</small><b></b></span><span class="xg">${pj?"":g+" G"}</span>`;el.querySelector("b").textContent=ti;
   $("xbq").appendChild(el);chime();try{if(navigator.vibrate&&navigator.userActivation&&navigator.userActivation.hasBeenActive)navigator.vibrate([20,40,20])}catch(e){}
   setTimeout(()=>{el.remove();xbBusy=false;xbShow()},5200)}
 function xbox(ic,ti,g){xbQ.push([ic,ti,g]);xbShow()}
@@ -1138,7 +1153,7 @@ const lvlPic=(k,big)=>LVIMG[k+1]?`<img src="${LVIMG[k+1]}" alt="" class="${big?"
 const lvlOf=x=>{let k=0;LEVELS.forEach((l,j)=>{if(x>=l[0])k=j});return k};
 let roundXP=0,roundBestCombo=0,roundCorrect=0;
 const mult=()=>Math.min(3,1+Math.max(0,qStreak-1)*0.2);
-function addXP(n){const before=lvlOf(XP.xp);XP.xp+=n;roundXP+=n;sv(K_XP,XP);const after=lvlOf(XP.xp);
+function addXP(n){const before=lvlOf(XP.xp);XP.xp+=n;roundXP+=n;sv(K_XP,XP);try{pjCheck()}catch(e){}const after=lvlOf(XP.xp);
   const el=$("qpts");el.textContent="⭐ "+XP.xp.toLocaleString("es-MX");el.classList.add("pop");setTimeout(()=>el.classList.remove("pop"),220);
   if(after>before)setTimeout(()=>{big(lvlPic(after,true)+"¡Subiste de nivel!",LEVELS[after][1]);confetti(140)},500);}
 function fly(txt,el,crit){const r=el?el.getBoundingClientRect():{left:innerWidth/2,width:0,top:innerHeight/2};const f=document.createElement("div");f.className="fly"+(crit?" crit":"");f.textContent=txt;f.style.left=(r.left+r.width/2)+"px";f.style.top=(r.top-6)+"px";document.body.appendChild(f);setTimeout(()=>f.remove(),1200)}
