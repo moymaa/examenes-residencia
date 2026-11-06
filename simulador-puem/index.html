@@ -1093,7 +1093,7 @@ $("hud").onclick=selOpen;
 ACCESO.ready().then(()=>ACCESO.json("personajes.enc")).then(l=>{PJS=l||[];pjOrden();if(!ld(K_PJU,null))sv(K_PJU,{n:pjAbiertos()});if(PJ&&!pjOf(PJ.id))PJ=null;hud();if(!PJ)setTimeout(()=>{$("ranks").classList.add("hidden");selOpen()},600)}).catch(()=>{});
 
 // ——— versus en vivo (tipo Kahoot): salas de 4 dígitos en el worker simpsiq-versus ———
-const VS_URL=/^(localhost|127\.0\.0\.1)$/.test(location.hostname)?"ws://127.0.0.1:8787":"wss://simpsiq-versus.SUBDOMINIO.workers.dev";
+const VS_URL=/^(localhost|127\.0\.0\.1)$/.test(location.hostname)?"ws://127.0.0.1:8787":"wss://simpsiq-salas.pages.dev";
 const VSC=["▲","◆","●","■","★"];let VS=null;
 const vesc=t=>String(t==null?"":t).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const vsMe=()=>({nombre:(PJ&&PJ.nombre)||"Jugador",pj:PJ&&PJ.id!=="yo"?String(PJ.id):""});
