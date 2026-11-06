@@ -4,7 +4,7 @@
    SALT y CHK los escribe ~/Documents/Profesor/Banco PUEM/simulador/cifrar.py — no editarlos a mano. */
 (() => {
 const SALT = "KZZKnBOjyr6SdFEAocwm8A==";
-const CHK = "Rvl2XLmOEFbQUnIjX4Ec3py/kuJ8zMA62nO11iZe37kbO453I3k=";
+const CHK = "yp8dD/esybgI9aCsmswl+Q19vuRtsuZyMYWe0k6PdAvt20FSfPI=";
 const ITER = 310000, KEY = "simpsiq_llave_v1";
 const b64 = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
 const u64 = a => btoa(String.fromCharCode(...new Uint8Array(a)));
