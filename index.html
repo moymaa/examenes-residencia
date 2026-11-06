@@ -2,6 +2,9 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
 <title>Simuladores Psiquiatría</title>
+<link rel="apple-touch-icon" href="simulador-puem/niveles/app-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Simuladores">
 <style>
 :root{--bg:#faf9f7;--card:#fff;--fg:#1d1b19;--mut:#6b655e;--line:#e4e0da;--acc:#6d2233;--bad:#b3261e}
 @media (prefers-color-scheme:dark){:root{--bg:#131211;--card:#1c1a19;--fg:#f2efea;--mut:#a39c93;--line:#2c2a27;--acc:#d08a9b;--bad:#f08a82}}
@@ -12,6 +15,12 @@ a.card{display:block;border:1px solid var(--line);border-radius:12px;padding:14p
 a.card:hover{border-color:var(--acc)}a.card b{display:block}a.card span{color:var(--mut);font-size:13px}
 footer{color:var(--mut);font-size:12px;margin-top:32px;border-top:1px solid var(--line);padding-top:14px}
 footer button{font:inherit;color:var(--acc);background:none;border:0;padding:0;cursor:pointer;text-decoration:underline}
+html{background:var(--bg)}body{background:transparent;-webkit-font-smoothing:antialiased}
+html::before{content:"";position:fixed;inset:-10vmax;z-index:-1;pointer-events:none;background:radial-gradient(40vmax 40vmax at 8% 4%,color-mix(in srgb,var(--acc) 22%,transparent),transparent 70%),radial-gradient(44vmax 44vmax at 70% 100%,color-mix(in srgb,#34c759 10%,transparent),transparent 70%)}
+h1{font-size:30px;font-weight:800;letter-spacing:-.028em}
+a.card{background:color-mix(in srgb,var(--card) 64%,transparent);-webkit-backdrop-filter:saturate(180%) blur(22px);backdrop-filter:saturate(180%) blur(22px);border:1px solid color-mix(in srgb,var(--fg) 9%,transparent);border-radius:20px;padding:16px 18px;box-shadow:0 10px 30px rgba(20,10,15,.07),inset 0 1px 0 rgba(255,255,255,.5);transition:transform .34s cubic-bezier(.34,1.56,.64,1)}
+a.card:hover{transform:translateY(-2px)}a.card:active{transform:scale(1.02)}
+@media (prefers-reduced-transparency:reduce){a.card{background:var(--card);backdrop-filter:none}html::before{display:none}}
 </style>
 <script src="acceso.js" data-gate></script>
 </head><body><main>

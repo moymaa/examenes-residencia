@@ -5,6 +5,15 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow">
 <title>Simulador PUEM · Psiquiatría</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="niveles/app-180.png">
+<link rel="icon" type="image/png" sizes="192x192" href="niveles/app-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="PUEM">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="theme-color" content="#faf9f7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#131211" media="(prefers-color-scheme: dark)">
 <style>
 :root{--bg:#faf9f7;--card:#fff;--fg:#1d1b19;--mut:#6b655e;--line:#e4e0da;--acc:#6d2233;--acc-soft:#f4e9ec;
 --ok:#1f7a4d;--ok-soft:#e6f4ec;--bad:#b3261e;--bad-soft:#fbeae9;--warn:#8a5a00;--warn-soft:#fbf1dc;--shadow:0 1px 2px rgba(0,0,0,.04),0 4px 16px rgba(0,0,0,.05)}
@@ -469,6 +478,82 @@ html[data-tema] .tile.main{color:var(--on-acc)!important}html[data-tema] .tile.m
 .rvq{border-top:1px solid var(--line);padding-top:8px;margin-top:8px}
 .rvq .yo{font-size:14px}.rvq .yo.ok{color:var(--ok)}.rvq .yo.bad{color:var(--bad)}
 @media (max-width:520px){.card{padding:14px}.q{font-size:16px}.hide-sm{display:none}.count .d{font-size:26px}}
+
+/* ===================== Capa «vidrio» estilo iOS =====================
+   Usa los colores del tema activo (color-mix), así que cada diseño se conserva; «Los chicos del barrio» queda tal cual.
+   Superficies grandes con blur; elementos chicos solo translúcidos (rendimiento en celular). */
+html:not([data-tema="barrio"]){
+  --glass:color-mix(in srgb,var(--card) 64%,transparent);
+  --glass-hi:color-mix(in srgb,var(--card) 84%,transparent);
+  --glass-line:color-mix(in srgb,var(--fg) 9%,transparent);
+  --spec:inset 0 1px 0 rgba(255,255,255,.6);
+  --blur:saturate(180%) blur(22px);
+  --sh1:0 1px 1px rgba(0,0,0,.03),0 10px 30px rgba(20,10,15,.07);
+  --sh2:0 24px 60px rgba(20,10,15,.18);
+  --spring:cubic-bezier(.34,1.56,.64,1);--fluid:cubic-bezier(.25,.1,.3,1);
+  --r-xl:26px;--r-lg:20px;--r-md:14px;
+  background:var(--bg)}
+@media (prefers-color-scheme:dark){html:not([data-tema]){--spec:inset 0 1px 0 rgba(255,255,255,.07);--sh1:0 1px 1px rgba(0,0,0,.2),0 12px 34px rgba(0,0,0,.35);--sh2:0 24px 60px rgba(0,0,0,.55)}}
+html[data-tema="oscuro"],html[data-tema="azul"],html[data-tema="morado"],html[data-tema="verde"],html[data-tema="medianoche"],html[data-tema="moka"],html[data-tema="neon"],html[data-tema="halloween"],html[data-tema="navidad"]{--spec:inset 0 1px 0 rgba(255,255,255,.07);--sh1:0 1px 1px rgba(0,0,0,.2),0 12px 34px rgba(0,0,0,.35);--sh2:0 24px 60px rgba(0,0,0,.55)}
+/* lienzo: manchas de color suaves detrás del vidrio */
+html:not([data-tema="barrio"]) body{background:transparent;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+html:not([data-tema="barrio"])::before{content:"";position:fixed;inset:-10vmax;z-index:-1;pointer-events:none;
+  background:radial-gradient(40vmax 40vmax at 8% 4%,color-mix(in srgb,var(--acc) 24%,transparent),transparent 70%),
+    radial-gradient(36vmax 36vmax at 96% 18%,color-mix(in srgb,var(--warn) 16%,transparent),transparent 70%),
+    radial-gradient(44vmax 44vmax at 60% 100%,color-mix(in srgb,var(--ok) 13%,transparent),transparent 70%)}
+/* tipografía tipo SF */
+html:not([data-tema="barrio"]) h1{font-size:31px;font-weight:800;letter-spacing:-.028em;line-height:1.12}
+html:not([data-tema="barrio"]) .qh{font-size:22px!important;font-weight:800;letter-spacing:-.022em!important}
+html:not([data-tema="barrio"]) .panehd b{font-size:21px;font-weight:800;letter-spacing:-.02em}
+html:not([data-tema="barrio"]) h2{letter-spacing:.06em;font-size:12.5px}
+/* superficies grandes: vidrio con blur */
+html:not([data-tema="barrio"]) :is(.card,.count,.rx,.privacy,.rkbox,.tpanel,.pugb,.calc,.top,.seg){
+  background:var(--glass);-webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur);
+  border:1px solid var(--glass-line);box-shadow:var(--sh1),var(--spec)}
+html:not([data-tema="barrio"]) :is(.card,.rkbox){border-radius:var(--r-xl)}
+html:not([data-tema="barrio"]) :is(.count,.rx,.privacy,.tpanel,.calc){border-radius:var(--r-lg)}
+html:not([data-tema="barrio"]) .top{border-radius:0 0 var(--r-lg) var(--r-lg);margin:-8px -16px 0;padding:10px 16px 12px;border-top:0}
+html:not([data-tema="barrio"]) .rkwrap{background:rgba(10,6,8,.32);-webkit-backdrop-filter:blur(10px) saturate(140%);backdrop-filter:blur(10px) saturate(140%)}
+html:not([data-tema="barrio"]) .rkbox{background:var(--glass-hi);box-shadow:var(--sh2),var(--spec)}
+/* mosaicos: vidrio + respuesta elástica */
+html:not([data-tema="barrio"]) .tile{background:var(--glass);-webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur);border:1px solid var(--glass-line);border-radius:var(--r-lg);box-shadow:var(--sh1),var(--spec);
+  transition:transform .34s var(--spring),box-shadow .3s var(--fluid),border-color .3s}
+html:not([data-tema="barrio"]) .tile:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(20,10,15,.12),var(--spec);border-color:var(--glass-line)}
+html:not([data-tema="barrio"]) .tile:active{transform:scale(1.025)}
+html:not([data-tema="barrio"]) .tile.main{background:linear-gradient(160deg,color-mix(in srgb,var(--acc) 88%,#fff 12%),var(--acc) 60%,color-mix(in srgb,var(--acc) 85%,#000 15%));border-color:transparent;box-shadow:0 14px 34px color-mix(in srgb,var(--acc) 38%,transparent),inset 0 1px 0 rgba(255,255,255,.28)}
+/* íconos de línea en cuadrito de color (estilo Ajustes de iOS) */
+html:not([data-tema="barrio"]) .tile .ti{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;color:#fff;background:var(--ic,#8e8e93);box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 4px 10px color-mix(in srgb,var(--ic,#8e8e93) 35%,transparent)}
+html:not([data-tema="barrio"]) .tile .ti svg{width:24px;height:24px}
+html:not([data-tema="barrio"]) .tile.main .ti{background:rgba(255,255,255,.22);box-shadow:inset 0 1px 0 rgba(255,255,255,.35)}
+html[data-tema="barrio"] .tile .ti svg{width:24px;height:24px;color:#141414}html[data-tema="barrio"] body .tile.main .ti svg{color:#fff}
+/* botones */
+html:not([data-tema="barrio"]) .btn{border-radius:var(--r-md);background:linear-gradient(180deg,color-mix(in srgb,var(--acc) 90%,#fff 10%),var(--acc));box-shadow:0 8px 20px color-mix(in srgb,var(--acc) 30%,transparent),inset 0 1px 0 rgba(255,255,255,.25);transition:transform .34s var(--spring),box-shadow .2s,opacity .2s}
+html:not([data-tema="barrio"]) .btn:active:not(:disabled){transform:scale(1.04)}
+html:not([data-tema="barrio"]) .btn.sec{background:var(--glass-hi);border:1px solid var(--glass-line);box-shadow:var(--spec)}
+html:not([data-tema="barrio"]) :is(.chip,.reveal,.fab){transition:transform .3s var(--spring),background .2s}
+html:not([data-tema="barrio"]) :is(.chip,.reveal):active{transform:scale(1.05)}
+html:not([data-tema="barrio"]) .chip{background:var(--glass-hi);border-color:var(--glass-line)}
+html:not([data-tema="barrio"]) .chip[aria-pressed=true]{background:var(--acc);border-color:var(--acc);box-shadow:0 4px 12px color-mix(in srgb,var(--acc) 30%,transparent)}
+html:not([data-tema="barrio"]) .fab{background:var(--glass-hi);-webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur);border:1px solid var(--glass-line);box-shadow:var(--sh1),var(--spec)}
+/* elementos chicos: translúcidos sin blur */
+html:not([data-tema="barrio"]) :is(.opt,.lec button,.catb,.sim,.prog div,.sttot div,.acard,.subq,.tsw){background:var(--glass-hi);border:1px solid var(--glass-line);box-shadow:var(--spec)}
+html:not([data-tema="barrio"]) .opt{border-radius:var(--r-md);transition:transform .3s var(--spring),border-color .2s,background .2s}
+html:not([data-tema="barrio"]) .opt:active:not(:disabled){transform:scale(1.015)}
+html:not([data-tema="barrio"]) :is(.lec button,.catb,.sim,.prog div,.sttot div,.acard){border-radius:var(--r-md)}
+/* estados con significado: se conservan sobre el vidrio */
+html:not([data-tema="barrio"]) .opt.ok{background:var(--ok-soft);border-color:var(--ok)}
+html:not([data-tema="barrio"]) .opt.bad{background:var(--bad-soft);border-color:var(--bad)}
+html:not([data-tema="barrio"]) .acard.on{background:var(--acc-soft);border-color:var(--acc)}
+html:not([data-tema="barrio"]) .privacy{background:color-mix(in srgb,var(--acc-soft) 70%,transparent)}
+html:not([data-tema="barrio"]) .bar{height:7px;background:color-mix(in srgb,var(--fg) 8%,transparent)}
+html:not([data-tema="barrio"]) .bar i{border-radius:99px}
+html:not([data-tema="barrio"]) .seg button[aria-selected=true]{background:var(--glass-hi);box-shadow:0 2px 8px rgba(0,0,0,.08),var(--spec)}
+/* toast tipo iOS: píldora oscura borrosa */
+html:not([data-tema="barrio"]) .toast{background:rgba(28,28,30,.78);color:#fff;-webkit-backdrop-filter:blur(20px) saturate(180%);backdrop-filter:blur(20px) saturate(180%);border-radius:999px;padding:11px 20px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+/* accesibilidad */
+@media (prefers-reduced-transparency:reduce){html:not([data-tema="barrio"]){--glass:var(--card);--glass-hi:var(--card);--blur:none}html:not([data-tema="barrio"])::before{display:none}}
+@media (prefers-contrast:more){html:not([data-tema="barrio"]){--glass-line:color-mix(in srgb,var(--fg) 35%,transparent)}}
+@media (prefers-reduced-motion:reduce){html:not([data-tema="barrio"]) :is(.tile,.btn,.chip,.opt,.reveal){transition:none!important;transform:none!important}}
 </style>
 </head>
 <body>
@@ -772,6 +857,7 @@ html[data-tema] .tile.main{color:var(--on-acc)!important}html[data-tema] .tile.m
     <h3>⚔️ Versus en vivo</h3><p>Uno crea la sala y comparte el código de 4 dígitos; los demás entran con «Unirme con código». Todos ven la misma pregunta al mismo tiempo: gana más puntos quien acierta más rápido, y al final hay podio.</p>
     <h3>🥊 Tu personaje</h3><p>Al entrar eliges un personaje y le pones tu nombre, o creas el tuyo con tu foto (📷): la foto se queda solo en tu navegador. Empiezas con 5 personajes y se desbloquea uno nuevo cada 150 puntos. Se queda en la esquina con tu % dominado: brinca cuando aciertas y se tambalea cuando fallas. Tócalo para cambiarlo.</p>
     <h3>🎨 Colores y 🧠 cerebro</h3><p>Cambia el color con 🎨 (hay Halloween 🎃, Navidad 🎄 y Los chicos del barrio 🛹). Dale clic al cerebro de abajo para un «¿sabías que…?».</p>
+    <h3>📱 Como app en tu celular</h3><p>En iPhone, ábrelo en Safari, toca Compartir y «Agregar a pantalla de inicio». En Android, menú ⋮ → «Instalar app». Se abre a pantalla completa, como una app.</p>
     <h3>💾 Tu progreso</h3><p>Todo se guarda automáticamente en este navegador: no hay cuentas ni servidor, y no se borra cuando actualizamos el simulador. Además se hace un respaldo automático diario. Para cambiar de celular o computadora, usa «💾 Exportar progreso» (descarga un archivo) y en el otro dispositivo «📥 Importar progreso». Si borras los datos del navegador sin exportar, se pierde.</p>
     <button class="btn" id="hOk" style="width:100%;margin-top:12px">Entendido</button>
   </div>
@@ -854,13 +940,16 @@ const RXV=["rLogin","rMenu","rIntro","rCase","rConfirm","rRes"];
 const byId=()=>{const m=new Map();DATA.concat(SIMD).forEach(d=>m.set(d.id,d));return m};
 let ID=null;const item=id=>(ID=ID||byId()).get(id);
 const rxSave=()=>sv(K_RX,RX);
+let wakeL=null;async function despierto(on){try{if(on&&!wakeL&&navigator.wakeLock){wakeL=await navigator.wakeLock.request("screen");wakeL.addEventListener("release",()=>{wakeL=null})}else if(!on&&wakeL){await wakeL.release();wakeL=null}}catch(e){}}
+document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible"&&(!$("real").classList.contains("hidden")||!$("vs").classList.contains("hidden")))despierto(true)});
 function rxView(v){
+  despierto(v!=="rRes");
   foco(v!=="rRes");
   ["home","quiz","end","read"].forEach(s=>$(s).classList.add("hidden"));$("real").classList.remove("hidden");
   RXV.forEach(x=>$(x).classList.toggle("hidden",x!==v));window.scrollTo({top:0,behavior:"instant"});
   clearInterval(rxTick);if(v==="rMenu"||v==="rCase"){rxClock();rxTick=setInterval(rxClock,1000)}
 }
-function rxHome(){foco(false);clearInterval(rxTick);$("rCalc").classList.add("hidden");$("real").classList.add("hidden");$("home").classList.remove("hidden");drawReal();renderMine();drawLect();window.scrollTo({top:0})}
+function rxHome(){foco(false);despierto(false);clearInterval(rxTick);$("rCalc").classList.add("hidden");$("real").classList.add("hidden");$("home").classList.remove("hidden");drawReal();renderMine();drawLect();window.scrollTo({top:0})}
 function rxClock(){if(!RX)return;const s=Math.floor((Date.now()-RX.start+(RX.paused||0))/1000)-(RX.pausedAt?Math.floor((Date.now()-RX.pausedAt)/1000):0);
   const t=`⏱ ${String(Math.floor(s/3600)).padStart(2,"0")}:${String(Math.floor(s/60)%60).padStart(2,"0")}:${String(s%60).padStart(2,"0")}`;$("rClock").textContent=t;$("rClock2").textContent=t;
   const late=s>=7200;$("rClock").classList.toggle("late",late);$("rClock2").classList.toggle("late",late);if(late&&!RX.lateWarn){RX.lateWarn=true;rxSave();big("⏱ Pasaron las 2 horas","en el examen real ya se habría cerrado")}}
@@ -1098,8 +1187,8 @@ const VSC=["▲","◆","●","■","★"];let VS=null;
 const vesc=t=>String(t==null?"":t).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const vsMe=()=>({nombre:(PJ&&PJ.nombre)||"Jugador",pj:PJ&&PJ.id!=="yo"?String(PJ.id):""});
 function vsAv(pj,nombre){const p=pj&&PJS.find(x=>String(x.id)===String(pj));return p?`<img class="vsav" src="${p.img}" alt="">`:`<span class="vsav">${vesc((nombre||"?").trim().split(/\s+/).map(w=>w[0]).slice(0,2).join("").toUpperCase())}</span>`}
-function vsView(){["home","quiz","end","read","real"].forEach(x=>$(x).classList.add("hidden"));$("vs").classList.remove("hidden");window.scrollTo({top:0,behavior:"instant"})}
-function vsSalir(msg){if(VS){clearInterval(VS.tick);clearTimeout(VS.auto);try{VS.ws.onclose=null;VS.ws.close()}catch(e){}}VS=null;$("vs").classList.add("hidden");$("home").classList.remove("hidden");showPane("vs");if(msg)toast(msg)}
+function vsView(){despierto(true);["home","quiz","end","read","real"].forEach(x=>$(x).classList.add("hidden"));$("vs").classList.remove("hidden");window.scrollTo({top:0,behavior:"instant"})}
+function vsSalir(msg){despierto(false);if(VS){clearInterval(VS.tick);clearTimeout(VS.auto);try{VS.ws.onclose=null;VS.ws.close()}catch(e){}}VS=null;$("vs").classList.add("hidden");$("home").classList.remove("hidden");showPane("vs");if(msg)toast(msg)}
 function vsDraw(h){$("vsBox").innerHTML=h;const x=$("vsX");if(x)x.onclick=()=>{if(!VS||confirm("¿Salir de la sala?"))vsSalir()}}
 function vsLobby(){const L=VS.host?Object.values(VS.jug):VS.lista||[];
   vsDraw(`<div class="vsh">${VS.host?"Comparte este código":"Estás en la sala"}</div><div class="vscode">${VS.code}</div><p class="vss">${VS.host?"Tus compañeros entran en «⚔️ Versus en vivo → Unirme con código».":"Espera a que el anfitrión empiece…"}</p>
@@ -1181,6 +1270,10 @@ $("vsCrear").onclick=()=>{if(!PJS.length){toast("Espera a que carguen los person
 $("vsUnir").onclick=vsUnir;$("vsCode").onkeydown=e=>{if(e.key==="Enter")vsUnir()};
 function vsTemas(){const c={};allMcq().forEach(it=>c[it.tag]=(c[it.tag]||0)+1);$("vsTema").innerHTML=`<option value="">Todos los temas</option>`+Object.keys(TAGS).filter(t=>c[t]>=5).map(t=>`<option value="${t}">${TAGS[t]} (${c[t]})</option>`).join("")}
 
+// íconos de línea de los mosaicos (estilo iOS)
+(()=>{const IC={"goSmart": ["var(--acc)", "<path d=\"M8 5.5v13l10.5-6.5z\" fill=\"currentColor\" stroke=\"none\"/>"], "vs": ["#ff375f", "<path d=\"M14.5 17.5 3 6V3h3l11.5 11.5M13 19l6-6M16 16l4 4M19 21l2-2M14.5 6.5 18 3h3v3l-3.5 3.5M5 14l4 4M7 17l-3 3M3 19l2 2\"/>"], "real": ["#5856d6", "<path d=\"M3 22h18M6 18v-7M10 18v-7M14 18v-7M18 18v-7M12 2l8 5H4z\"/>"], "lec": ["#ff9f0a", "<path d=\"M2 4h6a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H2zM22 4h-6a4 4 0 0 0-4 4v13a3 3 0 0 1 3-3h7z\"/>"], "sims": ["#34c759", "<rect x=\"8\" y=\"2\" width=\"8\" height=\"4\" rx=\"1\"/><path d=\"M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2M12 11h4M12 16h4M8 11h.01M8 16h.01\"/>"], "temas": ["#ff453a", "<circle cx=\"12\" cy=\"12\" r=\"9\"/><circle cx=\"12\" cy=\"12\" r=\"5\"/><circle cx=\"12\" cy=\"12\" r=\"1.5\" fill=\"currentColor\"/>"], "libre": ["#0a84ff", "<circle cx=\"11\" cy=\"11\" r=\"7\"/><path d=\"m20 20-4-4\"/>"], "tHelp": ["#8e8e93", "<circle cx=\"12\" cy=\"12\" r=\"9.5\"/><path d=\"M9.2 9.3a3 3 0 0 1 5.6 1c0 2-3 2.6-3 4.2M12 17.6h.01\"/>"], "tWeak": ["#30b0c7", "<path d=\"M3 12a9 9 0 1 0 2.6-6.4L3 8.2\"/><path d=\"M3 3v5.2h5.2\"/>"]};
+  document.querySelectorAll("#tiles .tile").forEach(t=>{const k=t.id||t.dataset.pane,v=IC[k];if(!v)return;const ti=t.querySelector(".ti");if(!ti)return;
+    ti.innerHTML=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${v[1]}</svg>`;ti.style.setProperty("--ic",v[0])})})();
 // ——— calculadora científica (como la del examen) ———
 (()=>{
   const K=["7","8","9","÷","√","4","5","6","×","x²","1","2","3","−","(","0",".","%","+",")","sin","cos","log","ln","π","C","⌫","^","Ans","="];

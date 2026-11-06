@@ -26,14 +26,16 @@ async function ok(key) { try { return td.decode(await dec(key, b64(CHK))) === "s
 function css() {
   const s = document.createElement("style");
   s.textContent = `#acc{position:fixed;inset:0;z-index:100;background:var(--bg,#faf9f7);display:grid;place-items:center;padding:24px 16px;overflow:auto}
-#acc form{width:100%;max-width:380px;background:var(--card,#fff);border:1px solid var(--line,#e4e0da);border-radius:16px;padding:24px 22px;box-shadow:0 1px 2px rgba(0,0,0,.04),0 4px 16px rgba(0,0,0,.05)}
+#acc{background:radial-gradient(40vmax 40vmax at 10% 0%,color-mix(in srgb,var(--acc,#6d2233) 26%,transparent),transparent 70%),radial-gradient(40vmax 40vmax at 90% 100%,color-mix(in srgb,#34c759 12%,transparent),transparent 70%),var(--bg,#faf9f7)!important}
+#acc form{width:100%;max-width:380px;background:color-mix(in srgb,var(--card,#fff) 66%,transparent);-webkit-backdrop-filter:saturate(180%) blur(22px);backdrop-filter:saturate(180%) blur(22px);border:1px solid color-mix(in srgb,var(--fg,#1d1b19) 9%,transparent);border-radius:26px;padding:26px 22px;box-shadow:0 24px 60px rgba(20,10,15,.14),inset 0 1px 0 rgba(255,255,255,.55)}
 #acc .lg{font-size:30px;color:var(--acc,#6d2233);font-weight:700;line-height:1}
 #acc h1{font-size:22px;margin:10px 0 4px;letter-spacing:-.01em}
 #acc p{color:var(--mut,#6b655e);font-size:14px;margin:0 0 16px}
 #acc label{display:block;font-size:13.5px;font-weight:600;margin:12px 0 4px}
-#acc input{width:100%;font:inherit;font-size:16px;padding:11px 14px;border:1px solid var(--line,#e4e0da);border-radius:12px;background:var(--bg,#faf9f7);color:var(--fg,#1d1b19)}
+#acc input{width:100%;font:inherit;font-size:16px;padding:12px 14px;border:1px solid var(--line,#e4e0da);border-radius:14px;background:var(--bg,#faf9f7);color:var(--fg,#1d1b19)}
 #acc input:focus{outline:2px solid var(--acc,#6d2233);outline-offset:1px}
-#acc button{width:100%;margin-top:18px;font:inherit;font-weight:600;border:0;border-radius:12px;padding:12px 20px;min-height:46px;cursor:pointer;background:var(--acc,#6d2233);color:#fff}
+#acc button{width:100%;margin-top:18px;font:inherit;font-weight:600;border:0;border-radius:14px;padding:12px 20px;min-height:48px;cursor:pointer;background:linear-gradient(180deg,color-mix(in srgb,var(--acc,#6d2233) 90%,#fff 10%),var(--acc,#6d2233));color:#fff;box-shadow:0 8px 20px color-mix(in srgb,var(--acc,#6d2233) 30%,transparent),inset 0 1px 0 rgba(255,255,255,.25);transition:transform .34s cubic-bezier(.34,1.56,.64,1)}
+#acc button:active{transform:scale(1.04)}
 #acc button:disabled{opacity:.6}
 #acc .er{color:var(--bad,#b3261e);font-size:14px;margin:12px 0 0;min-height:1.2em}
 @media (prefers-color-scheme:dark){#acc{background:var(--bg,#131211)}#acc form{background:var(--card,#1c1a19);border-color:var(--line,#2f2c29);box-shadow:none}#acc input{background:var(--bg,#131211);color:var(--fg,#f2efea);border-color:var(--line,#2f2c29)}#acc h1{color:var(--fg,#f2efea)}#acc button{color:#1a1110}}`;
