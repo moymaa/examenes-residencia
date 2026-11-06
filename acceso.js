@@ -4,7 +4,7 @@
    SALT y CHK los escribe ~/Documents/Profesor/Banco PUEM/simulador/cifrar.py — no editarlos a mano. */
 (() => {
 const SALT = "KZZKnBOjyr6SdFEAocwm8A==";
-const CHK = "r622P5B1HxS//X1nFqzWtusM5Qi/gI+cgVz34wcSsY9HvNG4Ddc=";
+const CHK = "Rvl2XLmOEFbQUnIjX4Ec3py/kuJ8zMA62nO11iZe37kbO453I3k=";
 const ITER = 310000, KEY = "simpsiq_llave_v1";
 const b64 = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
 const u64 = a => btoa(String.fromCharCode(...new Uint8Array(a)));
@@ -86,7 +86,9 @@ window.ACCESO = {
     const key = await this.ready();
     const r = await fetch(url, { cache: "no-cache" });
     if (!r.ok) throw new Error("http " + r.status);
-    return JSON.parse(td.decode(await dec(key, await r.arrayBuffer())));
+    let raw = new Uint8Array(await dec(key, await r.arrayBuffer()));
+    if (raw[0] === 0x1f && raw[1] === 0x8b) raw = new Uint8Array(await new Response(new Blob([raw]).stream().pipeThrough(new DecompressionStream("gzip"))).arrayBuffer()); // comprimido antes de cifrar
+    return JSON.parse(td.decode(raw));
   },
   salir() { try { localStorage.removeItem(KEY); } catch (e) {} location.reload(); }
 };

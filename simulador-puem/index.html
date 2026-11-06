@@ -2,6 +2,8 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' wss://simpsiq-salas.pages.dev ws://127.0.0.1:8787; object-src 'none'; base-uri 'self'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow">
 <title>Simulador PUEM · Psiquiatría</title>
@@ -334,7 +336,7 @@ html.foco #xbq{display:none}
 #sel .sh{font:italic 900 clamp(26px,6vw,44px)/1 "Arial Black",Impact,sans-serif;letter-spacing:.02em;text-align:center;margin:6px 0 14px;text-shadow:0 3px 0 #e8261f,0 6px 0 #000}
 #sel .ss{text-align:center;color:#c9d2e3;font-size:14px;margin:0 0 12px}
 .selg{display:grid;grid-template-columns:repeat(auto-fill,minmax(92px,1fr));gap:8px;max-width:980px;margin:0 auto}
-.pj{position:relative;aspect-ratio:1;border:3px solid #2b3350;border-radius:10px;overflow:hidden;cursor:pointer;background:#000;padding:0;transition:transform .12s,border-color .12s,box-shadow .12s}
+.pj{position:relative;isolation:isolate;aspect-ratio:1;border:3px solid #2b3350;border-radius:10px;overflow:hidden;cursor:pointer;background:#000;padding:0;transition:transform .12s,border-color .12s,box-shadow .12s}
 .pj img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.85)}
 .pj span{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(transparent,rgba(0,0,0,.85));font:800 11.5px/1.15 system-ui,sans-serif;padding:14px 4px 4px;text-align:center;color:#fff;text-transform:uppercase}
 .pj:hover,.pj:focus-visible{transform:scale(1.08);border-color:#ffd400;box-shadow:0 0 18px #ffd400;z-index:2;outline:none}
@@ -347,7 +349,7 @@ html.foco #xbq{display:none}
 .pj .cam{position:absolute;top:4px;right:4px;background:#ffd400;color:#141414;border-radius:6px;font:800 10px system-ui,sans-serif;padding:2px 5px;border:2px solid #000}
 .selp .priv{font-size:12px;color:#ffe3e0;margin-top:4px}
 .pj.on{border-color:#e8261f;box-shadow:0 0 0 3px #fff,0 0 24px #e8261f}.pj.on::after{content:"P1";position:absolute;top:4px;left:4px;background:#e8261f;color:#fff;font:italic 900 13px "Arial Black",sans-serif;padding:2px 6px;border-radius:6px;border:2px solid #fff}
-.selp{position:sticky;bottom:0;max-width:980px;margin:14px auto 0;display:flex;gap:14px;align-items:center;background:linear-gradient(90deg,#e8261f,#8f1410);border:3px solid #fff;border-radius:14px;padding:10px 14px;box-shadow:0 10px 30px rgba(0,0,0,.5)}
+.selp{position:sticky;bottom:0;z-index:5;max-width:980px;margin:14px auto 0;display:flex;gap:14px;align-items:center;background:linear-gradient(90deg,#e8261f,#8f1410);border:3px solid #fff;border-radius:14px;padding:10px 14px;box-shadow:0 10px 30px rgba(0,0,0,.5)}
 .selp img{flex:none;width:96px;height:96px;object-fit:cover;border-radius:10px;border:3px solid #fff;animation:selin .35s cubic-bezier(.2,1.5,.4,1)}
 @keyframes selin{from{transform:translateX(-30px) scale(.7);opacity:0}}
 .selp .nm{font:italic 900 clamp(20px,4.5vw,32px)/1.05 "Arial Black",Impact,sans-serif;text-transform:uppercase;text-shadow:0 3px 0 #000;word-break:break-word}
@@ -551,6 +553,10 @@ html:not([data-tema="barrio"]) .bar i{border-radius:99px}
 html:not([data-tema="barrio"]) .seg button[aria-selected=true]{background:var(--glass-hi);box-shadow:0 2px 8px rgba(0,0,0,.08),var(--spec)}
 /* toast tipo iOS: píldora oscura borrosa */
 html:not([data-tema="barrio"]) .toast{background:rgba(28,28,30,.78);color:#fff;-webkit-backdrop-filter:blur(20px) saturate(180%);backdrop-filter:blur(20px) saturate(180%);border-radius:999px;padding:11px 20px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+/* controles nativos más grandes y con el color del tema; enlaces de referencias con área de toque */
+.rxq label.op input,.rxq label.doubt input{width:20px;height:20px;accent-color:var(--acc);flex:none}
+.rxq label.op{min-height:44px;align-items:center}
+.rb.lect a,.exp a{display:inline-block;padding:4px 0}
 /* botones de regresar: grandes, tipo iOS, en todos los temas */
 :is([data-back],#rdBack,#rBackMenu,#rCancel){display:inline-flex!important;align-items:center;gap:6px;font-size:16.5px!important;font-weight:650;min-height:48px;padding:10px 20px 10px 14px!important;border-radius:999px!important;border:1px solid var(--glass-line,var(--line))!important;background:var(--glass-hi,var(--card))!important;color:var(--acc)!important;box-shadow:var(--spec,none),0 4px 14px rgba(0,0,0,.06);cursor:pointer;transition:transform .3s cubic-bezier(.34,1.56,.64,1)}
 :is([data-back],#rdBack,#rBackMenu,#rCancel):active{transform:scale(1.05)}
@@ -880,7 +886,7 @@ html[data-tema="barrio"] :is([data-back],#rdBack,#rBackMenu,#rCancel){border:3px
 <footer>Material de estudio para la residencia de Psiquiatría. Las claves se revisaron contra la literatura; cuando la respuesta del banco original estaba mal se indica con ⚠️ y cuando la pregunta es ambigua, con ⚖️.</footer>
 </main>
 
-<script src="../acceso.js"></script>
+<script src="../acceso.js?v=3"></script>
 <script>
 (()=>{
 const BANK_ORDER=["R1","R2","R3","R4","R3–R4 repaso","Consejo 2021","Infanto-juvenil 2016"];
@@ -1160,6 +1166,7 @@ function fotoPropia(file){if(!file)return;const url=URL.createObjectURL(file),im
     try{localStorage.setItem(K_MIPJ,JSON.stringify(MIPJ))}catch(e){toast("No se pudo guardar la foto en este navegador");return}
     selPick=null;selDraw();selSet("yo")};
   im.onerror=()=>{URL.revokeObjectURL(url);toast("No pude abrir esa imagen; prueba con otra (JPG o PNG)")};im.src=url}
+$("selName").addEventListener("input",()=>{selNameEditado=true});
 $("selFile").onchange=e=>{fotoPropia(e.target.files&&e.target.files[0]);e.target.value=""};
 function hud(){const p=PJ&&pjOf(PJ.id);$("hud").classList.toggle("hidden",!p);if(!p)return;
   $("hudI").src=p.img;$("hudN").textContent=PJ.nombre||p.n;
@@ -1173,13 +1180,14 @@ function selDraw(){
   $("selG").querySelectorAll(".pj.lock").forEach(b=>b.onclick=()=>{toast("🔒 Se desbloquea con "+pjPts(+b.dataset.lock).toLocaleString("es-MX")+" puntos. ¡Sigue contestando!")});
   if($("pjNew"))$("pjNew").onclick=()=>$("selFile").click();
   $("selG").querySelectorAll(".pj[data-id]").forEach(b=>{const id=b.dataset.id==="yo"?"yo":+b.dataset.id,p=pjOf(id);b.querySelector("span").textContent=p.n;b.setAttribute("aria-label",p.n);
-    b.onclick=e=>{if(e.target.closest("[data-cam]")){$("selFile").click();return}selSet(p.id)};b.onmouseenter=()=>selPrev(p)});
+    b.onclick=e=>{if(e.target.closest("[data-cam]")){$("selFile").click();return}selSet(p.id)}});
   selPrev(pjOf(selPick)||PJS[0],true)}
 function selPrev(p,keep){if(!p)return;$("selPriv").classList.toggle("hidden",!p.yo);$("selI").src=p.img;$("selI").style.animation="none";void $("selI").offsetWidth;$("selI").style.animation="";$("selN").textContent=p.n;}
-function selSet(id){const prevDefault=selPick&&pjOf(selPick)?pjOf(selPick).n:"";selPick=id;const p=pjOf(id);
-  if(!$("selName").value||$("selName").value===prevDefault)$("selName").value=p.n;
+let selNameEditado=false;
+function selSet(id){selPick=id;const p=pjOf(id);
+  if(!selNameEditado||!$("selName").value.trim())$("selName").value=p.n;
   $("selG").querySelectorAll(".pj[data-id]").forEach(b=>b.classList.toggle("on",(b.dataset.id==="yo"?"yo":+b.dataset.id)===id));selPrev(p);try{chime()}catch(e){}}
-function selOpen(){if(!PJS.length)return;selPick=PJ?PJ.id:null;$("selName").value=PJ?(PJ.nombre||""):"";selDraw();$("sel").classList.remove("hidden");document.documentElement.style.overflow="hidden"}
+function selOpen(){if(!PJS.length)return;selPick=PJ?PJ.id:null;$("selName").value=PJ?(PJ.nombre||""):"";{const c=PJ&&pjOf(PJ.id);selNameEditado=!!(PJ&&c&&PJ.nombre&&PJ.nombre!==c.n)}selDraw();$("sel").classList.remove("hidden");document.documentElement.style.overflow="hidden"}
 function selClose(){$("sel").classList.add("hidden");document.documentElement.style.overflow=""}
 $("selRnd").onclick=()=>{const L=PJO.filter(p=>pjLibre(p.id)),p=L[Math.floor(Math.random()*L.length)];if(!p)return;selSet(p.id);$("selG").querySelector(`[data-id="${p.id}"]`).scrollIntoView({block:"nearest",behavior:"smooth"})};
 $("selOk").onclick=()=>{if(!selPick){$("selRnd").click();return}const p=pjOf(selPick),nm=$("selName").value.trim()||p.n;
