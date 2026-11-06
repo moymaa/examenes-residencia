@@ -1,0 +1,93 @@
+/* Acceso a «Simuladores Psiquiatría».
+   El contenido (bancos, lecturas) va cifrado con AES-GCM; la llave sale del correo y la contraseña
+   (PBKDF2-SHA256). Sin las credenciales correctas los .enc no se pueden leer.
+   SALT y CHK los escribe ~/Documents/Profesor/Banco PUEM/simulador/cifrar.py — no editarlos a mano. */
+(() => {
+const SALT = "KZZKnBOjyr6SdFEAocwm8A==";
+const CHK = "4ha7gzRPeUq5EU7HMBwkf2uLuG/aTyyvwg+a4Ssf+o05kk6oOXE=";
+const ITER = 310000, KEY = "simpsiq_llave_v1";
+const b64 = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
+const u64 = a => btoa(String.fromCharCode(...new Uint8Array(a)));
+const te = new TextEncoder(), td = new TextDecoder();
+let keyP = null;
+
+async function derive(user, pass) {
+  const base = await crypto.subtle.importKey("raw", te.encode(user.trim().toLowerCase() + "\n" + pass), "PBKDF2", false, ["deriveBits"]);
+  const bits = await crypto.subtle.deriveBits({ name: "PBKDF2", hash: "SHA-256", salt: b64(SALT), iterations: ITER }, base, 256);
+  return bits;
+}
+const imp = raw => crypto.subtle.importKey("raw", raw, "AES-GCM", false, ["decrypt"]);
+async function dec(key, buf) {
+  const a = new Uint8Array(buf);
+  return crypto.subtle.decrypt({ name: "AES-GCM", iv: a.slice(0, 12) }, key, a.slice(12));
+}
+async function ok(key) { try { return td.decode(await dec(key, b64(CHK))) === "simpsiq-ok"; } catch (e) { return false; } }
+
+function css() {
+  const s = document.createElement("style");
+  s.textContent = `#acc{position:fixed;inset:0;z-index:100;background:var(--bg,#faf9f7);display:grid;place-items:center;padding:24px 16px;overflow:auto}
+#acc form{width:100%;max-width:380px;background:var(--card,#fff);border:1px solid var(--line,#e4e0da);border-radius:16px;padding:24px 22px;box-shadow:0 1px 2px rgba(0,0,0,.04),0 4px 16px rgba(0,0,0,.05)}
+#acc .lg{font-size:30px;color:var(--acc,#6d2233);font-weight:700;line-height:1}
+#acc h1{font-size:22px;margin:10px 0 4px;letter-spacing:-.01em}
+#acc p{color:var(--mut,#6b655e);font-size:14px;margin:0 0 16px}
+#acc label{display:block;font-size:13.5px;font-weight:600;margin:12px 0 4px}
+#acc input{width:100%;font:inherit;font-size:16px;padding:11px 14px;border:1px solid var(--line,#e4e0da);border-radius:12px;background:var(--bg,#faf9f7);color:var(--fg,#1d1b19)}
+#acc input:focus{outline:2px solid var(--acc,#6d2233);outline-offset:1px}
+#acc button{width:100%;margin-top:18px;font:inherit;font-weight:600;border:0;border-radius:12px;padding:12px 20px;min-height:46px;cursor:pointer;background:var(--acc,#6d2233);color:#fff}
+#acc button:disabled{opacity:.6}
+#acc .er{color:var(--bad,#b3261e);font-size:14px;margin:12px 0 0;min-height:1.2em}
+@media (prefers-color-scheme:dark){#acc{background:var(--bg,#131211)}#acc form{background:var(--card,#1c1a19);border-color:var(--line,#2f2c29);box-shadow:none}#acc input{background:var(--bg,#131211);color:var(--fg,#f2efea);border-color:var(--line,#2f2c29)}#acc h1{color:var(--fg,#f2efea)}#acc button{color:#1a1110}}`;
+  document.head.appendChild(s);
+}
+
+function gate() {
+  return new Promise(res => {
+    css();
+    const w = document.createElement("div"); w.id = "acc";
+    w.innerHTML = `<form autocomplete="on"><div class="lg">Ψ</div><h1>Simuladores Psiquiatría</h1>
+<p>Material de estudio para la residencia de Psiquiatría.</p>
+<label for="accU">Correo</label><input id="accU" type="email" name="username" autocomplete="username" required>
+<label for="accP">Contraseña</label><input id="accP" type="password" name="password" autocomplete="current-password" required>
+<button type="submit">Entrar</button><div class="er" id="accE" role="alert"></div></form>`;
+    document.body.appendChild(w);
+    document.documentElement.style.overflow = "hidden";
+    const f = w.querySelector("form"), btn = w.querySelector("button"), er = w.querySelector("#accE");
+    w.querySelector("#accU").focus();
+    f.onsubmit = async e => {
+      e.preventDefault(); btn.disabled = true; btn.textContent = "Verificando…"; er.textContent = "";
+      try {
+        const raw = await derive(w.querySelector("#accU").value, w.querySelector("#accP").value);
+        const key = await imp(raw);
+        if (await ok(key)) {
+          try { localStorage.setItem(KEY, u64(raw)); } catch (e) {}
+          w.remove(); document.documentElement.style.overflow = ""; res(key); return;
+        }
+        er.textContent = "Correo o contraseña incorrectos.";
+      } catch (e) { er.textContent = "No se pudo verificar. Intenta de nuevo."; }
+      btn.disabled = false; btn.textContent = "Entrar";
+    };
+  });
+}
+
+async function getKey() {
+  try {
+    const s = localStorage.getItem(KEY);
+    if (s) { const k = await imp(b64(s)); if (await ok(k)) return k; localStorage.removeItem(KEY); }
+  } catch (e) {}
+  if (document.readyState === "loading") await new Promise(r => document.addEventListener("DOMContentLoaded", r, { once: true }));
+  return gate();
+}
+
+window.ACCESO = {
+  ready: () => keyP || (keyP = getKey()),
+  async json(url) {
+    const key = await this.ready();
+    const r = await fetch(url, { cache: "no-cache" });
+    if (!r.ok) throw new Error("http " + r.status);
+    return JSON.parse(td.decode(await dec(key, await r.arrayBuffer())));
+  },
+  salir() { try { localStorage.removeItem(KEY); } catch (e) {} location.reload(); }
+};
+// las páginas sin contenido cifrado (índice, exámenes) solo piden el acceso
+if (document.currentScript && document.currentScript.dataset.gate !== undefined) window.ACCESO.ready();
+})();
