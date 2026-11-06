@@ -390,6 +390,7 @@ html.foco #xbq{display:none}
 .selp{position:sticky;bottom:0;z-index:5;max-width:980px;margin:14px auto 0;display:flex;gap:14px;align-items:center;background:linear-gradient(90deg,#e8261f,#8f1410);border:3px solid #fff;border-radius:14px;padding:10px 14px;box-shadow:0 10px 30px rgba(0,0,0,.5)}
 .selp img{flex:none;width:96px;height:96px;object-fit:cover;border-radius:10px;border:3px solid #fff;animation:selin .35s cubic-bezier(.2,1.5,.4,1)}
 @keyframes selin{from{transform:translateX(-30px) scale(.7);opacity:0}}
+.selp .ds{font-size:13.5px;font-style:italic;opacity:.85;margin:2px 0 6px}
 .selp .nm{font:italic 900 clamp(20px,4.5vw,32px)/1.05 "Arial Black",Impact,sans-serif;text-transform:uppercase;text-shadow:0 3px 0 #000;word-break:break-word}
 .selp .fr{font-size:13px;color:#ffe3e0;margin-top:2px}
 .selp input{width:100%;margin-top:6px;font:inherit;font-size:15px;padding:8px 10px;border-radius:8px;border:2px solid #000;background:#fff;color:#141414}
@@ -882,7 +883,7 @@ html[data-tema="barrio"] :is([data-back],#rdBack,#rBackMenu,#rCancel){border:3px
   <div class="sh" id="selT">ELIGE A TU PERSONAJE</div>
   <div class="selc" id="selC"></div>
   <div class="selg" id="selG"></div>
-  <div class="selp" id="selP"><img id="selI" alt=""><div class="mid"><div class="nm" id="selN">¿Quién serás?</div><input id="selName" maxlength="28" placeholder="Tu nombre de jugador (opcional)" aria-label="Tu nombre de jugador"><div class="priv hidden" id="selPriv">🔒 Tu foto se queda solo en este navegador: no se sube a ningún lado.</div><input type="file" id="selFile" accept="image/*" class="hidden"></div>
+  <div class="selp" id="selP"><img id="selI" alt=""><div class="mid"><div class="nm" id="selN">¿Quién serás?</div><div class="ds hidden" id="selD"></div><input id="selName" maxlength="28" placeholder="Tu nombre de jugador (opcional)" aria-label="Tu nombre de jugador"><div class="priv hidden" id="selPriv">🔒 Tu foto se queda solo en este navegador: no se sube a ningún lado.</div><input type="file" id="selFile" accept="image/*" class="hidden"></div>
     <div class="bt"><button type="button" id="selOk">¡LISTO!</button><button type="button" class="sec" id="selRnd">🎲 Al azar</button></div></div>
 </div>
 <div id="deco" aria-hidden="true"></div>
@@ -1241,7 +1242,7 @@ function selDraw(){
   $("selG").querySelectorAll(".pj[data-id]").forEach(b=>{const id=b.dataset.id==="yo"?"yo":+b.dataset.id,p=pjOf(id);b.querySelector("span").textContent=p.n;b.setAttribute("aria-label",p.n);
     b.onclick=e=>{if(e.target.closest("[data-cam]")){$("selFile").click();return}selSet(p.id)}});
   selPrev(pjOf(selPick)||PJS[0],true)}
-function selPrev(p,keep){if(!p)return;$("selPriv").classList.toggle("hidden",!p.yo);$("selI").src=p.img;$("selI").style.animation="none";void $("selI").offsetWidth;$("selI").style.animation="";$("selN").textContent=p.n;}
+function selPrev(p,keep){if(!p)return;$("selPriv").classList.toggle("hidden",!p.yo);$("selI").src=p.img;$("selI").style.animation="none";void $("selI").offsetWidth;$("selI").style.animation="";$("selN").textContent=p.n;$("selD").textContent=p.f||"";$("selD").classList.toggle("hidden",!p.f);}
 let selNameEditado=false;
 function selSet(id){selPick=id;const p=pjOf(id);
   if(!selNameEditado||!$("selName").value.trim())$("selName").value=p.n;
