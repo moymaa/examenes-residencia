@@ -1486,9 +1486,9 @@ folds();
 const K_EV=PFX+"ev_v1";let EVD=null,EV=(()=>{const x=ld(K_EV,null)||{};return {done:x.done||{},pend:x.pend||[],last:x.last||{},n:x.n||{b:0,i:0}}})();
 const evSv=()=>sv(K_EV,EV),evLetra=k=>"ABCD"[k];
 const evLibre=()=>!document.querySelector(".dlgq,#sorp,#acaAnun,#evDlg")&&!document.documentElement.classList.contains("foco")&&!(typeof EXAM!=="undefined"&&EXAM);
-function evElige(lista,yr){const ok=yr?lista.filter(c=>!c.y||YRS().includes(c.y)):lista;const base=ok.length?ok:lista;
-  const nuevos=base.filter(c=>!EV.done[c.id]&&!EV.pend.includes(c.id));if(nuevos.length)return nuevos[Math.floor(Math.random()*nuevos.length)];
-  return base.filter(c=>!EV.pend.includes(c.id)).sort((a,b)=>String((EV.done[a.id]||{}).f).localeCompare(String((EV.done[b.id]||{}).f)))[0]||null}
+// cada caso sale una sola vez: cuando ya te salieron todos, ese evento deja de aparecer
+function evElige(lista,yr){const base=yr?lista.filter(c=>!c.y||YRS().includes(c.y)):lista;
+  const nuevos=base.filter(c=>!EV.done[c.id]&&!EV.pend.includes(c.id));return nuevos.length?nuevos[Math.floor(Math.random()*nuevos.length)]:null}
 function evTick(){if(!EVD||!evLibre())return;const t=todayStr(),n=XP.day&&XP.day.d===t?XP.day.n:0;
   if(EV.last.b!==t&&n>=8&&Math.random()<0.05){const c=evElige(EVD.boss,true);if(c){EV.last.b=t;evSv();setTimeout(()=>evBoss(c),1300);return}}
   if(Date.now()-(EV.last.i||0)>20*60e3&&n>=3&&Math.random()<0.08){const c=evElige(EVD.ic,false);if(c){EV.last.i=Date.now();evSv();setTimeout(()=>evIc(c),1300)}}}
@@ -1508,7 +1508,7 @@ function evBossJuega(c,k,res){k=k||0;res=res||[];const q=c.qs[k];EV.pend=EV.pend
     <p class="evq">${q.q}</p><div class="evo">${q.opts.map((o,j)=>`<button type="button" data-j="${j}"><b>${evLetra(j)}</b><span>${o}</span></button>`).join("")}</div>
     <div class="evexp hidden" id="evExp"></div><div class="evdots">${c.qs.map((_,j)=>`<i class="${j<res.length?(res[j]?"g":"r"):j===k?"a":""}"></i>`).join("")}</div>
     <button type="button" class="ok hidden" id="evNext">${k<4?"Siguiente ▶":"Ver resultado"}</button><button type="button" class="ok sec2" id="evPause">⏸ Pausar y guardar</button></div>`);
-  w.querySelector("#evPause").onclick=()=>{if(!res.length){if(!EV.pend.includes(c.id))EV.pend.push(c.id);evSv();toast("📌 Guardado en Pendientes")}else toast("Lo que llevas no cuenta: el Papoi se va");evCierra()};
+  w.querySelector("#evPause").onclick=()=>{if(!res.length){if(!EV.pend.includes(c.id))EV.pend.push(c.id);evSv();toast("📌 Guardado en Pendientes")}else{EV.done[c.id]={c:res.filter(Boolean).length,t:5,f:todayStr(),ab:1};evSv();toast("Lo que llevas no cuenta: el Papoi se va")}evCierra()};
   w.querySelectorAll(".evo button").forEach(b=>b.onclick=()=>{const j=+b.dataset.j,ok=j===q.ok;res.push(ok);
     w.querySelectorAll(".evo button").forEach(x=>{x.disabled=true;const jj=+x.dataset.j;if(jj===q.ok)x.classList.add("g");else if(jj===j)x.classList.add("r")});
     const e=w.querySelector("#evExp");e.innerHTML=`<b>${ok?"✅ ¡Bien!":"❌ Era la "+evLetra(q.ok)}</b> ${q.exp}`;e.classList.remove("hidden");
@@ -1519,7 +1519,7 @@ function evBossFin(c,res){const n=res.filter(Boolean).length,pts=n*20+(n===5?100
     <p class="evscore">${n} de 5</p><p>⭐ +${pts} pts${n===5?" (incluye +100 por 5 de 5)":""}</p><button type="button" class="ok" id="evOk">Seguir practicando</button></div>`);
   if(n===5){try{confetti(220)}catch(e){}}w.querySelector("#evOk").onclick=evCierra}
 // la IC de urgencias: un caso corto, una pregunta y sigues
-function evIc(c){const h=new Date(),hr=String(h.getHours()).padStart(2,"0")+":"+String(h.getMinutes()).padStart(2,"0");
+function evIc(c){if(!EV.done[c.id]){EV.done[c.id]={s:1,f:todayStr()};evSv()}const h=new Date(),hr=String(h.getHours()).padStart(2,"0")+":"+String(h.getMinutes()).padStart(2,"0");
   const w=evShell("evic",`<div class="evbg" style="background-image:url('${EVD.img.ic}')"></div><div class="evc"><small>📟 IC de ACA · Admisión Continua Adultos</small><span class="evrec">Recibido ${hr}</span>
     <p class="evcasoic">${c.caso}</p><p class="evq">${c.q}</p><div class="evo">${c.opts.map((o,j)=>`<button type="button" data-j="${j}"><b>${evLetra(j)}</b><span>${o}</span></button>`).join("")}</div>
     <div class="evexp hidden" id="evExp"></div><button type="button" class="ok hidden" id="evNext">Seguir ▶</button><button type="button" class="ok sec2" id="evSkip">Ahorita no</button></div>`);
