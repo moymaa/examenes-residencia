@@ -232,6 +232,30 @@ html[data-tema="academia"] #acaHero{display:block;position:relative;margin:0 0 1
 #acaHero p{margin:8px 0 0;font-size:14px;color:#d9cfbd}
 @media (max-width:620px){#acaHero .ahtx{position:static;max-width:none;background:var(--noche);padding:16px 18px}#acaHero .ahem{margin-bottom:10px}#acaHero .ahimg{aspect-ratio:16/10;object-position:66% 28%}}
 .tsw.lock{opacity:.55;cursor:not-allowed}.tsw.lock small{display:block;font-size:11px;color:var(--mut)}
+.tq .tqj{display:flex;gap:8px;margin-top:10px}.tq .tqj input{flex:1;min-width:0;font:inherit;font-size:18px;letter-spacing:.2em;text-align:center;padding:10px;border:1px solid var(--line);border-radius:14px;background:var(--bg);color:var(--fg)}
+.tq .tqj button{font:inherit;font-weight:700;border:1px solid var(--acc);color:var(--acc);background:transparent;border-radius:14px;padding:0 16px;cursor:pointer}
+.tq .tqcode{font-size:48px;font-weight:800;letter-spacing:.18em;text-align:center;color:var(--acc);margin:4px 0 8px}
+.tq .tqg{display:grid;grid-template-columns:repeat(auto-fill,minmax(68px,1fr));gap:8px;max-height:34vh;overflow:auto;margin:6px 0 10px;padding:2px}
+.tq .tqg button{font:inherit;border:2px solid transparent;background:var(--bg);border-radius:14px;padding:4px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px;color:var(--fg)}
+.tq .tqg button img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:10px}.tq .tqg button span{font-size:10.5px;line-height:1.15;max-height:2.3em;overflow:hidden;text-align:center}
+.tq .tqg button[aria-pressed=true]{border-color:var(--acc)}.tq .tqg button:disabled{opacity:.3;cursor:not-allowed}
+.tq .tqx{display:flex;align-items:center;justify-content:center;gap:12px;margin:8px 0}.tq .tqx>div{display:flex;flex-direction:column;align-items:center;gap:4px;width:120px;text-align:center;font-size:13px}
+.tq .tqx img,.tq .tqx em{width:84px;height:84px;border-radius:50%;object-fit:cover;display:grid;place-items:center;font-size:30px;font-style:normal;background:var(--bg);border:2px solid var(--line)}.tq .tqx i{font-size:26px;font-style:normal;color:var(--acc)}
+.dlgq .ok.sec2{background:transparent;color:var(--mut);border:1px solid var(--line);margin-top:8px}
+.aniobar{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:10px 0 4px;padding:10px 14px;border-radius:16px;border:1px solid var(--line);background:color-mix(in srgb,var(--card) 70%,transparent);font-size:14px}
+.aniobar:empty{display:none}.aniobar button{font:inherit;font-weight:700;font-size:13.5px;border:1px solid var(--acc);color:var(--acc);background:transparent;border-radius:999px;padding:6px 14px;min-height:36px;cursor:pointer}
+.dlgq{position:fixed;inset:0;z-index:70;display:grid;place-items:center;padding:16px;background:rgba(10,10,20,.55);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);overflow:auto}
+.dlgq .sp{width:100%;max-width:440px;background:var(--card);color:var(--fg);border-radius:24px;padding:22px 20px 20px;box-shadow:0 30px 80px rgba(0,0,0,.4);border:1px solid var(--line)}
+.dlgq small{font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--acc)}.dlgq h3{margin:6px 0 6px;font-size:24px}.dlgq p{margin:0 0 12px;color:var(--mut);font-size:14.5px}
+.dlgq .anios{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:4px 0 12px}
+.dlgq .anios button{font:inherit;border:1px solid var(--line);background:var(--bg);color:var(--fg);border-radius:16px;padding:12px 4px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px;min-height:64px}
+.dlgq .anios button b{font-size:20px}.dlgq .anios button small{font-size:10.5px;letter-spacing:0;text-transform:none;color:var(--mut);font-weight:600}
+.dlgq .anios button[aria-pressed=true]{border-color:var(--acc);background:var(--acc);color:var(--on-acc,#fff)}.dlgq .anios button[aria-pressed=true] small{color:var(--on-acc,#fff)}
+.dlgq .alc{display:grid;gap:6px;margin:0 0 8px;font-size:14.5px}.dlgq .alc label{display:flex;gap:8px;align-items:center;padding:8px 10px;border:1px solid var(--line);border-radius:12px;cursor:pointer}.dlgq .alc em{color:var(--mut);font-size:12.5px}
+.dlgq .nota{font-size:13.5px;min-height:1.2em}
+.dlgq .ok{width:100%;font:inherit;font-weight:700;border:0;border-radius:14px;min-height:48px;cursor:pointer;background:var(--acc);color:var(--on-acc,#fff)}.dlgq .ok:disabled{opacity:.5;cursor:default}
+.dlgq .nov{list-style:none;padding:0;margin:6px 0 16px;display:grid;gap:10px}.dlgq .nov li{display:flex;gap:10px;font-size:14.5px;line-height:1.4}.dlgq .nov li>span{font-size:20px;line-height:1.2}
+html.foco .aniobar{display:none}
 #sorp{position:fixed;inset:0;z-index:60;display:grid;place-items:center;padding:16px;background:rgba(10,10,20,.55);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
 #sorp .sp{width:100%;max-width:420px;background:var(--card);color:var(--fg);border-radius:24px;padding:22px 20px 20px;box-shadow:0 30px 80px rgba(0,0,0,.4);border:1px solid var(--line);text-align:center}
 #sorp small{font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--acc)}#sorp h3{margin:6px 0 6px;font-size:24px}#sorp p{margin:0 0 14px;color:var(--mut);font-size:14.5px}
@@ -616,6 +640,7 @@ html[data-tema="barrio"] :is([data-back],#rdBack,#rBackMenu,#rCancel){border:3px
   <h1>Simulador PUEM · Psiquiatría</h1>
   <p class="sub">Material de estudio para la residencia de Psiquiatría. Respondes y enseguida ves la respuesta correcta, la explicación y las referencias de PubMed.</p>
   <div id="countdown"></div>
+  <div id="anioBar" class="aniobar"></div>
 
   <div class="mision" aria-hidden="true"><img class="kndlogo" src="niveles/barrio-logo.png" alt="" loading="lazy"><b>OPERACIÓN: P.U.E.M.</b><small>Psiquiatras Unidos En Misión · objetivo: aprobar el examen · nivel de amenaza: 💀💀💀💀</small></div>
   <h2 class="qh">¿Qué quieres practicar hoy?</h2>
@@ -884,7 +909,7 @@ html[data-tema="barrio"] :is([data-back],#rdBack,#rBackMenu,#rCancel){border:3px
   <div class="selc" id="selC"></div>
   <div class="selg" id="selG"></div>
   <div class="selp" id="selP"><img id="selI" alt=""><div class="mid"><div class="nm" id="selN">¿Quién serás?</div><div class="ds hidden" id="selD"></div><input id="selName" maxlength="28" placeholder="Tu nombre de jugador (opcional)" aria-label="Tu nombre de jugador"><div class="priv hidden" id="selPriv">🔒 Tu foto se queda solo en este navegador: no se sube a ningún lado.</div><input type="file" id="selFile" accept="image/*" class="hidden"></div>
-    <div class="bt"><button type="button" id="selOk">¡LISTO!</button><button type="button" class="sec" id="selRnd">🎲 Al azar</button></div></div>
+    <div class="bt"><button type="button" id="selOk">¡LISTO!</button><button type="button" class="sec" id="selRnd">🎲 Al azar</button><button type="button" class="sec" id="selTq">🔁 Intercambiar</button></div></div>
 </div>
 <div id="deco" aria-hidden="true"></div>
 <button class="fab" id="fabTema" type="button" title="Cambiar el color" aria-label="Cambiar el color">🎨</button>
@@ -936,7 +961,7 @@ const SIZES=[20,50,100,0];
 const TAGS={AFECT:"Trastornos afectivos",ANSIE:"Ansiedad, TOC y TEPT",PSICOT:"Trastornos psicóticos",COGNI:"Demencias, delirium y amnésicos",PERSO:"Personalidad",IMPULS:"Control de impulsos",DISOC:"Disociativos",SOMAT:"Somatomorfos",TCA:"Conducta alimentaria",SUST:"Sustancias y alcoholismo",SUENO:"Sueño",
   PSICOPATO:"Psicopatología general y examen mental",NEURO:"Neurología",NEUROPSIQ:"Manifestaciones neuropsiquiátricas",MEDENF:"Paciente médicamente enfermo",DOLOR:"Paciente con dolor",URG:"Urgencias",FARMA:"Psicofarmacología y TEC",GEN:"Genética",
   INF_TDAH:"TDAH y conducta",INF_ELIM:"Eliminación",INF_APREND:"Aprendizaje y discapacidad intelectual",INF_TEA:"Autismo y TGD",INF_TICS:"Tics",INF_AFANS:"Ansiedad y afecto en infancia",INF_OTROS:"Otros de infancia",SEXUAL:"Sexualidad y género",PSICOTER:"Psicoterapia",OTROS:"Ética, legal y otros"};
-let DATA=[], SIMD=[], mode="real", simGen=null, perTag={}, TM={}, sel=new Set(BANK_ORDER), tsel=new Set(Object.keys(TAGS)), size=20, round=[], i=0, score=0, done=0, fails=[], perBank={}, sim=null, rowOf=new Map(), perRow=[];
+let DATA=[], SIMD=[], DATA_ALL=[], SIMD_ALL=[], mode="real", simGen=null, perTag={}, TM={}, sel=new Set(BANK_ORDER), tsel=new Set(Object.keys(TAGS)), size=20, round=[], i=0, score=0, done=0, fails=[], perBank={}, sim=null, rowOf=new Map(), perRow=[];
 const $=id=>document.getElementById(id);
 const strip=h=>h.replace(/<[^>]+>/g," ");
 const norm=s=>s.normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase();
@@ -954,10 +979,47 @@ const keyOf=it=>fnv([it.simu?"S":"B",it.bank,it.case?it.case.title:"",strip(it.q
 const prep=(it,k)=>{it.id=k;it.tag=it.tag||"OTROS";if(it.type==="mcq")it.key=keyOf(it);it.hay=norm(strip((it.case?it.case.text:"")+" "+(it.vig||"")+" "+(it.q||"")+" "+(it.topic||"")+" "+(it.opts||[]).map(o=>o.t).join(" ")+" "+(it.sub&&it.sub.map?it.sub.map(s=>s.q+" "+s.a).join(" "):"")));return it};
 const SRC=()=>mode==="real"?DATA:SIMD;
 Promise.all([ACCESO.json("banco.enc"),ACCESO.json("temario.enc"),ACCESO.json("simulados.enc").catch(()=>[])]).then(([d,t,sd])=>{
-  TM=t;DATA=d.map(prep);SIMD=sd.map((it,k)=>{it.simu=true;return prep(it,100000+k)});
-  drawSims();drawSimsGen();drawBanks();drawTags();drawSizes();updAvail();renderMine();drawLect();drawReal();vsTemas();
+  TM=t;DATA_ALL=d.map(prep);SIMD_ALL=sd.map((it,k)=>{it.simu=true;return prep(it,100000+k)});aplicaAnio();
 }).catch(()=>{$("avail").textContent="No se pudo cargar el banco de preguntas. Recarga la página."});
 
+// ——— año de residencia: cada quien ve las preguntas de su año (y, si quiere, las de años anteriores) ———
+const K_ANIO=PFX+"anio_v1",ANIOS=["R1","R2","R3","R4"];let ANIO=ld(K_ANIO,null);
+const ALC={acum:"Mi año y los anteriores",solo:"Solo mi año",todo:"Todo el banco"};
+function YRS(){if(!ANIO||ANIO.a==="todo")return ANIOS;const k=ANIOS.indexOf(ANIO.y);return ANIO.a==="solo"?[ANIO.y]:ANIOS.slice(0,k+1)}
+function bancosOk(){if(!ANIO||ANIO.a==="todo")return null;const y=YRS(),b=new Set(y);
+  if(ANIO.y==="R3"||ANIO.y==="R4")b.add("R3–R4 repaso");if(ANIO.y==="R4"){b.add("Consejo 2021");b.add("Infanto-juvenil 2016")}return b}
+function aplicaAnio(){const b=bancosOk();DATA=b?DATA_ALL.filter(d=>b.has(d.bank)):DATA_ALL.slice();SIMD=b?SIMD_ALL.filter(d=>b.has(d.bank)):SIMD_ALL.slice();
+  if(!DATA_ALL.length)return;try{drawSims();drawSimsGen();drawBanks();drawTags();drawSizes();updAvail();renderMine();drawLect();drawReal();vsTemas()}catch(e){console.error(e)}anioBar()}
+function anioBar(){const el=$("anioBar");if(!el)return;
+  el.innerHTML=ANIO?`<span>🎓 Eres <b>${ANIO.y}</b> · ${ALC[ANIO.a]}${ANIO.y==="R4"&&ANIO.a!=="todo"?" + Consejo":""} · <b>${DATA.filter(d=>d.type==="mcq").length.toLocaleString("es-MX")}</b> preguntas</span><button type="button" id="anioCambia">Cambiar</button>`:`<span>🎓 ¿En qué año vas? Así te ponemos solo tus preguntas.</span><button type="button" id="anioCambia">Elegir</button>`;
+  $("anioCambia").onclick=()=>anioDlg()}
+function dlgAbierto(){return !!document.querySelector("#anioDlg,#novDlg")}
+function anioDlg(despues){if(document.getElementById("anioDlg"))return;const w=document.createElement("div");w.id="anioDlg";w.className="dlgq";w.setAttribute("role","dialog");w.setAttribute("aria-modal","true");
+  let y=ANIO?ANIO.y:null,a=ANIO?ANIO.a:"acum";
+  const draw=()=>{w.innerHTML=`<div class="sp"><small>🎓 Tu año de residencia</small><h3>¿En qué año vas?</h3><p>Te ponemos las preguntas de tu examen. Lo puedes cambiar cuando quieras y tu avance no se pierde.</p>
+    <div class="anios">${ANIOS.map(k=>`<button type="button" data-y="${k}" aria-pressed="${k===y}"><b>${k}</b><small>${k==="R4"?"+ Consejo":k==="R3"?"+ repaso":"&nbsp;"}</small></button>`).join("")}</div>
+    <div class="alc">${Object.entries(ALC).map(([k,n])=>`<label><input type="radio" name="alc" value="${k}"${k===a?" checked":""}> ${n}${k==="acum"?" <em>(recomendado)</em>":""}</label>`).join("")}</div>
+    <p class="nota" id="anioNota"></p>
+    <button type="button" class="ok" ${y?"":"disabled"}>${y?"Listo, soy "+y:"Elige tu año"}</button></div>`;
+    const nota=w.querySelector("#anioNota");if(y){const k=ANIOS.indexOf(y),prev=ANIOS.slice(0,k).join(", ");nota.textContent=a==="acum"?(k?`Te salen preguntas de ${prev} y ${y}`:"Te salen solo preguntas de R1")+(y==="R4"?", más el Consejo":"")+".":a==="solo"?`Solo preguntas de ${y}${y==="R4"?" y del Consejo":""}.`:"Todas las preguntas de todos los años y el Consejo."}
+    w.querySelectorAll(".anios button").forEach(b=>b.onclick=()=>{y=b.dataset.y;draw()});
+    w.querySelectorAll('input[name=alc]').forEach(r=>r.onchange=()=>{a=r.value;draw()});
+    w.querySelector(".ok").onclick=()=>{if(!y)return;ANIO={y,a,d:todayStr()};sv(K_ANIO,ANIO);w.remove();aplicaAnio();big("🎓 Listo, "+y,a==="todo"?"tienes todo el banco":"ya solo te salen tus preguntas");if(despues)setTimeout(despues,400)}};
+  draw();if(ANIO)w.onclick=e=>{if(e.target===w)w.remove()};document.body.appendChild(w)}
+// ——— novedades: al publicar una actualización, todos ven qué cambió (su avance se queda igual) ———
+// Para anunciar algo nuevo: subir VERSION y poner los cambios arriba de NOVEDADES.
+const VERSION="2026-11-06c",K_VER=PFX+"version_v1";
+const NOVEDADES=[["🎓","Elige tu año (R1–R4): R1 ya no ve preguntas de R2–R4 y R4 trae también el Consejo. Arriba del inicio dice qué año eres y lo cambias con un toque."],
+  ["🔁","Intercambia personajes con un compañero con un código de 4 dígitos (en «Elige tu personaje» → 🔁 Intercambiar). El que das se te va y el que recibes es tuyo."],
+  ["🏛️","Tema secreto La Academia y personajes nuevos por desbloquear."],
+  ["🧭","¿Te perdiste? Arriba de cada pantalla está el botón <b>← ¿Qué quieres practicar?</b> para volver al inicio, y en el inicio está <b>❓ Cómo funciona</b>."],
+  ["💾","Tu avance, puntos, rango y personajes siguen intactos."]];
+function novedades(){const v=ld(K_VER,null);const viejo=ld(PFX+"jugador_v1",null)||ld(PFX+"xp_v1",null);
+  if(v&&v.v===VERSION)return;sv(K_VER,{v:VERSION,d:todayStr()});if(!viejo)return; // a quien entra por primera vez no le contamos novedades
+  const w=document.createElement("div");w.id="novDlg";w.className="dlgq";w.setAttribute("role","dialog");w.setAttribute("aria-modal","true");
+  w.innerHTML=`<div class="sp"><small>✨ Actualización</small><h3>¡Hay novedades!</h3><ul class="nov">${NOVEDADES.map(([i,t])=>`<li><span>${i}</span><div>${t}</div></li>`).join("")}</ul><button type="button" class="ok">Entendido</button></div>`;
+  document.body.appendChild(w);const c=()=>{w.remove();if(!ANIO)anioDlg()};w.querySelector(".ok").onclick=c;w.onclick=e=>{if(e.target===w)c()}}
+ACCESO.ready().then(()=>setTimeout(()=>{const v=ld(K_VER,null);if(v&&v.v===VERSION){if(!ANIO)anioDlg()}else{const viejo=ld(PFX+"jugador_v1",null)||ld(PFX+"xp_v1",null);if(viejo)novedades();else{sv(K_VER,{v:VERSION,d:todayStr()});if(!ANIO)anioDlg()}}},300));
 // ——— lecturas por tema (teoría del Manual de estudio) ———
 const K_READ=PFX+"read_v1";let READ=ld(K_READ,{}),LECT=[],curLect=null,pendingLect=null,rdSize=20;
 const lectItems=c=>DATA.concat(SIMD).filter(d=>c.tags.includes(d.tag));
@@ -1020,7 +1082,7 @@ function rxBuild(y,src){
 const rxN=()=>RX.cases.reduce((a,c)=>a+c.ids.length,0);
 const rxSt=id=>{const a=RX.ans[id];return !a||a.k==null?"r":a.doubt?"y":"g"};
 function drawReal(){
-  $("realYears").innerHTML=["R1","R2","R3","R4"].map(y=>`<button class="btn sm" data-y="${y}">Simulador real ${y}</button>`).join("");
+  $("realYears").innerHTML=YRS().map(y=>`<button class="btn sm" data-y="${y}">Simulador real ${y}</button>`).join("");
   $("realYears").querySelectorAll("button").forEach(b=>b.onclick=()=>{
     if(RX&&!RX.done&&!confirm(`Tienes un simulador real ${RX.y} en curso. ¿Empezar uno nuevo y descartarlo?`))return;
     RX={y:b.dataset.y,src:rxSrc,folio:String(Math.floor(1e8+Math.random()*9e8)),pass:Math.random().toString(36).slice(2,8).toUpperCase(),cases:rxBuild(b.dataset.y,rxSrc),ans:{},start:null,done:false};
@@ -1120,15 +1182,15 @@ function setTema(t){TEMA=TEMAS.some(x=>x[0]===t)?t:"";if(TEMA==="academia"&&!aca
 tgridRender();
 $("fabTema").onclick=e=>{e.stopPropagation();tgridRender();$("tpanel").classList.toggle("hidden")};
 // anuncio del tema de regalo: una sola vez, a quien ya es Chicharrones o más (el Polloatun solo lo ve bloqueado)
-function acaAnuncio(){if(!acaOk()||ld(PFX+"aca_anuncio_v1",null)||document.getElementById("acaAnun")||document.documentElement.classList.contains("foco"))return;
+function acaAnuncio(){if(dlgAbierto()){setTimeout(acaAnuncio,3000);return}if(!acaOk()||ld(PFX+"aca_anuncio_v1",null)||document.getElementById("acaAnun")||document.documentElement.classList.contains("foco"))return;
   acaImg().then(t=>{if(!t.academia||document.getElementById("acaAnun"))return;sv(PFX+"aca_anuncio_v1",{d:todayStr()});const w=document.createElement("div");w.id="acaAnun";w.setAttribute("role","dialog");w.setAttribute("aria-modal","true");
-    w.innerHTML=`<div class="aa"><img src="${t.academia}" alt=""><div class="ab"><small>🎁 Tema de regalo</small><h3>La Academia</h3><p>Desbloqueado por llegar a Chicharrones morados: un tema griego para estudiar como en la escuela de Atenas. Y de pilón, dos personajes nuevos: <b>vampiro socrático</b> y <b>soto sócrates</b>.</p><div class="row"><button type="button" class="si">Ponerlo</button><button type="button" class="no">Después</button></div></div></div>`;
+    w.innerHTML=`<div class="aa"><img src="${t.academia}" alt=""><div class="ab"><small>🎁 Tema de regalo</small><h3>La Academia</h3><p>Desbloqueado por llegar a Chicharrones morados: un tema griego para estudiar como en la escuela de Atenas.</p><div class="row"><button type="button" class="si">Ponerlo</button><button type="button" class="no">Después</button></div></div></div>`;
     document.body.appendChild(w);const c=()=>w.remove();w.querySelector(".si").onclick=()=>{c();setTema("academia");big("🏛️ Bienvenido a La Academia","conócete a ti mismo… y el DSM");confetti(90)};w.querySelector(".no").onclick=c;w.onclick=e=>{if(e.target===w)c()}}).catch(()=>{})}
 function fabAca(){const b=$("fabAca");if(b){const ok=acaOk();b.classList.toggle("lock",!ok);b.title=ok?"Tema La Academia":"La Academia · se abre en Chicharrones morados"}}fabAca();
 $("fabAca").onclick=()=>{if(!acaOk()){big("🔒 La Academia","tema de regalo: se abre en el rango Chicharrones morados (300 pts)");return}setTema(TEMA==="academia"?"":"academia");if(TEMA==="academia"){big("🏛️ Bienvenido a La Academia","conócete a ti mismo… y el DSM");confetti(90)}};
 // bienvenida con sorpresas: dice que hay cosas por desbloquear sin decir cuáles (una sola vez)
 function sorpresas(tries){tries=tries||0;if(ld(PFX+"sorpresas_v1",null))return;
-  const abierto=["sel","ranks"].some(i=>$(i)&&!$(i).classList.contains("hidden"))||document.getElementById("acaAnun")||document.querySelector(".bigmsg")||document.documentElement.classList.contains("foco");
+  const abierto=dlgAbierto()||["sel","ranks"].some(i=>$(i)&&!$(i).classList.contains("hidden"))||document.getElementById("acaAnun")||document.querySelector(".bigmsg")||document.documentElement.classList.contains("foco");
   if(abierto){if(tries<40)setTimeout(()=>sorpresas(tries+1),3000);return}
   sv(PFX+"sorpresas_v1",{d:todayStr()});const w=document.createElement("div");w.id="sorp";w.setAttribute("role","dialog");w.setAttribute("aria-modal","true");
   w.innerHTML=`<div class="sp"><small>🎁 Este simulador esconde cosas</small><h3>Hay sorpresas por desbloquear</h3><div class="cajas" aria-hidden="true"><div>?</div><div>?</div><div>?</div></div><p>Mientras más practiques y más subas de rango, más se abre. No te decimos qué… tendrás que descubrirlo.</p><ul><li>🔒 Temas secretos</li><li>🔒 Personajes ocultos</li><li>🔒 Logros escondidos</li><li>🔒 …y algo más que no te vamos a contar</li></ul><button type="button">¡A descubrirlas!</button></div>`;
@@ -1210,13 +1272,14 @@ const K_PJ=PFX+"jugador_v1",K_MIPJ=PFX+"mipersonaje_v1";let PJ=ld(K_PJ,null),PJS
 const PJ_FREE=5,PJ_STEP=150,K_PJU=PFX+"pj_desbloq_v1",K_PJORD=PFX+"pj_orden_v1";
 // orden al azar y propio de cada navegador (los 5 primeros y el resto del desbloqueo); los personajes nuevos se acomodan al final
 let PJO=[];function pjOrden(){let o=ld(K_PJORD,null);const ids=PJS.map(p=>p.id);if(!Array.isArray(o))o=shuffle(ids.slice());
-  o=o.filter(id=>ids.includes(id));const nuevos=shuffle(ids.filter(id=>!o.includes(id)));o=o.concat(nuevos);sv(K_PJORD,o);PJO=o.map(id=>PJS.find(p=>p.id===id))}
+  o=o.filter(id=>ids.includes(id));const nuevos=shuffle(ids.filter(id=>!o.includes(id)));o=o.concat(nuevos);if(!ld(PFX+"pj_mig4344_v1",null)){o=o.filter(id=>id!==43&&id!==44).concat([43,44].filter(id=>ids.includes(id)));sv(PFX+"pj_mig4344_v1",1)}sv(K_PJORD,o);PJO=o.map(id=>PJS.find(p=>p.id===id))}
 const pjN=()=>PJO.filter(p=>!p.r),pjIx=id=>pjN().findIndex(p=>p.id===id); // los de regalo (r) no gastan lugar en la fila del desbloqueo
 const pjAbiertos=()=>Math.min(pjN().length,PJ_FREE+Math.floor(((XP&&XP.xp)||0)/PJ_STEP));
-const pjLibre=id=>id==="yo"||(PJ&&PJ.id===id)||(PJO.find(p=>p.id===id)||{}).r||pjIx(id)<pjAbiertos();
+const K_TQ=PFX+"pj_trueque_v1",TQX=()=>{const x=ld(K_TQ,null)||{};return {in:x.in||[],out:x.out||[],h:x.h||[]}}; // intercambios: los que te dieron (in) y los que diste (out)
+const pjLibre=id=>{if(id==="yo")return true;const p=PJO.find(x=>x.id===id);if(p&&p.r)return true;const x=TQX();if(x.in.includes(id))return true;if(x.out.includes(id))return false;return (PJ&&PJ.id===id)||pjIx(id)<pjAbiertos()};
 const pjPts=id=>Math.max(0,(pjIx(id)-PJ_FREE+1)*PJ_STEP);
 function pjCheck(){if(!PJS.length)return;const n=pjAbiertos(),prev=ld(K_PJU,{n:PJ_FREE}).n||PJ_FREE;
-  if(n>prev){for(let k=prev;k<n;k++){const p=pjN()[k];if(p)xbox(`<img src="${p.img}" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:50%">`,"Nuevo personaje: "+p.n,"🥊")}}
+  if(n>prev){const tx=TQX();for(let k=prev;k<n;k++){const p=pjN()[k];if(p&&!tx.in.includes(p.id)&&!tx.out.includes(p.id))xbox(`<img src="${p.img}" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:50%">`,"Nuevo personaje: "+p.n,"🥊")}}
   if(n!==prev)sv(K_PJU,{n})}
 const pjOf=id=>id==="yo"?(MIPJ&&MIPJ.img?{id:"yo",n:MIPJ.nombre||"Yo",img:MIPJ.img,yo:1}:null):PJS.find(p=>p.id===id);
 function fotoPropia(file){if(!file)return;const url=URL.createObjectURL(file),im=new Image();
@@ -1235,8 +1298,8 @@ function hud(){const p=PJ&&pjOf(PJ.id);$("hud").classList.toggle("hidden",!p);if
 function selDraw(){
   const yo=pjOf("yo");
   $("selG").innerHTML=(yo?`<button type="button" class="pj${selPick==="yo"?" on":""}" data-id="yo"><img src="${yo.img}" alt=""><span></span><em class="cam" data-cam>📷 cambiar</em></button>`:`<button type="button" class="pj nuevo" id="pjNew"><span style="position:static;background:none;padding:0;font:inherit;color:inherit"><b>📷</b>CREA TU PERSONAJE<br>con tu foto</span></button>`)+
-    PJO.slice().sort((a,b)=>(pjLibre(b.id)?1:0)-(pjLibre(a.id)?1:0)).map(p=>pjLibre(p.id)?`<button type="button" class="pj${selPick===p.id?" on":""}" data-id="${p.id}"><img src="${p.img}" alt=""><span></span></button>`:`<button type="button" class="pj lock" data-lock="${p.id}" aria-label="Bloqueado: se desbloquea con ${pjPts(p.id)} puntos"><img src="${p.img}" alt=""><span>${pjPts(p.id).toLocaleString("es-MX")} pts</span></button>`).join("");
-  {const ab=PJO.filter(p=>pjLibre(p.id)).length,sig=PJO.find(p=>!pjLibre(p.id));$("selC").innerHTML=`<b>${ab} de ${PJO.length}</b> desbloqueados`+(sig?` · el siguiente sale con <b>${pjPts(sig.id).toLocaleString("es-MX")} pts</b> (llevas ${((XP&&XP.xp)||0).toLocaleString("es-MX")})`:" · ¡todos!");}
+    PJO.slice().sort((a,b)=>(pjLibre(b.id)?1:0)-(pjLibre(a.id)?1:0)).map(p=>pjLibre(p.id)?`<button type="button" class="pj${selPick===p.id?" on":""}" data-id="${p.id}"><img src="${p.img}" alt=""><span></span></button>`:`<button type="button" class="pj lock" data-lock="${p.id}" aria-label="${TQX().out.includes(p.id)?"Lo intercambiaste":"Bloqueado: se desbloquea con "+pjPts(p.id)+" puntos"}"><img src="${p.img}" alt=""><span>${TQX().out.includes(p.id)?"🔁 lo cambiaste":pjPts(p.id).toLocaleString("es-MX")+" pts"}</span></button>`).join("");
+  {const ab=PJO.filter(p=>pjLibre(p.id)).length,sig=PJO.find(p=>!pjLibre(p.id)&&!TQX().out.includes(p.id));$("selC").innerHTML=`<b>${ab} de ${PJO.length}</b> desbloqueados`+(sig?` · el siguiente sale con <b>${pjPts(sig.id).toLocaleString("es-MX")} pts</b> (llevas ${((XP&&XP.xp)||0).toLocaleString("es-MX")})`:" · ¡todos!");}
   $("selG").querySelectorAll(".pj.lock").forEach(b=>b.onclick=()=>{toast("🔒 Se desbloquea con "+pjPts(+b.dataset.lock).toLocaleString("es-MX")+" puntos. ¡Sigue contestando!")});
   if($("pjNew"))$("pjNew").onclick=()=>$("selFile").click();
   $("selG").querySelectorAll(".pj[data-id]").forEach(b=>{const id=b.dataset.id==="yo"?"yo":+b.dataset.id,p=pjOf(id);b.querySelector("span").textContent=p.n;b.setAttribute("aria-label",p.n);
@@ -1249,13 +1312,62 @@ function selSet(id){selPick=id;const p=pjOf(id);
   $("selG").querySelectorAll(".pj[data-id]").forEach(b=>b.classList.toggle("on",(b.dataset.id==="yo"?"yo":+b.dataset.id)===id));selPrev(p);try{chime()}catch(e){}}
 function selOpen(){if(!PJS.length)return;selPick=PJ?PJ.id:null;$("selName").value=PJ?(PJ.nombre||""):"";{const c=PJ&&pjOf(PJ.id);selNameEditado=!!(PJ&&c&&PJ.nombre&&PJ.nombre!==c.n)}selDraw();$("sel").classList.remove("hidden");document.documentElement.style.overflow="hidden"}
 function selClose(){$("sel").classList.add("hidden");document.documentElement.style.overflow=""}
+$("selTq").onclick=()=>{tqCerrar();tqDraw()};
 $("selRnd").onclick=()=>{const L=PJO.filter(p=>pjLibre(p.id)),p=L[Math.floor(Math.random()*L.length)];if(!p)return;selSet(p.id);$("selG").querySelector(`[data-id="${p.id}"]`).scrollIntoView({block:"nearest",behavior:"smooth"})};
 $("selOk").onclick=()=>{if(!selPick){$("selRnd").click();return}const p=pjOf(selPick),nm=$("selName").value.trim()||p.n;
   const first=!PJ;PJ={id:selPick,nombre:nm};sv(K_PJ,PJ);if(selPick==="yo"&&MIPJ){MIPJ.nombre=nm;sv(K_MIPJ,MIPJ)}selClose();hud();big(`<img src="${p.img}" class="lvbig" alt="">${nm.toUpperCase()}`,"¡a estudiar!");
   if(first&&!ld(PFX+"ranks_seen_v1",null))setTimeout(showRanks,1700)};
 $("hud").onclick=selOpen;
-ACCESO.ready().then(()=>ACCESO.json("personajes.enc")).then(l=>{PJS=l||[];pjOrden();if(!ld(K_PJU,null))sv(K_PJU,{n:pjAbiertos()});{const vis=ld(PFX+"pj_regalo_v1",[]),nv=PJS.filter(p=>p.r&&!vis.includes(p.id));if(nv.length&&ld(K_PJ,null)){nv.forEach((p,k)=>setTimeout(()=>xbox(`<img src="${p.img}" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:50%">`,"Personaje de regalo: "+p.n,"🎁"),1200+k*2600))}sv(PFX+"pj_regalo_v1",vis.concat(nv.map(p=>p.id)))}if(PJ&&!pjOf(PJ.id))PJ=null;hud();if(!PJ)setTimeout(()=>{$("ranks").classList.add("hidden");selOpen()},600)}).catch(()=>{});
+ACCESO.ready().then(()=>ACCESO.json("personajes.enc")).then(l=>{PJS=l||[];pjOrden();if(!ld(K_PJU,null))sv(K_PJU,{n:pjAbiertos()});{const vis=ld(PFX+"pj_regalo_v1",[]),nv=PJS.filter(p=>p.r&&!vis.includes(p.id));if(nv.length&&ld(K_PJ,null)){nv.forEach((p,k)=>setTimeout(()=>xbox(`<img src="${p.img}" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:50%">`,"Personaje de regalo: "+p.n,"🎁"),1200+k*2600))}sv(PFX+"pj_regalo_v1",vis.concat(nv.map(p=>p.id)))}if(PJ&&!pjOf(PJ.id))PJ=null;if(PJ&&[43,44].includes(PJ.id)&&!TQX().in.includes(PJ.id)&&pjIx(PJ.id)>=pjAbiertos()){PJ=null;sv(K_PJ,null)}hud();if(!PJ)setTimeout(()=>{$("ranks").classList.add("hidden");selOpen()},600)}).catch(()=>{});
 
+// ——— intercambio de personajes con un código de 4 dígitos (como cromos): el que das se te va y te llega el del otro ———
+// Usa las mismas salas del versus (el worker solo reenvía mensajes). Los de regalo y tu foto no se intercambian.
+let TQ=null;
+const tqMios=()=>PJO.filter(p=>!p.r&&pjLibre(p.id));
+function tqCerrar(){if(TQ){TQ.fin=true;try{TQ.ws.close()}catch(e){}}TQ=null;const w=document.getElementById("tqDlg");if(w)w.remove()}
+function tqSend(o){if(!TQ||!TQ.ws||TQ.ws.readyState!==1)return;TQ.ws.send(JSON.stringify(TQ.host?{d:o}:o))}
+function tqYo(){tqSend({t:"yo",nombre:(PJ&&PJ.nombre)||"Jugador",tengo:tqMios().map(p=>p.id)})}
+function tqAplica(dar,recibir){const x=TQX();x.out=x.out.filter(i=>i!==recibir);x.in=x.in.filter(i=>i!==dar);if(!x.out.includes(dar))x.out.push(dar);if(!x.in.includes(recibir))x.in.push(recibir);
+  x.h.push({d:dar,r:recibir,f:todayStr()});sv(K_TQ,x);const pr=PJS.find(p=>p.id===recibir),pd=PJS.find(p=>p.id===dar);
+  if(PJ&&PJ.id===dar){const c=pjOf(dar);PJ={id:recibir,nombre:(!PJ.nombre||(c&&PJ.nombre===c.n))?pr.n:PJ.nombre};sv(K_PJ,PJ);try{hud()}catch(e){}}
+  TQ.hecho={dar:pd,rec:pr};tqDraw();try{confetti(100);chime()}catch(e){}
+  xbox(`<img src="${pr.img}" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:50%">`,"Intercambio: te llegó "+pr.n,"🔁")}
+function tqOn(o){if(!TQ)return;
+  if(TQ.host){if(o.t==="entra"){if(TQ.peer){return}TQ.peer={id:o.id,nombre:o.nombre};tqYo();tqDraw();return}
+    if(o.t==="sale"){if(!TQ.hecho){TQ.msg="Tu compañero se salió. El intercambio no se hizo.";TQ.peer=null;TQ.theirs=null;TQ.okT=false;TQ.okM=false;tqDraw()}return}
+    if(o.t==="msg"){if(TQ.peer&&o.id!==TQ.peer.id)return;o=o.d}else if(o.t!=="hola"&&o.t!=="error")return}
+  if(o.t==="hola"){if(!TQ.host){TQ.peer={nombre:"tu compañero"};tqYo()}tqDraw();return}
+  if(o.t==="error"){if(TQ.host&&(TQ.intento||0)<4){TQ.intento=(TQ.intento||0)+1;try{TQ.ws.onclose=null;TQ.ws.close()}catch(e){}tqAbrir(true);return}TQ.msg=o.m;TQ.err=true;tqDraw();return}
+  if(o.t==="fin"){if(!TQ.hecho){TQ.msg="Se cerró la sala. El intercambio no se hizo.";TQ.err=true;tqDraw()}return}
+  if(o.t==="yo"){TQ.peer=Object.assign(TQ.peer||{},{nombre:String(o.nombre||"Jugador").slice(0,28),tengo:(o.tengo||[]).map(Number)});tqDraw();return}
+  if(o.t==="of"){TQ.theirs=PJS.some(p=>p.id===+o.id)&&!pjLibre(+o.id)?+o.id:null;TQ.okT=false;TQ.okM=false;tqDraw();return}
+  if(o.t==="ok"){TQ.okT=+o.mine===TQ.theirs&&+o.theirs===TQ.mine;tqDraw();
+    if(TQ.host&&TQ.okT&&TQ.okM&&!TQ.hecho){const a=TQ.mine,b=TQ.theirs;tqSend({t:"go",a,b});tqAplica(a,b)}return}
+  if(o.t==="go"){if(!TQ.host&&!TQ.hecho&&TQ.okM&&+o.a===TQ.theirs&&+o.b===TQ.mine&&pjLibre(TQ.mine))tqAplica(TQ.mine,TQ.theirs);return}}
+function tqAbrir(host,code){const prev=TQ;TQ=Object.assign(prev&&prev.host===host?prev:{},{host,code:host?String(1000+Math.floor(Math.random()*9000)):code,mine:null,theirs:null,okM:false,okT:false,msg:"",err:false,fin:false});
+  const m=vsMe();const ws=new WebSocket(`${VS_URL}/sala/${TQ.code}?rol=${host?"host":"jugador"}&nombre=${encodeURIComponent(m.nombre)}&pj=${encodeURIComponent(m.pj)}`);TQ.ws=ws;
+  ws.onmessage=e=>{let o;try{o=JSON.parse(e.data)}catch(x){return}if(TQ&&TQ.ws===ws)tqOn(o)};
+  ws.onclose=()=>{if(TQ&&TQ.ws===ws&&!TQ.fin&&!TQ.hecho&&!TQ.err){TQ.msg="Se perdió la conexión. El intercambio no se hizo.";TQ.err=true;tqDraw()}};tqDraw()}
+function tqDraw(){let w=document.getElementById("tqDlg");if(!w){w=document.createElement("div");w.id="tqDlg";w.className="dlgq";w.setAttribute("role","dialog");w.setAttribute("aria-modal","true");document.body.appendChild(w);w.onclick=e=>{if(e.target===w)tqCerrar()}}
+  const pic=p=>p?`<img src="${p.img}" alt="">`:"";let h=`<div class="sp tq"><small>🔁 Intercambio de personajes</small>`;
+  if(!TQ){h+=`<h3>Cambia un personaje con un compañero</h3><p>Como cromos: tú das uno, te dan otro. <b>El que das se te va</b> y el que recibes se queda desbloqueado para siempre. Los de regalo y tu foto no se cambian.</p>
+    <button type="button" class="ok" id="tqNew">Crear intercambio</button><div class="tqj"><input id="tqCode" inputmode="numeric" maxlength="4" placeholder="Código de 4 dígitos" aria-label="Código del intercambio"><button type="button" id="tqJoin">Unirme</button></div>`}
+  else if(TQ.hecho){h+=`<h3>¡Intercambio hecho!</h3><div class="tqx"><div>${pic(TQ.hecho.dar)}<span>Se fue<br><b>${TQ.hecho.dar.n}</b></span></div><i>⇄</i><div>${pic(TQ.hecho.rec)}<span>Te llegó<br><b>${TQ.hecho.rec.n}</b></span></div></div><button type="button" class="ok" id="tqFin">Listo</button>`}
+  else if(TQ.err){h+=`<h3>No se pudo</h3><p>${TQ.msg}</p><button type="button" class="ok" id="tqFin">Cerrar</button>`}
+  else if(!TQ.peer||!TQ.peer.tengo){h+=TQ.host?`<h3>Tu código</h3><div class="tqcode">${TQ.code}</div><p>Dile a tu compañero que abra «🔁 Intercambiar» y escriba este código.</p>`:`<h3>Conectando…</h3><p>Entrando al intercambio ${TQ.code}.</p>`;
+    if(TQ.msg)h+=`<p class="nota">${TQ.msg}</p>`;h+=`<button type="button" class="ok sec2" id="tqFin">Cancelar</button>`}
+  else{const mios=tqMios(),suyo=TQ.theirs!=null?PJS.find(p=>p.id===TQ.theirs):null;
+    h+=`<h3>Con ${TQ.peer.nombre}</h3><p class="nota">Elige cuál das. Los que tu compañero ya tiene salen apagados.</p><div class="tqg">${mios.map(p=>{const ya=TQ.peer.tengo.includes(p.id);return `<button type="button" data-id="${p.id}" aria-pressed="${TQ.mine===p.id}" ${ya?"disabled title='Ya lo tiene'":""}>${pic(p)}<span>${p.n}</span></button>`}).join("")||"<p>No tienes personajes para cambiar.</p>"}</div>
+    <div class="tqx"><div>${TQ.mine!=null?pic(PJS.find(p=>p.id===TQ.mine)):"<em>?</em>"}<span>Das</span></div><i>⇄</i><div>${suyo?pic(suyo):"<em>?</em>"}<span>${suyo?"Recibes <b>"+suyo.n+"</b>":"Esperando a que elija…"}</span></div></div>
+    <p class="nota">${TQ.okT?"✅ Tu compañero ya aceptó.":TQ.okM?"Esperando a que tu compañero acepte…":""}</p>
+    <button type="button" class="ok" id="tqOk" ${TQ.mine!=null&&suyo&&!TQ.okM?"":"disabled"}>${TQ.okM?"Aceptado ✓":"Aceptar intercambio"}</button><button type="button" class="ok sec2" id="tqFin">Cancelar</button>`}
+  w.innerHTML=h+`</div>`;
+  const b=id=>w.querySelector("#"+id);
+  if(b("tqNew"))b("tqNew").onclick=()=>{if(!tqMios().length){toast("No tienes personajes para cambiar");return}tqAbrir(true)};
+  if(b("tqJoin"))b("tqJoin").onclick=()=>{const c=b("tqCode").value.replace(/\D/g,"");if(c.length!==4){toast("El código tiene 4 dígitos");return}tqAbrir(false,c)};
+  if(b("tqFin"))b("tqFin").onclick=()=>{const h=TQ&&TQ.hecho;tqCerrar();if(h)try{selDraw()}catch(e){}};
+  if(b("tqOk"))b("tqOk").onclick=()=>{TQ.okM=true;tqSend({t:"ok",mine:TQ.mine,theirs:TQ.theirs});tqDraw();if(TQ.host&&TQ.okT&&!TQ.hecho){const a=TQ.mine,c=TQ.theirs;tqSend({t:"go",a,b:c});tqAplica(a,c)}};
+  w.querySelectorAll(".tqg button[data-id]").forEach(x=>x.onclick=()=>{TQ.mine=+x.dataset.id;TQ.okM=false;TQ.okT=false;tqSend({t:"of",id:TQ.mine});tqDraw()})}
 // ——— versus en vivo (tipo Kahoot): salas de 4 dígitos en el worker simpsiq-versus ———
 const VS_URL=/^(localhost|127\.0\.0\.1)$/.test(location.hostname)?"ws://127.0.0.1:8787":"wss://simpsiq-salas.pages.dev";
 const VSC=["▲","◆","●","■","★"];let VS=null;
@@ -1641,7 +1753,7 @@ function planSim(y){
   return plan;
 }
 function drawSims(){
-  $("sims").innerHTML=Object.entries(TM).map(([y,v])=>{
+  $("sims").innerHTML=Object.entries(TM).filter(([y])=>YRS().includes(y)).map(([y,v])=>{
     const tot=v.filas.reduce((a,f)=>a+f[2],0);
     const avail=v.filas.map(f=>mcqs().filter(d=>f[3].includes(d.tag)).length);
     return `<div class="sim"><div class="head"><div><b>Simulacro ${y} · ${v.titulo}</b><br><span>${tot} preguntas</span></div><button class="btn sm" data-y="${y}">Empezar ${y}</button></div>
