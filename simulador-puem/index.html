@@ -982,12 +982,15 @@ $("rstS").onclick=()=>{if(!confirm("¿Borrar solo tus estadísticas por tema? Tu
 const K_PJ=PFX+"jugador_v1",K_MIPJ=PFX+"mipersonaje_v1";let PJ=ld(K_PJ,null),PJS=[],selPick=null,MIPJ=ld(K_MIPJ,null);
 // personaje propio: su foto vive solo en este navegador (localStorage), nunca se sube
 // desbloqueo: 5 abiertos y uno más cada 150 puntos (en el orden de la lista)
-const PJ_FREE=5,PJ_STEP=150,K_PJU=PFX+"pj_desbloq_v1";
-const pjAbiertos=()=>Math.min(PJS.length,PJ_FREE+Math.floor(((XP&&XP.xp)||0)/PJ_STEP));
-const pjLibre=id=>id==="yo"||(PJ&&PJ.id===id)||PJS.findIndex(p=>p.id===id)<pjAbiertos();
-const pjPts=id=>Math.max(0,(PJS.findIndex(p=>p.id===id)-PJ_FREE+1)*PJ_STEP);
+const PJ_FREE=5,PJ_STEP=150,K_PJU=PFX+"pj_desbloq_v1",K_PJORD=PFX+"pj_orden_v1";
+// orden al azar y propio de cada navegador (los 5 primeros y el resto del desbloqueo); los personajes nuevos se acomodan al final
+let PJO=[];function pjOrden(){let o=ld(K_PJORD,null);const ids=PJS.map(p=>p.id);if(!Array.isArray(o))o=shuffle(ids.slice());
+  o=o.filter(id=>ids.includes(id));const nuevos=shuffle(ids.filter(id=>!o.includes(id)));o=o.concat(nuevos);sv(K_PJORD,o);PJO=o.map(id=>PJS.find(p=>p.id===id))}
+const pjAbiertos=()=>Math.min(PJO.length,PJ_FREE+Math.floor(((XP&&XP.xp)||0)/PJ_STEP));
+const pjLibre=id=>id==="yo"||(PJ&&PJ.id===id)||PJO.findIndex(p=>p.id===id)<pjAbiertos();
+const pjPts=id=>Math.max(0,(PJO.findIndex(p=>p.id===id)-PJ_FREE+1)*PJ_STEP);
 function pjCheck(){if(!PJS.length)return;const n=pjAbiertos(),prev=ld(K_PJU,{n:PJ_FREE}).n||PJ_FREE;
-  if(n>prev){for(let k=prev;k<n;k++){const p=PJS[k];if(p)xbox(`<img src="${p.img}" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:50%">`,"Nuevo personaje: "+p.n,"🥊")}}
+  if(n>prev){for(let k=prev;k<n;k++){const p=PJO[k];if(p)xbox(`<img src="${p.img}" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:50%">`,"Nuevo personaje: "+p.n,"🥊")}}
   if(n!==prev)sv(K_PJU,{n})}
 const pjOf=id=>id==="yo"?(MIPJ&&MIPJ.img?{id:"yo",n:MIPJ.nombre||"Yo",img:MIPJ.img,yo:1}:null):PJS.find(p=>p.id===id);
 function fotoPropia(file){if(!file)return;const url=URL.createObjectURL(file),im=new Image();
@@ -1005,8 +1008,8 @@ function hud(){const p=PJ&&pjOf(PJ.id);$("hud").classList.toggle("hidden",!p);if
 function selDraw(){
   const yo=pjOf("yo");
   $("selG").innerHTML=(yo?`<button type="button" class="pj${selPick==="yo"?" on":""}" data-id="yo"><img src="${yo.img}" alt=""><span></span><em class="cam" data-cam>📷 cambiar</em></button>`:`<button type="button" class="pj nuevo" id="pjNew"><span style="position:static;background:none;padding:0;font:inherit;color:inherit"><b>📷</b>CREA TU PERSONAJE<br>con tu foto</span></button>`)+
-    PJS.map(p=>pjLibre(p.id)?`<button type="button" class="pj${selPick===p.id?" on":""}" data-id="${p.id}"><img src="${p.img}" alt=""><span></span></button>`:`<button type="button" class="pj lock" data-lock="${p.id}" aria-label="Bloqueado: se desbloquea con ${pjPts(p.id)} puntos"><img src="${p.img}" alt=""><span>${pjPts(p.id).toLocaleString("es-MX")} pts</span></button>`).join("");
-  {const ab=PJS.filter(p=>pjLibre(p.id)).length,sig=PJS.find(p=>!pjLibre(p.id));$("selC").innerHTML=`<b>${ab} de ${PJS.length}</b> desbloqueados`+(sig?` · el siguiente sale con <b>${pjPts(sig.id).toLocaleString("es-MX")} pts</b> (llevas ${((XP&&XP.xp)||0).toLocaleString("es-MX")})`:" · ¡todos!");}
+    PJO.slice().sort((a,b)=>(pjLibre(b.id)?1:0)-(pjLibre(a.id)?1:0)).map(p=>pjLibre(p.id)?`<button type="button" class="pj${selPick===p.id?" on":""}" data-id="${p.id}"><img src="${p.img}" alt=""><span></span></button>`:`<button type="button" class="pj lock" data-lock="${p.id}" aria-label="Bloqueado: se desbloquea con ${pjPts(p.id)} puntos"><img src="${p.img}" alt=""><span>${pjPts(p.id).toLocaleString("es-MX")} pts</span></button>`).join("");
+  {const ab=PJO.filter(p=>pjLibre(p.id)).length,sig=PJO.find(p=>!pjLibre(p.id));$("selC").innerHTML=`<b>${ab} de ${PJO.length}</b> desbloqueados`+(sig?` · el siguiente sale con <b>${pjPts(sig.id).toLocaleString("es-MX")} pts</b> (llevas ${((XP&&XP.xp)||0).toLocaleString("es-MX")})`:" · ¡todos!");}
   $("selG").querySelectorAll(".pj.lock").forEach(b=>b.onclick=()=>{toast("🔒 Se desbloquea con "+pjPts(+b.dataset.lock).toLocaleString("es-MX")+" puntos. ¡Sigue contestando!")});
   if($("pjNew"))$("pjNew").onclick=()=>$("selFile").click();
   $("selG").querySelectorAll(".pj[data-id]").forEach(b=>{const id=b.dataset.id==="yo"?"yo":+b.dataset.id,p=pjOf(id);b.querySelector("span").textContent=p.n;b.setAttribute("aria-label",p.n);
@@ -1018,12 +1021,12 @@ function selSet(id){const prevDefault=selPick&&pjOf(selPick)?pjOf(selPick).n:"";
   $("selG").querySelectorAll(".pj[data-id]").forEach(b=>b.classList.toggle("on",(b.dataset.id==="yo"?"yo":+b.dataset.id)===id));selPrev(p);try{chime()}catch(e){}}
 function selOpen(){if(!PJS.length)return;selPick=PJ?PJ.id:null;$("selName").value=PJ?(PJ.nombre||""):"";selDraw();$("sel").classList.remove("hidden");document.documentElement.style.overflow="hidden"}
 function selClose(){$("sel").classList.add("hidden");document.documentElement.style.overflow=""}
-$("selRnd").onclick=()=>{const L=PJS.filter(p=>pjLibre(p.id)),p=L[Math.floor(Math.random()*L.length)];if(!p)return;selSet(p.id);$("selG").querySelector(`[data-id="${p.id}"]`).scrollIntoView({block:"nearest",behavior:"smooth"})};
+$("selRnd").onclick=()=>{const L=PJO.filter(p=>pjLibre(p.id)),p=L[Math.floor(Math.random()*L.length)];if(!p)return;selSet(p.id);$("selG").querySelector(`[data-id="${p.id}"]`).scrollIntoView({block:"nearest",behavior:"smooth"})};
 $("selOk").onclick=()=>{if(!selPick){$("selRnd").click();return}const p=pjOf(selPick),nm=$("selName").value.trim()||p.n;
   const first=!PJ;PJ={id:selPick,nombre:nm};sv(K_PJ,PJ);if(selPick==="yo"&&MIPJ){MIPJ.nombre=nm;sv(K_MIPJ,MIPJ)}selClose();hud();big(`<img src="${p.img}" class="lvbig" alt="">${nm.toUpperCase()}`,"¡a estudiar!");
   if(first&&!ld(PFX+"ranks_seen_v1",null))setTimeout(showRanks,1700)};
 $("hud").onclick=selOpen;
-ACCESO.ready().then(()=>ACCESO.json("personajes.enc")).then(l=>{PJS=l||[];if(!ld(K_PJU,null))sv(K_PJU,{n:pjAbiertos()});if(PJ&&!pjOf(PJ.id))PJ=null;hud();if(!PJ)setTimeout(()=>{$("ranks").classList.add("hidden");selOpen()},600)}).catch(()=>{});
+ACCESO.ready().then(()=>ACCESO.json("personajes.enc")).then(l=>{PJS=l||[];pjOrden();if(!ld(K_PJU,null))sv(K_PJU,{n:pjAbiertos()});if(PJ&&!pjOf(PJ.id))PJ=null;hud();if(!PJ)setTimeout(()=>{$("ranks").classList.add("hidden");selOpen()},600)}).catch(()=>{});
 
 // ——— calculadora científica (como la del examen) ———
 (()=>{
