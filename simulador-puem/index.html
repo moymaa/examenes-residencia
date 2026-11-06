@@ -232,6 +232,14 @@ html[data-tema="academia"] #acaHero{display:block;position:relative;margin:0 0 1
 #acaHero p{margin:8px 0 0;font-size:14px;color:#d9cfbd}
 @media (max-width:620px){#acaHero .ahtx{position:static;max-width:none;background:var(--noche);padding:16px 18px}#acaHero .ahem{margin-bottom:10px}#acaHero .ahimg{aspect-ratio:16/10;object-position:66% 28%}}
 .tsw.lock{opacity:.55;cursor:not-allowed}.tsw.lock small{display:block;font-size:11px;color:var(--mut)}
+#sorp{position:fixed;inset:0;z-index:60;display:grid;place-items:center;padding:16px;background:rgba(10,10,20,.55);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+#sorp .sp{width:100%;max-width:420px;background:var(--card);color:var(--fg);border-radius:24px;padding:22px 20px 20px;box-shadow:0 30px 80px rgba(0,0,0,.4);border:1px solid var(--line);text-align:center}
+#sorp small{font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--acc)}#sorp h3{margin:6px 0 6px;font-size:24px}#sorp p{margin:0 0 14px;color:var(--mut);font-size:14.5px}
+#sorp .cajas{display:flex;justify-content:center;gap:10px;margin:4px 0 14px}#sorp .cajas div{width:72px;height:72px;border-radius:18px;display:grid;place-items:center;font-size:30px;font-weight:800;color:var(--acc);background:var(--acc-soft,rgba(0,0,0,.05));border:1px dashed var(--acc);animation:sorpb 2.4s ease-in-out infinite}
+#sorp .cajas div:nth-child(2){animation-delay:.3s}#sorp .cajas div:nth-child(3){animation-delay:.6s}@keyframes sorpb{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px) rotate(-3deg)}}
+#sorp ul{list-style:none;padding:0;margin:0 0 16px;text-align:left;font-size:14.5px}#sorp li{padding:6px 0;border-top:1px solid var(--line)}
+#sorp button{width:100%;font:inherit;font-weight:700;border:0;border-radius:14px;min-height:48px;cursor:pointer;background:var(--acc);color:var(--on-acc,#fff)}
+@media (prefers-reduced-motion:reduce){#sorp .cajas div{animation:none}}
 #acaAnun{position:fixed;inset:0;z-index:60;display:grid;place-items:center;padding:16px;background:rgba(10,14,26,.55);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
 #acaAnun .aa{width:100%;max-width:460px;background:#f4eee2;color:#1c2335;border-radius:24px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.4);border:1px solid #c9a96a}
 #acaAnun img{display:block;width:100%;aspect-ratio:3/2;object-fit:cover;object-position:60% 30%}
@@ -245,8 +253,9 @@ html[data-tema] .btn.sec{color:var(--acc)!important}
 html[data-tema="neon"] .btn,html[data-tema="neon"] .card{box-shadow:0 0 12px rgba(57,255,20,.25)}
 .fab{position:fixed;right:12px;z-index:45;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--card);font-size:20px;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.18);display:grid;place-items:center}
 .fab:active{transform:scale(.94)}
-#fabTema{top:calc(12px + env(safe-area-inset-top))}#fabCalabaza{top:calc(62px + env(safe-area-inset-top))}#fabNavidad{top:calc(112px + env(safe-area-inset-top))}
-@media (max-width:760px){#home>h1,#home>p.sub{padding-right:46px}#fabCalabaza,#fabNavidad{display:none}.fab{width:38px;height:38px;font-size:17px;right:8px;opacity:.92}.tpanel{top:calc(56px + env(safe-area-inset-top))}}
+#fabTema{top:calc(12px + env(safe-area-inset-top))}#fabCalabaza{top:calc(62px + env(safe-area-inset-top))}#fabNavidad{top:calc(112px + env(safe-area-inset-top))}#fabAca{top:calc(162px + env(safe-area-inset-top))}
+#fabAca.lock::after{content:"🔒";position:absolute;right:-3px;bottom:-3px;font-size:12px;line-height:1;background:var(--card);border-radius:50%;padding:2px}#fabAca.lock{filter:grayscale(.55)}
+@media (max-width:760px){#home>h1,#home>p.sub{padding-right:46px}#fabCalabaza,#fabNavidad{display:none}#fabAca{top:calc(56px + env(safe-area-inset-top))}.fab{width:38px;height:38px;font-size:17px;right:8px;opacity:.92}.tpanel{top:calc(100px + env(safe-area-inset-top))}}
 #deco span.nieve{opacity:.8;animation:cae linear infinite;top:-40px}
 @keyframes cae{to{transform:translateY(110vh) rotate(360deg)}}
 .tpanel{position:fixed;right:12px;top:calc(162px + env(safe-area-inset-top));z-index:46;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px;box-shadow:0 10px 30px rgba(0,0,0,.25);width:min(300px,calc(100% - 24px))}
@@ -880,6 +889,7 @@ html[data-tema="barrio"] :is([data-back],#rdBack,#rBackMenu,#rCancel){border:3px
 <button class="fab" id="fabTema" type="button" title="Cambiar el color" aria-label="Cambiar el color">🎨</button>
 <button class="fab" id="fabCalabaza" type="button" title="Tema de Halloween" aria-label="Tema de Halloween">🎃</button>
 <button class="fab" id="fabNavidad" type="button" title="Tema de Navidad" aria-label="Tema de Navidad">🎄</button>
+<button class="fab" id="fabAca" type="button" title="Tema La Academia" aria-label="Tema La Academia">🏛️</button>
 <div class="tpanel hidden" id="tpanel"><b>Color del simulador</b><div class="tgrid" id="tgrid"></div></div>
 <button class="pugm" id="pugm" type="button" aria-label="¿Sabías que…?" title="¿Sabías que…?">🧠</button>
 <div class="pugb hidden" id="pugb" role="status"></div>
@@ -1090,7 +1100,7 @@ function showRanks(){
 $("rkGo").onclick=()=>{$("ranks").classList.add("hidden");sv(PFX+"ranks_seen_v1",{d:todayStr()})};
 $("ranks").onclick=e=>{if(e.target.id==="ranks")$("rkGo").click()};
 $("seeRanks").onclick=showRanks;$("rkHelp").onclick=()=>{$("rkGo").click();$("tHelp").click()};
-ACCESO.ready().then(()=>{if(!ld(PFX+"ranks_seen_v1",null)&&ld(PFX+"jugador_v1",null))setTimeout(showRanks,700);setTimeout(()=>{try{acaAnuncio()}catch(e){}},ld(PFX+"jugador_v1",null)?7000:0)});
+ACCESO.ready().then(()=>{if(!ld(PFX+"ranks_seen_v1",null)&&ld(PFX+"jugador_v1",null))setTimeout(showRanks,700);setTimeout(()=>{try{if(acaOk()&&!ld(PFX+"aca_anuncio_v1",null))acaAnuncio();else sorpresas()}catch(e){}},ld(PFX+"jugador_v1",null)?7000:4000)});
 
 // ——— temas de color (como el simulador de paido) ———
 const TEMAS=[["","Automático","linear-gradient(135deg,#faf9f7 50%,#131211 50%)"],["claro","Vino claro","linear-gradient(135deg,#faf9f7,#6d2233)"],["oscuro","Vino oscuro","linear-gradient(135deg,#131211,#d08a9b)"],["azul","Azul","linear-gradient(135deg,#071a2e,#4a9be8)"],["morado","Morado","linear-gradient(135deg,#170b2e,#a970ff)"],["verde","Verde","linear-gradient(135deg,#06231b,#2fbf8f)"],["medianoche","Medianoche","linear-gradient(135deg,#000,#5aa9ff)"],["moka","Moka","linear-gradient(135deg,#2b1a0f,#e2962e)"],["neon","Neón","linear-gradient(135deg,#000,#39ff14)"],["rosa","Rosa pastel","linear-gradient(135deg,#fdf1f6,#d94f8c)"],["ambar","Ámbar","linear-gradient(135deg,#fbf3e6,#c2661a)"],["menta","Menta","linear-gradient(135deg,#eefaf4,#2fa876)"],["halloween","Halloween 🎃","linear-gradient(135deg,#150d20,#ff7518)"],["navidad","Navidad 🎄","linear-gradient(135deg,#0b2418 50%,#e23b3b 50%)"],["academia","La Academia 🏛️","linear-gradient(135deg,#f4eee2 50%,#1f3a68 50%)"],["barrio","Los chicos del barrio 🛹","linear-gradient(135deg,#f1e2bf 50%,#e63b2e 50%)"]];
@@ -1113,6 +1123,15 @@ function acaAnuncio(){if(!acaOk()||ld(PFX+"aca_anuncio_v1",null)||document.getEl
   acaImg().then(t=>{if(!t.academia||document.getElementById("acaAnun"))return;sv(PFX+"aca_anuncio_v1",{d:todayStr()});const w=document.createElement("div");w.id="acaAnun";w.setAttribute("role","dialog");w.setAttribute("aria-modal","true");
     w.innerHTML=`<div class="aa"><img src="${t.academia}" alt=""><div class="ab"><small>🎁 Tema de regalo</small><h3>La Academia</h3><p>Desbloqueado por llegar a Chicharrones morados: un tema griego para estudiar como en la escuela de Atenas. Y de pilón, dos personajes nuevos: <b>vampiro socrático</b> y <b>soto sócrates</b>.</p><div class="row"><button type="button" class="si">Ponerlo</button><button type="button" class="no">Después</button></div></div></div>`;
     document.body.appendChild(w);const c=()=>w.remove();w.querySelector(".si").onclick=()=>{c();setTema("academia");big("🏛️ Bienvenido a La Academia","conócete a ti mismo… y el DSM");confetti(90)};w.querySelector(".no").onclick=c;w.onclick=e=>{if(e.target===w)c()}}).catch(()=>{})}
+function fabAca(){const b=$("fabAca");if(b){const ok=acaOk();b.classList.toggle("lock",!ok);b.title=ok?"Tema La Academia":"La Academia · se abre en Chicharrones morados"}}fabAca();
+$("fabAca").onclick=()=>{if(!acaOk()){big("🔒 La Academia","tema de regalo: se abre en el rango Chicharrones morados (300 pts)");return}setTema(TEMA==="academia"?"":"academia");if(TEMA==="academia"){big("🏛️ Bienvenido a La Academia","conócete a ti mismo… y el DSM");confetti(90)}};
+// bienvenida con sorpresas: dice que hay cosas por desbloquear sin decir cuáles (una sola vez)
+function sorpresas(tries){tries=tries||0;if(ld(PFX+"sorpresas_v1",null))return;
+  const abierto=["sel","ranks"].some(i=>$(i)&&!$(i).classList.contains("hidden"))||document.getElementById("acaAnun")||document.querySelector(".bigmsg")||document.documentElement.classList.contains("foco");
+  if(abierto){if(tries<40)setTimeout(()=>sorpresas(tries+1),3000);return}
+  sv(PFX+"sorpresas_v1",{d:todayStr()});const w=document.createElement("div");w.id="sorp";w.setAttribute("role","dialog");w.setAttribute("aria-modal","true");
+  w.innerHTML=`<div class="sp"><small>🎁 Este simulador esconde cosas</small><h3>Hay sorpresas por desbloquear</h3><div class="cajas" aria-hidden="true"><div>?</div><div>?</div><div>?</div></div><p>Mientras más practiques y más subas de rango, más se abre. No te decimos qué… tendrás que descubrirlo.</p><ul><li>🔒 Temas secretos</li><li>🔒 Personajes ocultos</li><li>🔒 Logros escondidos</li><li>🔒 …y algo más que no te vamos a contar</li></ul><button type="button">¡A descubrirlas!</button></div>`;
+  document.body.appendChild(w);const c=()=>w.remove();w.querySelector("button").onclick=()=>{c();confetti(60)};w.onclick=e=>{if(e.target===w)c()}}
 $("fabNavidad").onclick=()=>{setTema(TEMA==="navidad"?"":"navidad");if(TEMA==="navidad"){big("🎄 ¡Felices fiestas!","que el regalo sea pasar el PUEM");confetti(120)}};
 $("fabCalabaza").onclick=()=>{setTema(TEMA==="halloween"?"":"halloween");if(TEMA==="halloween"){big("🎃 ¡Feliz Halloween!","que los únicos sustos sean del examen");}};
 document.addEventListener("click",e=>{if(!e.target.closest("#tpanel,#fabTema"))$("tpanel").classList.add("hidden")});
@@ -1459,7 +1478,7 @@ let roundXP=0,roundBestCombo=0,roundCorrect=0;
 const mult=()=>Math.min(3,1+Math.max(0,qStreak-1)*0.2);
 function addXP(n){const before=lvlOf(XP.xp);XP.xp+=n;roundXP+=n;sv(K_XP,XP);try{pjCheck()}catch(e){}const after=lvlOf(XP.xp);
   const el=$("qpts");el.textContent="⭐ "+XP.xp.toLocaleString("es-MX");el.classList.add("pop");setTimeout(()=>el.classList.remove("pop"),220);
-  if(after>before)setTimeout(()=>{big(lvlPic(after,true)+"¡Subiste de nivel!",LEVELS[after][1]);confetti(140)},500);if(after>before&&after>=1)setTimeout(()=>{try{acaAnuncio()}catch(e){}},2600);}
+  if(after>before)setTimeout(()=>{big(lvlPic(after,true)+"¡Subiste de nivel!",LEVELS[after][1]);confetti(140)},500);if(after>before&&after>=1)setTimeout(()=>{try{fabAca();acaAnuncio()}catch(e){}},2600);}
 function fly(txt,el,crit){const r=el?el.getBoundingClientRect():{left:innerWidth/2,width:0,top:innerHeight/2};const f=document.createElement("div");f.className="fly"+(crit?" crit":"");f.textContent=txt;f.style.left=(r.left+r.width/2)+"px";f.style.top=(r.top-6)+"px";document.body.appendChild(f);setTimeout(()=>f.remove(),1200)}
 function big(t,s){const b=document.createElement("div");b.className="bigmsg";b.innerHTML=t+(s?`<small>${s}</small>`:"");document.body.appendChild(b);setTimeout(()=>b.remove(),1700)}
 function confetti(n){
