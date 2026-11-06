@@ -263,6 +263,28 @@ html[data-tema="academia"] #acaHero{display:block;position:relative;margin:0 0 1
 .tq .tqx{display:flex;align-items:center;justify-content:center;gap:12px;margin:8px 0}.tq .tqx>div{display:flex;flex-direction:column;align-items:center;gap:4px;width:120px;text-align:center;font-size:13px}
 .tq .tqx img,.tq .tqx em{width:84px;height:84px;border-radius:50%;object-fit:cover;display:grid;place-items:center;font-size:30px;font-style:normal;background:var(--bg);border:2px solid var(--line)}.tq .tqx i{font-size:26px;font-style:normal;color:var(--acc)}
 .dlgq .ok.sec2{background:transparent;color:var(--mut);border:1px solid var(--line);margin-top:8px}
+/* tarjeta de puntaje arriba y secciones plegables */
+.pcard{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 14px;align-items:center;margin:12px 0 10px;padding:14px 16px;border-radius:22px;border:1px solid var(--line);background:color-mix(in srgb,var(--card) 72%,transparent);box-shadow:0 10px 30px rgba(0,0,0,.08)}
+.pcard:empty{display:none}
+.pcard .pcav{grid-row:span 2;width:68px;height:68px;border-radius:50%;border:3px solid var(--acc);padding:0;overflow:hidden;background:var(--bg);cursor:pointer;font-size:30px;display:grid;place-items:center}
+.pcard .pcav img{width:100%;height:100%;object-fit:cover}
+.pcard .pcn{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;min-width:0}.pcard .pcn b{font-size:17px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100%}
+.pcard .pcy{font:inherit;font-size:12px;font-weight:800;border:1px solid var(--acc);color:var(--acc);background:transparent;border-radius:999px;padding:2px 9px;cursor:pointer}
+.pcard .pcl{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--mut)}.pcard .pcl img,.pcard .pcl span.e{width:22px;height:22px;border-radius:6px;object-fit:cover;font-size:16px}
+.pcard .pcx{grid-column:1/-1;display:grid;gap:4px;margin-top:6px}
+.pcard .pcpts{display:flex;justify-content:space-between;align-items:baseline;gap:8px;font-size:13px;color:var(--mut)}.pcard .pcpts b{font-size:26px;color:var(--fg);letter-spacing:-.02em}
+.pcard .pcbar{height:10px;border-radius:99px;background:var(--line);overflow:hidden}.pcard .pcbar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--acc),#e2a72e);transition:width .6s cubic-bezier(.34,1.56,.64,1)}
+.pcard .pcst{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.pcard .pcst span,.pcard .pcst button{font:inherit;font-size:12.5px;font-weight:600;padding:5px 10px;border-radius:999px;background:var(--bg);border:1px solid var(--line);color:var(--fg);white-space:nowrap}
+.pcard .pcst button{cursor:pointer}.pcard .pcst .hot{border-color:#e2762e;color:#e2762e}.pcard .pcst .ok{border-color:var(--ok);color:var(--ok)}
+.foldh{all:unset;box-sizing:border-box;display:flex;align-items:center;gap:8px;width:100%;cursor:pointer;padding:2px 0;min-height:36px}
+.foldh b{font-size:15px}.foldh .fsum{flex:1;min-width:0;font-size:12.5px;color:var(--mut);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-align:right}.foldh .chev{font-style:normal;color:var(--mut);transition:transform .25s}
+.foldh:focus-visible{outline:2px solid var(--acc);outline-offset:3px;border-radius:8px}
+.folded .foldh .chev{transform:rotate(-90deg)}.folded>:not(.foldh){display:none!important}
+.foldw{margin:6px 0}.foldw.folded{padding:8px 14px;border:1px solid var(--line);border-radius:16px;background:color-mix(in srgb,var(--card) 60%,transparent)}
+#cdW:not(.folded) .foldh .fsum{display:none}#mine:not(.folded) .foldh .fsum{display:none}
+#home.vet>p.sub{display:none}@media (max-width:760px){#home.vet>h1{font-size:22px;margin-bottom:0}}
+@media (max-width:760px){.fab{transition:opacity .25s,transform .25s}html.fabhide .fab{opacity:0;pointer-events:none;transform:scale(.8)}#home{padding-bottom:96px}}
 .aniobar{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:10px 0 4px;padding:10px 14px;border-radius:16px;border:1px solid var(--line);background:color-mix(in srgb,var(--card) 70%,transparent);font-size:14px}
 .aniobar:empty{display:none}.aniobar button{font:inherit;font-weight:700;font-size:13.5px;border:1px solid var(--acc);color:var(--acc);background:transparent;border-radius:999px;padding:6px 14px;min-height:36px;cursor:pointer}
 .dlgq{position:fixed;inset:0;z-index:70;display:grid;place-items:center;padding:16px;background:rgba(10,10,20,.55);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);overflow:auto}
@@ -660,8 +682,9 @@ html[data-tema="barrio"] :is([data-back],#rdBack,#rBackMenu,#rCancel){border:3px
   <div id="acaHero" aria-label="Tema La Academia"><img class="ahimg" id="acaImg" alt=""><div class="ahtx"><div class="ahem"><i>A</i>La Academia</div><h2>¿Qué quieres aprender hoy?</h2><p>Preguntas, diálogos y lecturas para llegar al PUEM pensando como filósofo.</p></div></div>
   <h1>Simulador PUEM · Psiquiatría</h1>
   <p class="sub">Material de estudio para la residencia de Psiquiatría. Respondes y enseguida ves la respuesta correcta, la explicación y las referencias de PubMed.</p>
-  <div id="countdown"></div>
+  <div class="pcard" id="pcard" aria-label="Tu puntaje"></div>
   <div id="anioBar" class="aniobar"></div>
+  <div class="foldw" id="cdW"><button type="button" class="foldh" data-fold="cd" aria-expanded="true"><b>⏳ Cuenta regresiva al PUEM</b><span class="fsum" id="cdSum"></span><i class="chev">▾</i></button><div id="countdown"></div></div>
 
   <div class="mision" aria-hidden="true"><img class="kndlogo" src="niveles/barrio-logo.png" alt="" loading="lazy"><b>OPERACIÓN: P.U.E.M.</b><small>Psiquiatras Unidos En Misión · objetivo: aprobar el examen · nivel de amenaza: 💀💀💀💀</small></div>
   <h2 class="qh">¿Qué quieres practicar hoy?</h2>
@@ -679,7 +702,7 @@ html[data-tema="barrio"] :is([data-back],#rdBack,#rBackMenu,#rCancel){border:3px
   </div>
 
   <div class="card" id="mine">
-    <div class="row" style="justify-content:space-between"><b>Tu avance</b><span class="streak hidden" id="dstreak"></span></div>
+    <button type="button" class="foldh" data-fold="mine" aria-expanded="true"><b>📊 Tu avance completo</b><span class="fsum" id="mineSum"></span><span class="streak hidden" id="dstreak"></span><i class="chev">▾</i></button>
     <div class="dsb" id="dsb"></div>
     <div class="hero">
       <div class="ring" aria-label="Porcentaje dominado">
@@ -1033,8 +1056,8 @@ function anioDlg(despues){if(document.getElementById("anioDlg"))return;const w=d
   draw();if(ANIO)w.onclick=e=>{if(e.target===w)w.remove()};document.body.appendChild(w)}
 // ——— novedades: al publicar una actualización, todos ven qué cambió (su avance se queda igual) ———
 // Para anunciar algo nuevo: subir VERSION y poner los cambios arriba de NOVEDADES.
-const VERSION="2026-11-06e",K_VER=PFX+"version_v1";
-const NOVEDADES=[["🎒","¡Llegaron los <b>Coleccionables</b>! Para empezar, a todos les regalamos la <b>Pluma de adri</b> 🌸. Hay 12 objetos más con poderes pequeños (más puntos a cierta hora, escudo de racha, cofres más gordos…). Son difíciles: se ganan con muchos puntos, rachas largas o logros, y uno sale escondido en los cofres. Se equipa uno y se pueden intercambiar."],["🎓","Elige tu año (R1–R4): R1 ya no ve preguntas de R2–R4 y R4 trae también el Consejo. Arriba del inicio dice qué año eres y lo cambias con un toque."],
+const VERSION="2026-11-06f",K_VER=PFX+"version_v1";
+const NOVEDADES=[["🏁","El inicio cambió: arriba está tu tarjeta con puntos, rango, racha, meta del día y tu PUEM. «Tu avance completo» y la cuenta regresiva se pliegan con un toque (y se quedan como las dejes)."],["🎒","¡Llegaron los <b>Coleccionables</b>! Para empezar, a todos les regalamos la <b>Pluma de adri</b> 🌸. Hay 12 objetos más con poderes pequeños (más puntos a cierta hora, escudo de racha, cofres más gordos…). Son difíciles: se ganan con muchos puntos, rachas largas o logros, y uno sale escondido en los cofres. Se equipa uno y se pueden intercambiar."],["🎓","Elige tu año (R1–R4): R1 ya no ve preguntas de R2–R4 y R4 trae también el Consejo. Arriba del inicio dice qué año eres y lo cambias con un toque."],
   ["🔁","Intercambia personajes con un compañero con un código de 4 dígitos (en «Elige tu personaje» → 🔁 Intercambiar). El que das se te va y el que recibes es tuyo."],
   ["🏛️","Tema secreto La Academia 🏛️ y 10 personajes nuevos por desbloquear 👀 (ya son 45)."],
   ["🧭","¿Te perdiste? Arriba de cada pantalla está el botón <b>← ¿Qué quieres practicar?</b> para volver al inicio, y en el inicio está <b>❓ Cómo funciona</b>."],
@@ -1404,6 +1427,33 @@ function tqDraw(){let w=document.getElementById("tqDlg");if(!w){w=document.creat
   w.querySelectorAll(".tqg button[data-id]").forEach(x=>x.onclick=()=>{TQ.mine=tqNid(x.dataset.id);TQ.okM=false;TQ.okT=false;tqSend({t:"of",id:TQ.mine});tqDraw()})}
 function tqInicia(k){if(TQ&&!TQ.hecho&&!TQ.err&&TQ.kind!==k){tqCerrar()}TQK=k;tqCerrar();tqDraw()}
 
+// ——— tarjeta de puntaje (lo primero que ves) y secciones que se pliegan y se recuerdan ———
+const K_UI=PFX+"ui_v1";let UI=ld(K_UI,null)||{cd:!!ANIO,mine:true};
+function folds(){document.querySelectorAll(".foldh[data-fold]").forEach(h=>{const k=h.dataset.fold,box=h.parentElement,f=!!UI[k];box.classList.toggle("folded",f);h.setAttribute("aria-expanded",!f);
+  h.onclick=()=>{UI[k]=!UI[k];sv(K_UI,UI);folds()}})}
+function pcard(){const el=$("pcard");if(!el)return;const p=PJ&&pjOf(PJ.id),xp=(XP&&XP.xp)||0,L=lvlOf(xp),nx=LEVELS[L+1];
+  const pct=nx?Math.round(100*(xp-LEVELS[L][0])/(nx[0]-LEVELS[L][0])):100,t=todayStr(),last=DAY.last;
+  const lit=last&&(last===t||dayDiff(last,t)===1),rch=lit?DAY.count:dayStreak(),gd=XP.day&&XP.day.d===t?XP.day.n:0;
+  const t0=new Date(),hoy=new Date(t0.getFullYear(),t0.getMonth(),t0.getDate());
+  const ex=EXAMS.map(e=>({...e,n:Math.round((new Date(e.d[0],e.d[1]-1,e.d[2])-hoy)/864e5)})).filter(e=>e.n>=0).sort((a,b)=>a.n-b.n);
+  const mio=ANIO?ex.find(e=>e.y===ANIO.y):null,ce=mio||(!ANIO&&ex[0]);
+  const eq=COL&&COL.eq&&colTengo(COL.eq)?colOf(COL.eq):null;let dom="";try{const q=snap();if(q.tot){const v=100*q.ok/q.tot;dom=((v>0&&v<10)||(v>90&&v<100)?v.toFixed(1):Math.round(v))+" %"}}catch(e){}
+  const pic=LVIMG[L+1]?`<img src="${LVIMG[L+1]}" alt="">`:`<span class="e">${LVEMO[L]}</span>`;
+  el.innerHTML=`<button type="button" class="pcav" id="pcAv" aria-label="Cambiar personaje">${p?`<img src="${p.img}" alt="">`:"🙂"}</button>
+    <div class="pcn"><b>${p?vesc((PJ.nombre||p.n)):"Elige tu personaje"}</b>${ANIO?`<button type="button" class="pcy" id="pcY" aria-label="Cambiar año">${ANIO.y}</button>`:""}</div>
+    <div class="pcl">${pic}<span>Nivel ${L+1} · ${LEVELS[L][1]}</span></div>
+    <div class="pcx"><div class="pcpts"><span style="white-space:nowrap"><b>${xp.toLocaleString("es-MX")}</b> pts</span><span>${nx?`${(nx[0]-xp).toLocaleString("es-MX")} para ${nx[1]}`:"Nivel máximo 🙏"}</span></div><div class="pcbar"><i style="width:${pct}%"></i></div></div>
+    <div class="pcst"><span class="${rch?"hot":""}">🔥 ${rch?rch+(rch===1?" día":" días"):"Sin racha"}</span><span class="${gd>=GOAL?"ok":""}">🎯 ${gd>=GOAL?"Meta cumplida":gd+"/"+GOAL+" hoy"}</span>${dom?`<span>✅ ${dom} dominado</span>`:""}${ce?`<span>⏳ PUEM ${ce.y}: ${ce.n===0?"¡hoy!":ce.n+(ce.n===1?" día":" días")}</span>`:""}${eq?`<button type="button" id="pcCol">🎒 ${vesc(eq.n)}</button>`:""}</div>`;
+  $("pcAv").onclick=()=>{try{selOpen()}catch(e){}};if($("pcY"))$("pcY").onclick=()=>anioDlg();if($("pcCol"))$("pcCol").onclick=()=>{colSel=null;colDraw()};
+  $("anioBar").classList.toggle("hidden",!!ANIO);
+  const cs=$("cdSum");if(cs)cs.textContent=ex.map(e=>`${e.y}: ${e.n} d`).join(" · ");
+  const ms=$("mineSum");if(ms){const sp=$("pSeen"),tt=$("pTot");ms.textContent=`${dom||"0 %"} dominado · ${sp?sp.textContent:0}/${tt?tt.textContent:0} contestadas`}
+  if(PJ)$("home").classList.add("vet")}
+{const _rm=renderMine;renderMine=function(){_rm.apply(this,arguments);try{pcard()}catch(e){}}}
+{const _h=hud;hud=function(){_h.apply(this,arguments);try{pcard()}catch(e){}}}
+folds();
+// en el celular los botones flotantes se esconden al bajar y regresan al subir
+{let ly=0;addEventListener("scroll",()=>{const y=scrollY;document.documentElement.classList.toggle("fabhide",innerWidth<760&&y>90&&y>ly);ly=y},{passive:true})}
 // teclado y foco en los avisos: Esc cierra el de arriba y el foco entra al primer botón
 document.addEventListener("keydown",e=>{if(e.key!=="Escape")return;
   const r=document.getElementById("colRev");if(r){r.remove();return}
