@@ -222,6 +222,43 @@ html[data-tema="academia"] .btn{background:linear-gradient(180deg,#2a4a80,var(--
 html[data-tema="academia"] .btn.sec{background:transparent!important;border:1px solid var(--bronce)!important}
 html[data-tema="academia"]::before{background:radial-gradient(40vmax 40vmax at 6% 0%,color-mix(in srgb,#1f3a68 14%,transparent),transparent 70%),radial-gradient(44vmax 44vmax at 92% 100%,color-mix(in srgb,#b5532e 12%,transparent),transparent 70%)!important}
 #acaHero{display:none}
+/* —— Paido 🧸: tema infantil de crayolas, bloques y juguetes —— */
+html[data-tema="paido"]{color-scheme:light;--bg:#fff8ec;--card:#ffffff;--fg:#2a2f45;--mut:#6b6f86;--line:#f1dfbf;--acc:#2d7ff9;--acc-soft:#e3efff;--ok:#1f9d55;--ok-soft:#e2f7ea;--bad:#e5484d;--bad-soft:#fde8e8;--warn:#b86e00;--warn-soft:#fff2d6;--on-acc:#fff;--k1:#ff6b6b;--k2:#ffc93c;--k3:#46c37b;--k4:#2d7ff9;--k5:#9b6bff;--shadow:0 4px 0 #f1dfbf}
+html[data-tema="paido"] body{font-family:"Nunito",-apple-system,"Segoe UI",Arial,sans-serif!important;background-color:var(--bg);background-image:linear-gradient(#f6e9d2 1px,transparent 1px),linear-gradient(90deg,#f6e9d2 1px,transparent 1px);background-size:28px 28px}
+html[data-tema="paido"] h1,html[data-tema="paido"] h2,html[data-tema="paido"] h3,html[data-tema="paido"] .qh,html[data-tema="paido"] .tile b,html[data-tema="paido"] .count .d,html[data-tema="paido"] .bigmsg{font-family:"Baloo 2","Nunito",sans-serif!important;letter-spacing:0!important}
+html[data-tema="paido"] .card,html[data-tema="paido"] .tile,html[data-tema="paido"] .sim,html[data-tema="paido"] .case{border-radius:22px!important;border:2px solid var(--line)!important;box-shadow:0 5px 0 var(--line)!important}
+html[data-tema="paido"] .btn{border-radius:999px!important;box-shadow:0 4px 0 color-mix(in srgb,var(--acc) 65%,#000)!important;font-weight:700}
+html[data-tema="paido"] .btn:active{transform:translateY(3px);box-shadow:0 1px 0 color-mix(in srgb,var(--acc) 65%,#000)!important}
+html[data-tema="paido"] .chip{border-radius:999px!important;border-width:2px!important}
+html[data-tema="paido"] .chip:nth-child(5n+1)[aria-pressed=true]{background:var(--k1)!important;border-color:var(--k1)!important;color:#fff!important}
+html[data-tema="paido"] .chip:nth-child(5n+2)[aria-pressed=true]{background:var(--k2)!important;border-color:var(--k2)!important;color:#3a2a00!important}
+html[data-tema="paido"] .chip:nth-child(5n+3)[aria-pressed=true]{background:var(--k3)!important;border-color:var(--k3)!important;color:#fff!important}
+html[data-tema="paido"] .chip:nth-child(5n+4)[aria-pressed=true]{background:var(--k4)!important;border-color:var(--k4)!important;color:#fff!important}
+html[data-tema="paido"] .chip:nth-child(5n)[aria-pressed=true]{background:var(--k5)!important;border-color:var(--k5)!important;color:#fff!important}
+html[data-tema="paido"] .case{border-style:dashed!important;border-color:#ffc93c!important;background:#fffdf5!important}
+html[data-tema="paido"] #deco span{animation:rebota 6s ease-in-out infinite}
+@keyframes rebota{0%,100%{transform:translateY(0) rotate(var(--r,0deg))}50%{transform:translateY(-14px) rotate(calc(var(--r,0deg)*-1))}}
+.badge.kid,.chip.kid small{background:linear-gradient(90deg,#ff6b6b,#ffc93c,#46c37b,#2d7ff9,#9b6bff);color:#fff;text-shadow:0 1px 1px rgba(0,0,0,.25)}
+.chip.kid small{border-radius:999px;padding:0 6px}
+.btn.kidb{background:linear-gradient(90deg,#ff6b6b,#ffb03c 30%,#46c37b 60%,#2d7ff9 85%,#9b6bff)!important;color:#fff!important;border:0!important}
+.dlgq .anilbl{font:700 12px/1 inherit;letter-spacing:.06em;text-transform:uppercase;color:var(--mut);margin:2px 0 6px}
+.dlgq .anios.kid{grid-template-columns:repeat(3,minmax(0,1fr))}
+.dlgq .anios.kid button{border:2px dashed #ffc93c;background:#fffaf0;color:#2a2f45}
+.dlgq .anios.kid button:nth-child(1)[aria-pressed=true]{background:#ff6b6b;border:2px solid #ff6b6b;color:#fff}
+.dlgq .anios.kid button:nth-child(2)[aria-pressed=true]{background:#2d7ff9;border:2px solid #2d7ff9;color:#fff}
+.dlgq .anios.kid button:nth-child(3)[aria-pressed=true]{background:#9b6bff;border:2px solid #9b6bff;color:#fff}
+.dlgq .anios.kid button b{font-size:16px}
+#paidoHero{display:none}
+html[data-tema="paido"] #paidoHero{display:flex;align-items:center;gap:18px;flex-wrap:wrap;position:relative;margin:0 0 18px;padding:20px 22px;border-radius:26px;background:linear-gradient(135deg,#fff3c4,#ffe0ea 55%,#dbeaff);border:2px solid #f6d48a;box-shadow:0 6px 0 #f1dfbf;overflow:hidden}
+#paidoHero .blocks{display:flex;gap:6px}
+#paidoHero .blocks i{display:grid;place-items:center;width:46px;height:46px;border-radius:10px;font:800 28px/1 "Baloo 2",sans-serif;font-style:normal;color:#fff;box-shadow:inset 0 -5px 0 rgba(0,0,0,.18),0 3px 0 rgba(0,0,0,.12);animation:rebota 5s ease-in-out infinite}
+#paidoHero .blocks i:nth-child(1){background:#ff6b6b;--r:-6deg}#paidoHero .blocks i:nth-child(2){background:#ffb03c;--r:5deg;animation-delay:-1s}#paidoHero .blocks i:nth-child(3){background:#46c37b;--r:-3deg;animation-delay:-2s}#paidoHero .blocks i:nth-child(4){background:#2d7ff9;--r:6deg;animation-delay:-3s}#paidoHero .blocks i:nth-child(5){background:#9b6bff;--r:-5deg;animation-delay:-4s}
+#paidoHero .phx{flex:1 1 220px;min-width:0}
+#paidoHero small{font-weight:700;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:#a15c00}
+#paidoHero h2{margin:2px 0 0;font:800 clamp(22px,3.6vw,30px)/1.1 "Baloo 2",sans-serif;color:#2a2f45}
+#paidoHero p{margin:4px 0 0;font-size:14px;color:#4b4f66}
+#paidoHero .toys{position:absolute;right:14px;bottom:6px;font-size:28px;opacity:.35;letter-spacing:4px;pointer-events:none}
+@media (max-width:620px){#paidoHero .blocks i{width:38px;height:38px;font-size:23px}#paidoHero .toys{display:none}}
 html[data-tema="academia"] #home>h1,html[data-tema="academia"] #home>p.sub{display:none}
 html[data-tema="academia"] #acaHero{display:block;position:relative;margin:0 0 18px;border-radius:22px;overflow:hidden;background:var(--noche);color:#f4eee2;box-shadow:0 18px 44px rgba(18,28,51,.28);border:1px solid color-mix(in srgb,var(--bronce) 55%,transparent)}
 #acaHero .ahimg{display:block;width:100%;aspect-ratio:16/8.6;object-fit:cover;object-position:62% 30%}
@@ -715,6 +752,7 @@ html[data-tema="barrio"] :is([data-back],#rdBack,#rBackMenu,#rCancel){border:3px
   <h1>Simulador PUEM · Psiquiatría</h1>
   <p class="sub">Material de estudio para la residencia de Psiquiatría. Respondes y enseguida ves la respuesta correcta, la explicación y las referencias de PubMed.</p>
   <div class="pcard" id="pcard" aria-label="Tu puntaje"></div>
+  <div id="paidoHero" aria-label="Paidopsiquiatría"><div class="blocks" aria-hidden="true"><i>P</i><i>A</i><i>I</i><i>D</i><i>O</i></div><div class="phx"><small>Psiquiatría infantil y de la adolescencia</small><h2 id="phT">¡Hoy se juega a estudiar!</h2><p id="phP">Desarrollo, vínculo, juego y DSM-5-TR: tu banco paido para el PUEM.</p></div><div class="toys" aria-hidden="true">🧸🧩🖍️🪁</div></div>
   <div id="anioBar" class="aniobar"></div>
   <div class="foldw" id="cdW"><button type="button" class="foldh" data-fold="cd" aria-expanded="true"><b>⏳ Cuenta regresiva al PUEM</b><span class="fsum" id="cdSum"></span><i class="chev">▾</i></button><div id="countdown"></div></div>
 
@@ -1039,19 +1077,19 @@ html[data-tema="barrio"] :is([data-back],#rdBack,#rBackMenu,#rCancel){border:3px
 <script src="../acceso.js?v=3"></script>
 <script>
 (()=>{
-const BANK_ORDER=["R1","R2","R3","R4","R3–R4 repaso","Consejo 2021","Infanto-juvenil 2016"];
-const BANK_LABEL={"R1":"Banco R1","R2":"Banco R2","R3":"Banco R3","R4":"Banco R4","R3–R4 repaso":"Casos de repaso R3–R4","Consejo 2021":"Consejo","Infanto-juvenil 2016":"Infanto-juvenil 2016"};
+const BANK_ORDER=["R1","R2","R3","R4","R3–R4 repaso","Consejo 2021","Paido PUEM","Paido Consejo","Infanto-juvenil 2016"];
+const BANK_LABEL={"R1":"Banco R1","R2":"Banco R2","R3":"Banco R3","R4":"Banco R4","R3–R4 repaso":"Casos de repaso R3–R4","Consejo 2021":"Consejo","Infanto-juvenil 2016":"🧸 Infanto-juvenil 2016","Paido PUEM":"🧸 Paido PUEM","Paido Consejo":"🧸 Paido Consejo"};const esKid=b=>/^Paido|^Infanto/.test(b||"");
 const SIZES=[20,50,100,0];
 const TAGS={AFECT:"Trastornos afectivos",ANSIE:"Ansiedad, TOC y TEPT",PSICOT:"Trastornos psicóticos",COGNI:"Demencias, delirium y amnésicos",PERSO:"Personalidad",IMPULS:"Control de impulsos",DISOC:"Disociativos",SOMAT:"Somatomorfos",TCA:"Conducta alimentaria",SUST:"Sustancias y alcoholismo",SUENO:"Sueño",
   PSICOPATO:"Psicopatología general y examen mental",NEURO:"Neurología",NEUROPSIQ:"Manifestaciones neuropsiquiátricas",MEDENF:"Paciente médicamente enfermo",DOLOR:"Paciente con dolor",URG:"Urgencias",FARMA:"Psicofarmacología y TEC",GEN:"Genética",
-  INF_TDAH:"TDAH y conducta",INF_ELIM:"Eliminación",INF_APREND:"Aprendizaje y discapacidad intelectual",INF_TEA:"Autismo y TGD",INF_TICS:"Tics",INF_AFANS:"Ansiedad y afecto en infancia",INF_OTROS:"Otros de infancia",SEXUAL:"Sexualidad y género",PSICOTER:"Psicoterapia",OTROS:"Ética, legal y otros"};
+  INF_TDAH:"TDAH y conducta",INF_ELIM:"Eliminación",INF_APREND:"Aprendizaje y discapacidad intelectual",INF_TEA:"Autismo y TGD",INF_TICS:"Tics",INF_AFANS:"Ansiedad y afecto en infancia",INF_OTROS:"Otros de infancia",INF_DESA:"Desarrollo y teorías del desarrollo",SEXUAL:"Sexualidad y género",PSICOTER:"Psicoterapia",OTROS:"Ética, legal y otros"};
 let DATA=[], SIMD=[], DATA_ALL=[], SIMD_ALL=[], mode="real", simGen=null, perTag={}, TM={}, sel=new Set(BANK_ORDER), tsel=new Set(Object.keys(TAGS)), size=20, round=[], i=0, score=0, done=0, fails=[], perBank={}, sim=null, rowOf=new Map(), perRow=[];
 const $=id=>document.getElementById(id);
 const strip=h=>h.replace(/<[^>]+>/g," ");
 const norm=s=>s.normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase();
 
 // ——— fecha del examen (cuenta regresiva) ———
-const EXAMS=[{y:"R3",d:[2026,11,18]},{y:"R1",d:[2026,11,24]}];
+const EXAMS=[{y:"R3",d:[2026,11,18]},{y:"R1",d:[2026,11,24]},{y:"Paido",d:[2026,11,24]}];
 // ——— avance guardado en este navegador (localStorage) ———
 const PFX="puem_sim_",K_PROG=PFX+"progress_v1",K_STAT=PFX+"stats_v1",K_ACH=PFX+"ach_v1",K_DAY=PFX+"daily_v1",RECENT=12;
 const ld=(k,d)=>{try{const r=localStorage.getItem(k);if(r){const v=JSON.parse(r);if(v&&typeof v==="object")return v}}catch(e){}return d};
@@ -1067,33 +1105,42 @@ Promise.all([ACCESO.json("banco.enc"),ACCESO.json("temario.enc"),ACCESO.json("si
 }).catch(()=>{$("avail").textContent="No se pudo cargar el banco de preguntas. Recarga la página."});
 
 // ——— año de residencia: cada quien ve las preguntas de su año (y, si quiere, las de años anteriores) ———
-const K_ANIO=PFX+"anio_v1",ANIOS=["R1","R2","R3","R4"];let ANIO=ld(K_ANIO,null);
-const ALC={acum:"Mi año y los anteriores",solo:"Solo mi año",todo:"Todo el banco"};
-function YRS(){if(!ANIO||ANIO.a==="todo")return ANIOS;const k=ANIOS.indexOf(ANIO.y);return ANIO.a==="solo"?[ANIO.y]:ANIOS.slice(0,k+1)}
-function bancosOk(){if(!ANIO||ANIO.a==="todo")return null;const y=YRS(),b=new Set(y);
+const K_ANIO=PFX+"anio_v1",ANIOS=["R1","R2","R3","R4"],PAIDOS=["Paido R1","Paido R2","Paido Consejo"];let ANIO=ld(K_ANIO,null);
+const esPaido=()=>!!(ANIO&&PAIDOS.includes(ANIO.y));
+const ALC={acum:"Mi año y los anteriores",solo:"Solo mi año",todo:"Todo el banco"},ALCP={acum:"Todo lo paido",solo:"Solo mi banco",todo:"Todo el banco"};
+function YRS(){if(!ANIO||ANIO.a==="todo")return ANIOS;if(esPaido())return [];const k=ANIOS.indexOf(ANIO.y);return ANIO.a==="solo"?[ANIO.y]:ANIOS.slice(0,k+1)}
+function bancosOk(){if(!ANIO||ANIO.a==="todo")return null;
+  if(esPaido()){const c=ANIO.y==="Paido Consejo";return new Set(ANIO.a==="solo"?(c?["Paido Consejo","Infanto-juvenil 2016"]:["Paido PUEM"]):["Paido PUEM","Paido Consejo","Infanto-juvenil 2016"])}
+  const y=YRS(),b=new Set(y);
   if(ANIO.y==="R3"||ANIO.y==="R4")b.add("R3–R4 repaso");if(ANIO.y==="R4"){b.add("Consejo 2021");b.add("Infanto-juvenil 2016")}return b}
-function aplicaAnio(){const b=bancosOk();DATA=b?DATA_ALL.filter(d=>b.has(d.bank)):DATA_ALL.slice();SIMD=b?SIMD_ALL.filter(d=>b.has(d.bank)):SIMD_ALL.slice();
+const kidTag=t=>/^INF_/.test(t||"");
+function aplicaAnio(){const b=bancosOk(),pa=esPaido()&&ANIO.a==="acum",ok=d=>b.has(d.bank)||(pa&&kidTag(d.tag));DATA=b?DATA_ALL.filter(ok):DATA_ALL.slice();SIMD=b?SIMD_ALL.filter(ok):SIMD_ALL.slice();try{setTema(TEMA)}catch(e){}
   if(!DATA_ALL.length)return;try{drawSims();drawSimsGen();drawBanks();drawTags();drawSizes();updAvail();renderMine();drawLect();drawReal();vsTemas()}catch(e){console.error(e)}anioBar()}
 function anioBar(){const el=$("anioBar");if(!el)return;
-  el.innerHTML=ANIO?`<span>🎓 Eres <b>${ANIO.y}</b> · ${ALC[ANIO.a]}${ANIO.y==="R4"&&ANIO.a!=="todo"?" + Consejo":""} · <b>${DATA.filter(d=>d.type==="mcq").length.toLocaleString("es-MX")}</b> preguntas</span><button type="button" id="anioCambia">Cambiar</button>`:`<span>🎓 ¿En qué año vas? Así te ponemos solo tus preguntas.</span><button type="button" id="anioCambia">Elegir</button>`;
+  el.innerHTML=ANIO?`<span>🎓 Eres <b>${ANIO.y}</b> · ${(esPaido()?ALCP:ALC)[ANIO.a]}${ANIO.y==="R4"&&ANIO.a!=="todo"?" + Consejo":""}${esPaido()?" 🧸":""} · <b>${DATA.filter(d=>d.type==="mcq").length.toLocaleString("es-MX")}</b> preguntas</span><button type="button" id="anioCambia">Cambiar</button>`:`<span>🎓 ¿En qué año vas? Así te ponemos solo tus preguntas.</span><button type="button" id="anioCambia">Elegir</button>`;
   $("anioCambia").onclick=()=>anioDlg()}
 function dlgAbierto(){return !!document.querySelector("#anioDlg,#novDlg,#colDlg,#tqDlg,#evDlg")}
 function anioDlg(despues){if(document.getElementById("anioDlg"))return;const w=document.createElement("div");w.id="anioDlg";w.className="dlgq";w.setAttribute("role","dialog");w.setAttribute("aria-modal","true");
   let y=ANIO?ANIO.y:null,a=ANIO?ANIO.a:"acum";
   const draw=()=>{w.innerHTML=`<div class="sp"><small>🎓 Tu año de residencia</small><h3>¿En qué año vas?</h3><p>Te ponemos las preguntas de tu examen. Lo puedes cambiar cuando quieras y tu avance no se pierde.</p>
     <div class="anios">${ANIOS.map(k=>`<button type="button" data-y="${k}" aria-pressed="${k===y}"><b>${k}</b><small>${k==="R4"?"+ Consejo":k==="R3"?"+ repaso":"&nbsp;"}</small></button>`).join("")}</div>
-    <div class="alc">${Object.entries(ALC).map(([k,n])=>`<label><input type="radio" name="alc" value="${k}"${k===a?" checked":""}> ${n}${k==="acum"?" <em>(recomendado)</em>":""}</label>`).join("")}</div>
+    <div class="anilbl">🧸 Paidopsiquiatría</div>
+    <div class="anios kid">${PAIDOS.map((k,j)=>`<button type="button" data-y="${k}" aria-pressed="${k===y}"><b>${["🧸","🧩","🎓"][j]} ${k.replace("Paido ","")}</b><small>${j<2?"Paido · PUEM":"Paido"}</small></button>`).join("")}</div>
+    <div class="alc">${Object.entries(PAIDOS.includes(y)?ALCP:ALC).map(([k,n])=>`<label><input type="radio" name="alc" value="${k}"${k===a?" checked":""}> ${n}${k==="acum"?" <em>(recomendado)</em>":""}</label>`).join("")}</div>
     <p class="nota" id="anioNota"></p>
     <button type="button" class="ok" ${y?"":"disabled"}>${y?"Listo, soy "+y:"Elige tu año"}</button></div>`;
-    const nota=w.querySelector("#anioNota");if(y){const k=ANIOS.indexOf(y),prev=ANIOS.slice(0,k).join(", ");nota.textContent=a==="acum"?(k?`Te salen preguntas de ${prev} y ${y}`:"Te salen solo preguntas de R1")+(y==="R4"?", más el Consejo":"")+".":a==="solo"?`Solo preguntas de ${y}${y==="R4"?" y del Consejo":""}.`:"Todas las preguntas de todos los años y el Consejo."}
+    const nota=w.querySelector("#anioNota");if(y&&PAIDOS.includes(y)){nota.textContent=a==="acum"?"Banco PUEM paido + guía del Consejo paido + Infanto-juvenil 2016 + lo infantil de los bancos de adultos. R1 y R2 llevan el mismo banco.":a==="solo"?(y==="Paido Consejo"?"Solo la guía del Consejo paido e Infanto-juvenil 2016.":"Solo el banco PUEM paido."):"Todas las preguntas de todos los años, adultos y paido."}else if(y){const k=ANIOS.indexOf(y),prev=ANIOS.slice(0,k).join(", ");nota.textContent=a==="acum"?(k?`Te salen preguntas de ${prev} y ${y}`:"Te salen solo preguntas de R1")+(y==="R4"?", más el Consejo":"")+".":a==="solo"?`Solo preguntas de ${y}${y==="R4"?" y del Consejo":""}.`:"Todas las preguntas de todos los años y el Consejo."}
     w.querySelectorAll(".anios button").forEach(b=>b.onclick=()=>{y=b.dataset.y;draw()});
     w.querySelectorAll('input[name=alc]').forEach(r=>r.onchange=()=>{a=r.value;draw()});
-    w.querySelector(".ok").onclick=()=>{if(!y)return;ANIO={y,a,d:todayStr()};sv(K_ANIO,ANIO);w.remove();aplicaAnio();big("🎓 Listo, "+y,a==="todo"?"tienes todo el banco":"ya solo te salen tus preguntas");if(despues)setTimeout(despues,400)}};
+    w.querySelector(".ok").onclick=()=>{if(!y)return;ANIO={y,a,d:todayStr()};sv(K_ANIO,ANIO);w.remove();aplicaAnio();big((PAIDOS.includes(y)?"🧸 ":"🎓 ")+"Listo, "+y,a==="todo"?"tienes todo el banco":"ya solo te salen tus preguntas");if(PAIDOS.includes(y))confetti(70);if(despues)setTimeout(despues,400)}};
   draw();if(ANIO)w.onclick=e=>{if(e.target===w)w.remove()};document.body.appendChild(w)}
+function phero(){const t=$("phT"),p=$("phP");if(!t)return;const pz=DATA.filter(d=>d.type==="mcq"&&esKid(d.bank)).length;
+  const fr=["¡Hoy se juega a estudiar!","Constancia objetal… y constancia de estudio","Del juego simbólico al PUEM","Base segura: tu banco paido"];t.textContent=fr[new Date().getDate()%fr.length];
+  p.textContent=pz?`${pz.toLocaleString("es-MX")} preguntas de paidopsiquiatría: desarrollo, vínculo, juego y DSM-5-TR.${esPaido()&&/^Paido R/.test(ANIO.y)?" PUEM paido: 24 de noviembre.":""}`:"Desarrollo, vínculo, juego y DSM-5-TR."}
 // ——— novedades: al publicar una actualización, todos ven qué cambió (su avance se queda igual) ———
 // Para anunciar algo nuevo: subir VERSION y poner los cambios arriba de NOVEDADES.
-const VERSION="2026-11-06j",K_VER=PFX+"version_v1";
-const NOVEDADES=[["👑","Llegaron los <b>personajes PREMIUM</b> (marco dorado): 11 adscritos que se abren con muchos puntos, de 1,500 a 12,000, aparte de la fila normal. Y personaje nuevo: la chiquiguardia 🐀."],["🛠️","Fe de erratas: corregimos 8 preguntas del banco que tenían datos viejos (tu avance en ellas se conserva)."],["🙏","Nuevo <b>Modo Dorimé</b>: universos alternos de las preguntas del banco (el mismo caso con un dato cambiado que voltea la respuesta, o con otra pregunta). Se abre cuando ya viste el 85 % de tu banco o llegas a Dorimé. +15 por acierto."],["🔊","Ahora suena: cada acierto es una moneda (más aguda con el combo) y hay sonidos de cofre, subir de rango, logros y coleccionables. Silencia con 🔊 en tu tarjeta; en el simulador real y el modo examen no suena nada."],["👾","Mientras practicas pueden aparecer sorpresas: el <b>jefe oculto Dr. Papoi</b> (caso de 5 preguntas, hasta +80 pts; lo puedes guardar para después) y las <b>IC de ACA</b> (caso de urgencias con una pregunta clave, +30 pts)."],["🏁","El inicio cambió: arriba está tu tarjeta con puntos, rango, racha, meta del día y tu PUEM. «Tu avance completo» y la cuenta regresiva se pliegan con un toque (y se quedan como las dejes)."],["🎒","¡Llegaron los <b>Coleccionables</b>! Para empezar, a todos les regalamos la <b>Pluma de adri</b> 🌸. Hay 12 objetos más con poderes pequeños (más puntos a cierta hora, escudo de racha, cofres más gordos…). Son difíciles: se ganan con muchos puntos, rachas largas o logros, y uno sale escondido en los cofres. Se equipa uno y se pueden intercambiar."],["🎓","Elige tu año (R1–R4): R1 ya no ve preguntas de R2–R4 y R4 trae también el Consejo. Arriba del inicio dice qué año eres y lo cambias con un toque."],
+const VERSION="2026-11-07a",K_VER=PFX+"version_v1";
+const NOVEDADES=[["🧸","Llegó <b>Paidopsiquiatría</b>: en «¿En qué año vas?» ahora puedes elegir <b>Paido R1, Paido R2 o Paido Consejo</b>. Trae el banco PUEM paido (169 preguntas explicadas), la guía del Consejo paido (193) e Infanto-juvenil 2016, con su propio tema de crayolas y juguetes. PUEM paido: 24 de noviembre."],["👑","Llegaron los <b>personajes PREMIUM</b> (marco dorado): 11 adscritos que se abren con muchos puntos, de 1,500 a 12,000, aparte de la fila normal. Y personaje nuevo: la chiquiguardia 🐀."],["🛠️","Fe de erratas: corregimos 8 preguntas del banco que tenían datos viejos (tu avance en ellas se conserva)."],["🙏","Nuevo <b>Modo Dorimé</b>: universos alternos de las preguntas del banco (el mismo caso con un dato cambiado que voltea la respuesta, o con otra pregunta). Se abre cuando ya viste el 85 % de tu banco o llegas a Dorimé. +15 por acierto."],["🔊","Ahora suena: cada acierto es una moneda (más aguda con el combo) y hay sonidos de cofre, subir de rango, logros y coleccionables. Silencia con 🔊 en tu tarjeta; en el simulador real y el modo examen no suena nada."],["👾","Mientras practicas pueden aparecer sorpresas: el <b>jefe oculto Dr. Papoi</b> (caso de 5 preguntas, hasta +80 pts; lo puedes guardar para después) y las <b>IC de ACA</b> (caso de urgencias con una pregunta clave, +30 pts)."],["🏁","El inicio cambió: arriba está tu tarjeta con puntos, rango, racha, meta del día y tu PUEM. «Tu avance completo» y la cuenta regresiva se pliegan con un toque (y se quedan como las dejes)."],["🎒","¡Llegaron los <b>Coleccionables</b>! Para empezar, a todos les regalamos la <b>Pluma de adri</b> 🌸. Hay 12 objetos más con poderes pequeños (más puntos a cierta hora, escudo de racha, cofres más gordos…). Son difíciles: se ganan con muchos puntos, rachas largas o logros, y uno sale escondido en los cofres. Se equipa uno y se pueden intercambiar."],["🎓","Elige tu año (R1–R4): R1 ya no ve preguntas de R2–R4 y R4 trae también el Consejo. Arriba del inicio dice qué año eres y lo cambias con un toque."],
   ["🔁","Intercambia personajes con un compañero con un código de 4 dígitos (en «Elige tu personaje» → 🔁 Intercambiar). El que das se te va y el que recibes es tuyo."],
   ["🏛️","Tema secreto La Academia 🏛️ y 10 personajes nuevos por desbloquear 👀 (ya son 45)."],
   ["🧭","¿Te perdiste? Arriba de cada pantalla está el botón <b>← ¿Qué quieres practicar?</b> para volver al inicio, y en el inicio está <b>❓ Cómo funciona</b>."],
@@ -1167,7 +1214,8 @@ function rxBuild(y,src){
 const rxN=()=>RX.cases.reduce((a,c)=>a+c.ids.length,0);
 const rxSt=id=>{const a=RX.ans[id];return !a||a.k==null?"r":a.doubt?"y":"g"};
 function drawReal(){
-  $("realYears").innerHTML=YRS().map(y=>`<button class="btn sm" data-y="${y}">Simulador real ${y}</button>`).join("");
+  const ry=esPaido()?[...(bancosOk()||[])].filter(b=>/^Paido/.test(b)):YRS();
+  $("realYears").innerHTML=ry.map(y=>`<button class="btn sm${esKid(y)?" kidb":""}" data-y="${y}">Simulador real ${y.replace("Paido ","Paido · ")}</button>`).join("");
   $("realYears").querySelectorAll("button").forEach(b=>b.onclick=()=>{
     if(RX&&!RX.done&&!confirm(`Tienes un simulador real ${RX.y} en curso. ¿Empezar uno nuevo y descartarlo?`))return;
     RX={y:b.dataset.y,src:rxSrc,folio:String(Math.floor(1e8+Math.random()*9e8)),pass:Math.random().toString(36).slice(2,8).toUpperCase(),cases:rxBuild(b.dataset.y,rxSrc),ans:{},start:null,done:false};
@@ -1251,19 +1299,21 @@ $("seeRanks").onclick=showRanks;$("rkHelp").onclick=()=>{$("rkGo").click();$("tH
 ACCESO.ready().then(()=>{if(!ld(PFX+"ranks_seen_v1",null)&&ld(PFX+"jugador_v1",null))setTimeout(showRanks,700);setTimeout(()=>{try{if(acaOk()&&!ld(PFX+"aca_anuncio_v1",null))acaAnuncio();else sorpresas()}catch(e){}},ld(PFX+"jugador_v1",null)?7000:4000)});
 
 // ——— temas de color (como el simulador de paido) ———
-const TEMAS=[["","Automático","linear-gradient(135deg,#faf9f7 50%,#131211 50%)"],["claro","Vino claro","linear-gradient(135deg,#faf9f7,#6d2233)"],["oscuro","Vino oscuro","linear-gradient(135deg,#131211,#d08a9b)"],["azul","Azul","linear-gradient(135deg,#071a2e,#4a9be8)"],["morado","Morado","linear-gradient(135deg,#170b2e,#a970ff)"],["verde","Verde","linear-gradient(135deg,#06231b,#2fbf8f)"],["medianoche","Medianoche","linear-gradient(135deg,#000,#5aa9ff)"],["moka","Moka","linear-gradient(135deg,#2b1a0f,#e2962e)"],["neon","Neón","linear-gradient(135deg,#000,#39ff14)"],["rosa","Rosa pastel","linear-gradient(135deg,#fdf1f6,#d94f8c)"],["ambar","Ámbar","linear-gradient(135deg,#fbf3e6,#c2661a)"],["menta","Menta","linear-gradient(135deg,#eefaf4,#2fa876)"],["halloween","Halloween 🎃","linear-gradient(135deg,#150d20,#ff7518)"],["navidad","Navidad 🎄","linear-gradient(135deg,#0b2418 50%,#e23b3b 50%)"],["academia","La Academia 🏛️","linear-gradient(135deg,#f4eee2 50%,#1f3a68 50%)"],["barrio","Los chicos del barrio 🛹","linear-gradient(135deg,#f1e2bf 50%,#e63b2e 50%)"]];
+const temaEf=()=>TEMA||(esPaido()?"paido":"");
+const TEMAS=[["","Automático","linear-gradient(135deg,#faf9f7 50%,#131211 50%)"],["claro","Vino claro","linear-gradient(135deg,#faf9f7,#6d2233)"],["oscuro","Vino oscuro","linear-gradient(135deg,#131211,#d08a9b)"],["azul","Azul","linear-gradient(135deg,#071a2e,#4a9be8)"],["morado","Morado","linear-gradient(135deg,#170b2e,#a970ff)"],["verde","Verde","linear-gradient(135deg,#06231b,#2fbf8f)"],["medianoche","Medianoche","linear-gradient(135deg,#000,#5aa9ff)"],["moka","Moka","linear-gradient(135deg,#2b1a0f,#e2962e)"],["neon","Neón","linear-gradient(135deg,#000,#39ff14)"],["rosa","Rosa pastel","linear-gradient(135deg,#fdf1f6,#d94f8c)"],["ambar","Ámbar","linear-gradient(135deg,#fbf3e6,#c2661a)"],["menta","Menta","linear-gradient(135deg,#eefaf4,#2fa876)"],["halloween","Halloween 🎃","linear-gradient(135deg,#150d20,#ff7518)"],["navidad","Navidad 🎄","linear-gradient(135deg,#0b2418 50%,#e23b3b 50%)"],["academia","La Academia 🏛️","linear-gradient(135deg,#f4eee2 50%,#1f3a68 50%)"],["barrio","Los chicos del barrio 🛹","linear-gradient(135deg,#f1e2bf 50%,#e63b2e 50%)"],["paido","Paido 🧸","conic-gradient(#ff6b6b 0 20%,#ffc93c 0 40%,#46c37b 0 60%,#2d7ff9 0 80%,#9b6bff 0)"]];
 document.body.prepend($("deco")); // la decoración va detrás del contenido
 function foco(on){const h=document.documentElement;if(on===h.classList.contains("foco"))return;h.classList.toggle("foco",on);
-  if(on){h.removeAttribute("data-tema");$("deco").innerHTML=""}else{if(TEMA)h.setAttribute("data-tema",TEMA);deco()}}
+  if(on){h.removeAttribute("data-tema");$("deco").innerHTML=""}else{if(temaEf())h.setAttribute("data-tema",temaEf());deco()}}
 const K_TEMA=PFX+"tema_v1";let TEMA=(ld(K_TEMA,{t:""}).t)||"";
 const ACA_PTS=300,acaOk=()=>((ld(PFX+"xp_v1",{xp:0})||{}).xp||0)>=ACA_PTS;let TEMAIMG=null;
 function acaImg(){if(TEMAIMG)return Promise.resolve(TEMAIMG);return ACCESO.ready().then(()=>ACCESO.json("temas.enc")).then(t=>{TEMAIMG=t||{};const i=$("acaImg");if(i&&TEMAIMG.academia)i.src=TEMAIMG.academia;return TEMAIMG})}
 function tgridRender(){$("tgrid").innerHTML=TEMAS.map(([k,n,g])=>k==="academia"&&!acaOk()?`<button type="button" class="tsw lock" data-t="${k}" aria-disabled="true"><i style="background:${g}"></i><span>🔒 ${n}<small>desde Chicharrones morados</small></span></button>`:`<button type="button" class="tsw" data-t="${k}"><i style="background:${g}"></i>${n}</button>`).join("");
-  $("tgrid").querySelectorAll(".tsw").forEach(b=>{b.setAttribute("aria-pressed",b.dataset.t===TEMA);b.onclick=()=>{if(b.classList.contains("lock")){big("🔒 La Academia","se abre en el rango Chicharrones morados");return}setTema(b.dataset.t);$("tpanel").classList.add("hidden");if(TEMA==="barrio")big("🛹 ¡MISIÓN ACEPTADA!","Operación P.U.E.M. en marcha");if(TEMA==="academia")big("🏛️ Bienvenido a La Academia","conócete a ti mismo… y el DSM")}})}
+  $("tgrid").querySelectorAll(".tsw").forEach(b=>{b.setAttribute("aria-pressed",b.dataset.t===TEMA);b.onclick=()=>{if(b.classList.contains("lock")){big("🔒 La Academia","se abre en el rango Chicharrones morados");return}setTema(b.dataset.t);$("tpanel").classList.add("hidden");if(TEMA==="barrio")big("🛹 ¡MISIÓN ACEPTADA!","Operación P.U.E.M. en marcha");if(TEMA==="academia")big("🏛️ Bienvenido a La Academia","conócete a ti mismo… y el DSM");if(TEMA==="paido"){big("🧸 ¡A jugar!","Mahler, Piaget y Winnicott te esperan");confetti(60)}}})}
 function setTema(t){TEMA=TEMAS.some(x=>x[0]===t)?t:"";if(TEMA==="academia"&&!acaOk())TEMA="";
   if(TEMA==="academia"){acaImg().catch(()=>{});if(!document.getElementById("fontAca")){const l=document.createElement("link");l.id="fontAca";l.rel="stylesheet";l.href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Source+Sans+3:wght@400;600&display=swap";document.head.appendChild(l)}}
-  if(TEMA==="barrio"&&!document.getElementById("fontBarrio")){const l=document.createElement("link");l.id="fontBarrio";l.rel="stylesheet";l.href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Fredoka:wght@500;600;700&display=swap";document.head.appendChild(l)}sv(K_TEMA,{t:TEMA});if(TEMA)document.documentElement.setAttribute("data-tema",TEMA);else document.documentElement.removeAttribute("data-tema");
-  $("tgrid").querySelectorAll(".tsw").forEach(b=>b.setAttribute("aria-pressed",b.dataset.t===TEMA));deco();try{renderCountdown()}catch(e){}}
+  if(TEMA==="barrio"&&!document.getElementById("fontBarrio")){const l=document.createElement("link");l.id="fontBarrio";l.rel="stylesheet";l.href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Fredoka:wght@500;600;700&display=swap";document.head.appendChild(l)}if(temaEf()==="paido"&&!document.getElementById("fontPaido")){const l=document.createElement("link");l.id="fontPaido";l.rel="stylesheet";l.href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700&display=swap";document.head.appendChild(l)}
+  sv(K_TEMA,{t:TEMA});const TE=temaEf();if(TE&&!document.documentElement.classList.contains("foco"))document.documentElement.setAttribute("data-tema",TE);else document.documentElement.removeAttribute("data-tema");
+  $("tgrid").querySelectorAll(".tsw").forEach(b=>b.setAttribute("aria-pressed",b.dataset.t===TEMA));deco();try{phero()}catch(e){}try{renderCountdown()}catch(e){}}
 tgridRender();
 $("fabTema").onclick=e=>{e.stopPropagation();tgridRender();$("tpanel").classList.toggle("hidden")};
 // anuncio del tema de regalo: una sola vez, a quien ya es Chicharrones o más (el Polloatun solo lo ve bloqueado)
@@ -1283,7 +1333,10 @@ function sorpresas(tries){tries=tries||0;if(ld(PFX+"sorpresas_v1",null))return;
 $("fabNavidad").onclick=()=>{setTema(TEMA==="navidad"?"":"navidad");if(TEMA==="navidad"){big("🎄 ¡Felices fiestas!","que el regalo sea pasar el PUEM");confetti(120)}};
 $("fabCalabaza").onclick=()=>{setTema(TEMA==="halloween"?"":"halloween");if(TEMA==="halloween"){big("🎃 ¡Feliz Halloween!","que los únicos sustos sean del examen");}};
 document.addEventListener("click",e=>{if(!e.target.closest("#tpanel,#fabTema"))$("tpanel").classList.add("hidden")});
-function deco(){const d=$("deco");d.innerHTML="";
+function deco(){const d=$("deco");d.innerHTML="";const TEMA=temaEf();
+  if(TEMA==="paido"){const em=["🧸","🧩","🪀","🎈","🖍️","⭐","🪁","🦕","🚂","🧃","🎨","🍼","🪇","🌈"],n=innerWidth>980?24:6;
+    for(let k=0;k<n;k++){const sp=document.createElement("span");sp.textContent=em[k%em.length];const left=k%2===0;const side=innerWidth>980?(left?Math.random()*((innerWidth-780)/2-40):innerWidth-(innerWidth-780)/2+Math.random()*((innerWidth-780)/2-40)):(left?Math.random()*36:innerWidth-40-Math.random()*16);
+      sp.style.cssText=`left:${side}px;top:${Math.random()*95}%;font-size:${24+Math.random()*22}px;opacity:.7;animation-delay:${-Math.random()*7}s;--r:${Math.round(Math.random()*30-15)}deg`;d.appendChild(sp)}return}
   if(TEMA==="navidad"){const n=innerWidth>760?46:22,em=["❄️","❄","✻","❅","⭐","🎁","🎄","🔔"];
     for(let k=0;k<n;k++){const sp=document.createElement("span");const flake=k%5!==4;sp.textContent=flake?em[k%4]:em[4+(k%4)];sp.className="nieve";
       sp.style.cssText=`left:${Math.random()*100}%;font-size:${flake?10+Math.random()*16:18+Math.random()*14}px;color:#fff;animation-duration:${8+Math.random()*12}s;animation-delay:${-Math.random()*20}s`;d.appendChild(sp)}return}
@@ -1474,7 +1527,7 @@ function pcard(){const el=$("pcard");if(!el)return;const p=PJ&&pjOf(PJ.id),xp=(X
   const lit=last&&(last===t||dayDiff(last,t)===1),rch=lit?DAY.count:dayStreak(),gd=XP.day&&XP.day.d===t?XP.day.n:0;
   const t0=new Date(),hoy=new Date(t0.getFullYear(),t0.getMonth(),t0.getDate());
   const ex=EXAMS.map(e=>({...e,n:Math.round((new Date(e.d[0],e.d[1]-1,e.d[2])-hoy)/864e5)})).filter(e=>e.n>=0).sort((a,b)=>a.n-b.n);
-  const mio=ANIO?ex.find(e=>e.y===ANIO.y):null,ce=mio||(!ANIO&&ex[0]);
+  const mio=ANIO?ex.find(e=>e.y===ANIO.y||(e.y==="Paido"&&/^Paido R/.test(ANIO.y))):null,ce=mio||(!ANIO&&ex[0]);
   const eq=COL&&COL.eq&&colTengo(COL.eq)?colOf(COL.eq):null;let dom="";try{const q=snap();if(q.tot){const v=100*q.ok/q.tot;dom=((v>0&&v<10)||(v>90&&v<100)?v.toFixed(1):Math.round(v))+" %"}}catch(e){}
   const pic=LVIMG[L+1]?`<img src="${LVIMG[L+1]}" alt="">`:`<span class="e">${LVEMO[L]}</span>`;
   el.innerHTML=`<button type="button" class="pcav" id="pcAv" aria-label="Cambiar personaje">${p?`<img src="${p.img}" alt="">`:"🙂"}</button>
@@ -1498,7 +1551,7 @@ const K_EV=PFX+"ev_v1";let EVD=null,EV=(()=>{const x=ld(K_EV,null)||{};return {d
 const evSv=()=>sv(K_EV,EV),evLetra=k=>"ABCD"[k];
 const evLibre=()=>!document.querySelector(".dlgq,#sorp,#acaAnun,#evDlg")&&!document.documentElement.classList.contains("foco")&&!(typeof EXAM!=="undefined"&&EXAM);
 // cada caso sale una sola vez: cuando ya te salieron todos, ese evento deja de aparecer
-function evElige(lista,yr){const base=yr?lista.filter(c=>!c.y||YRS().includes(c.y)):lista;
+function evElige(lista,yr){if(esPaido())yr=null;const base=yr?lista.filter(c=>!c.y||YRS().includes(c.y)):lista;
   const nuevos=base.filter(c=>!EV.done[c.id]&&!EV.pend.includes(c.id));return nuevos.length?nuevos[Math.floor(Math.random()*nuevos.length)]:null}
 function evTick(){if(!EVD||!evLibre())return;const t=todayStr(),n=XP.day&&XP.day.d===t?XP.day.n:0;
   if(EV.last.b!==t&&n>=8&&Math.random()<0.05){const c=evElige(EVD.boss,true);if(c){EV.last.b=t;evSv();setTimeout(()=>evBoss(c),1300);return}}
@@ -1555,7 +1608,7 @@ ACCESO.ready().then(()=>ACCESO.json("eventos.enc")).then(d=>{if(d&&d.boss){EVD=d
 const K_DOR=PFX+"dorime_v1";let DORD=null,DOR=(()=>{const x=ld(K_DOR,null)||{};return {open:!!x.open,done:x.done||{}}})();
 const dorSv=()=>sv(K_DOR,DOR);
 function dorVisto(){const q=DATA.filter(d=>d.type==="mcq");if(!q.length)return 0;return q.filter(d=>PROG[d.key]).length/q.length}
-const dorAbre=()=>((XP&&XP.xp)||0)>=7000||dorVisto()>=0.85;
+const dorAbre=()=>dorPool().length>0&&(((XP&&XP.xp)||0)>=7000||dorVisto()>=0.85);
 const dorPool=()=>DORD?DORD.items.filter(x=>YRS().includes(x.y)):[];
 function dorTile(){const el=$("tDorN");if(!el)return;const t=$("tDor");if(!DORD){el.textContent="🔒 Universos alternos: se abre cuando casi termines tu banco";return}
   if(dorAbre()){const P=dorPool(),n=P.filter(x=>DOR.done[x.id]).length;t.classList.remove("lock");el.textContent=`Universos alternos: el mismo caso con otro giro · ${n} de ${P.length} · +15 por acierto`;
@@ -2017,7 +2070,7 @@ $("impf").onchange=ev=>{
     const o=x=>x&&typeof x==="object"&&!Array.isArray(x);
     if(!o(p)||p.app!==PFX||!o(p.data)||!o(p.data.progress)||!o(p.data.stats)){alert("Este archivo no es un avance de este simulador.");return}
     if(!confirm("Esto reemplaza el avance de este navegador por el del archivo. ¿Continuar?"))return;
-    if(o(p.data.xp)){XP=p.data.xp;sv(K_XP,XP)}if(o(p.data.read)){READ=p.data.read;sv(K_READ,READ)}if(typeof p.data.tema==="string")setTema(p.data.tema);if(o(p.data.mipersonaje)){MIPJ=p.data.mipersonaje;sv(K_MIPJ,MIPJ)}if(o(p.data.jugador)){PJ=p.data.jugador;sv(K_PJ,PJ);hud()}if(Array.isArray(p.data.pjOrden)){sv(K_PJORD,p.data.pjOrden);try{pjOrden()}catch(e){}}if(o(p.data.trueque))sv(K_TQ,p.data.trueque);if(o(p.data.dor)){DOR={open:!!p.data.dor.open,done:o(p.data.dor.done)?p.data.dor.done:{}};dorSv()}if(o(p.data.ev)){const e=p.data.ev;EV={done:o(e.done)?e.done:{},pend:Array.isArray(e.pend)?e.pend:[],last:o(e.last)?e.last:{},n:o(e.n)?e.n:{b:0,i:0}};evSv()}if(o(p.data.col)){const c=p.data.col;COL={have:Array.isArray(c.have)?c.have:[],out:Array.isArray(c.out)?c.out:[],eq:c.eq||null,esc:c.esc||null,h:Array.isArray(c.h)?c.h:[]};colSv();colTile()}if(o(p.data.anio)&&ANIOS.includes(p.data.anio.y)){ANIO=p.data.anio;sv(K_ANIO,ANIO);aplicaAnio()}
+    if(o(p.data.xp)){XP=p.data.xp;sv(K_XP,XP)}if(o(p.data.read)){READ=p.data.read;sv(K_READ,READ)}if(typeof p.data.tema==="string")setTema(p.data.tema);if(o(p.data.mipersonaje)){MIPJ=p.data.mipersonaje;sv(K_MIPJ,MIPJ)}if(o(p.data.jugador)){PJ=p.data.jugador;sv(K_PJ,PJ);hud()}if(Array.isArray(p.data.pjOrden)){sv(K_PJORD,p.data.pjOrden);try{pjOrden()}catch(e){}}if(o(p.data.trueque))sv(K_TQ,p.data.trueque);if(o(p.data.dor)){DOR={open:!!p.data.dor.open,done:o(p.data.dor.done)?p.data.dor.done:{}};dorSv()}if(o(p.data.ev)){const e=p.data.ev;EV={done:o(e.done)?e.done:{},pend:Array.isArray(e.pend)?e.pend:[],last:o(e.last)?e.last:{},n:o(e.n)?e.n:{b:0,i:0}};evSv()}if(o(p.data.col)){const c=p.data.col;COL={have:Array.isArray(c.have)?c.have:[],out:Array.isArray(c.out)?c.out:[],eq:c.eq||null,esc:c.esc||null,h:Array.isArray(c.h)?c.h:[]};colSv();colTile()}if(o(p.data.anio)&&(ANIOS.includes(p.data.anio.y)||PAIDOS.includes(p.data.anio.y))){ANIO=p.data.anio;sv(K_ANIO,ANIO);aplicaAnio()}
     PROG=p.data.progress;STAT=p.data.stats;ACH=o(p.data.ach)?p.data.ach:{};DAY=o(p.data.daily)?{count:+p.data.daily.count||0,last:typeof p.data.daily.last==="string"?p.data.daily.last:null}:{count:0,last:null};
     sv(K_PROG,PROG);sv(K_STAT,STAT);sv(K_ACH,ACH);sv(K_DAY,DAY);renderMine();toast("✅ Avance importado");
   };rd.readAsText(f);
@@ -2080,7 +2133,7 @@ $("tagnone").onclick=()=>{tsel=new Set();drawTags();updAvail()};
 
 function drawBanks(){
   const c={};DATA.forEach(d=>c[d.bank]=(c[d.bank]||0)+1);
-  $("banks").innerHTML=BANK_ORDER.filter(b=>c[b]).map(b=>`<button class="chip" data-b="${b}" aria-pressed="${sel.has(b)}">${BANK_LABEL[b]} <small>${c[b]}</small></button>`).join("");
+  $("banks").innerHTML=BANK_ORDER.filter(b=>c[b]).map(b=>`<button class="chip${esKid(b)?" kid":""}" data-b="${b}" aria-pressed="${sel.has(b)}">${BANK_LABEL[b]} <small>${c[b]}</small></button>`).join("");
   $("banks").querySelectorAll(".chip").forEach(el=>el.onclick=()=>{const b=el.dataset.b;sel.has(b)?sel.delete(b):sel.add(b);el.setAttribute("aria-pressed",sel.has(b));updAvail()});
 }
 function drawSizes(){
@@ -2122,7 +2175,7 @@ $("start").onclick=()=>start(build(pool(),size));
 function hdr(it){
   const r=sim&&rowOf.has(it.id)?TM[sim].filas[rowOf.get(it.id)]:null;
   return (it.simu?`<div><span class="badge">Caso simulado · ${it.bank}</span><span class="badge-note">creado para practicar</span></div>`
-    :`<div><span class="badge">${BANK_LABEL[it.bank]}</span><span class="badge-note">puede tocarte en cualquier año</span></div>`)+
+    :`<div><span class="badge${esKid(it.bank)?" kid":""}">${BANK_LABEL[it.bank]}</span><span class="badge-note">${esKid(it.bank)?"paidopsiquiatría":"puede tocarte en cualquier año"}</span></div>`)+
    `<div class="rowlbl">${r?r[0]+" · "+r[1]:TAGS[it.tag]||""}</div>`+
    (it.case?`<div class="case"><h3>${it.case.title.replace(/^Caso:\s*/,"Caso · ")}</h3>${it.case.text}</div>`:"");
 }
