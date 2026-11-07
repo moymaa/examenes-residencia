@@ -263,6 +263,9 @@ html[data-tema="academia"] #acaHero{display:block;position:relative;margin:0 0 1
 .tq .tqx{display:flex;align-items:center;justify-content:center;gap:12px;margin:8px 0}.tq .tqx>div{display:flex;flex-direction:column;align-items:center;gap:4px;width:120px;text-align:center;font-size:13px}
 .tq .tqx img,.tq .tqx em{width:84px;height:84px;border-radius:50%;object-fit:cover;display:grid;place-items:center;font-size:30px;font-style:normal;background:var(--bg);border:2px solid var(--line)}.tq .tqx i{font-size:26px;font-style:normal;color:var(--acc)}
 .dlgq .ok.sec2{background:transparent;color:var(--mut);border:1px solid var(--line);margin-top:8px}
+.evw.dor .evc{border-color:#e2c46b;background:linear-gradient(180deg,color-mix(in srgb,#e2c46b 10%,var(--card)),var(--card) 40%)}
+.evw.dor .pp{border-color:#e2c46b}.evw .dcam{margin-top:10px;padding:10px 12px;border-radius:12px;background:color-mix(in srgb,#7a5cff 12%,var(--bg));border:1px dashed #7a5cff;font-size:14px}.evw .dcam span{color:var(--mut);font-size:13px}
+#tDor .ti{background:linear-gradient(135deg,#e2c46b,#7a5cff)!important}#tDor.lock{opacity:.7}
 /* eventos sorpresa */
 .evw{position:fixed;inset:0;z-index:75;display:grid;place-items:center;padding:16px;background:rgba(8,8,16,.62);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);overflow:auto}
 .evw .evc{position:relative;width:100%;max-width:520px;max-height:calc(100dvh - 32px);overflow:auto;background:var(--card);color:var(--fg);border-radius:24px;padding:20px 18px 18px;border:1px solid var(--line);box-shadow:0 30px 90px rgba(0,0,0,.5)}
@@ -724,6 +727,7 @@ html[data-tema="barrio"] :is([data-back],#rdBack,#rBackMenu,#rCancel){border:3px
     <button class="tile" data-pane="libre"><span class="ti">🔎</span><span><b>Práctica libre</b><small>Elige bancos, temas o busca una palabra</small></span></button>
     <button class="tile" id="tHelp"><span class="ti">❓</span><span><b>Cómo funciona</b><small>Guía rápida: formas de practicar, puntos, logros y cómo no perder tu avance</small></span></button>
     <button class="tile" id="tCol"><span class="ti">🎒</span><span><b>Coleccionables</b><small id="tColN">Objetos con poderes que se ganan estudiando</small></span></button>
+    <button class="tile" id="tDor"><span class="ti">🙏</span><span><b>Modo Dorimé</b><small id="tDorN">🔒 Universos alternos: se abre cuando casi termines tu banco</small></span></button>
     <button class="tile" id="tWeak"><span class="ti">🔁</span><span><b>Repasar mis falladas</b><small id="tWeakN">Las que contestaste mal</small></span></button>
   </div>
 
@@ -1009,6 +1013,7 @@ html[data-tema="barrio"] :is([data-back],#rdBack,#rBackMenu,#rCancel){border:3px
     <h3>🎓 Tu año</h3><p>Al entrar eliges si eres R1, R2, R3 o R4 y solo te salen tus preguntas (tu año y los anteriores; R4 también el Consejo). Puedes cambiarlo arriba del inicio cuando quieras y tu avance no se pierde.</p>
     <h3>🔁 Intercambios</h3><p>Como cromos: en «Elige tu personaje» o en «🎒 Coleccionables» toca «🔁 Intercambiar». Uno crea el intercambio y le sale un código de 4 dígitos; el otro lo escribe. Cada quien elige cuál da y los dos aceptan. El que das se te va y el que recibes es tuyo.</p>
     <h3>🎒 Coleccionables</h3><p>Objetos con un poder pequeño (más puntos a cierta hora, cofres más gordos, escudo de racha…). Se ganan con muchos puntos, rachas largas o logros, y alguno sale escondido en los cofres. En la mochila ves cuánto te falta. Equipas uno a la vez y su poder no funciona en el simulador real, el modo examen ni el versus.</p>
+    <h3>🙏 Modo Dorimé</h3><p>Paquete de continuidad para cuando ya casi te acabas tu banco (85 % visto) o llegas al rango Dorimé: «universos alternos» de preguntas reales, como hace el PUEM, con el mismo caso y un dato cambiado que voltea la respuesta, o el mismo caso con otra pregunta. Al contestar te dice qué cambió y cuál era la respuesta del original. Rondas de 10, +15 por acierto.</p>
     <h3>🔊 Sonidos</h3><p>Cada acierto suena como moneda (más agudo mientras más combo llevas) y hay sonidos para cofres, subir de rango, logros, personajes y coleccionables. Los silencias con 🔊 en tu tarjeta de arriba. En el simulador real y el modo examen no suena nada: modo concentración.</p>
     <h3>👾 Sorpresas</h3><p>Mientras practicas puede aparecer el jefe oculto <b>Dr. Papoi</b> con un caso de 5 preguntas (+10 por acierto y +30 extra si sacas 5 de 5); si no tienes tiempo, guárdalo y queda en «📌 Papoi pendiente» en tu tarjeta. También llegan <b>IC de ACA</b>: un caso de urgencias con una sola pregunta clave (+30 si aciertas). No salen en el simulador real, el modo examen ni el versus.</p>
     <h3>🎨 Colores y 🧠 cerebro</h3><p>Cambia el color con 🎨 (hay Halloween 🎃, Navidad 🎄, Los chicos del barrio 🛹 y un tema secreto 🏛️ que se abre en Chicharrones morados). Dale clic al cerebro de abajo para un «¿sabías que…?».</p>
@@ -1084,8 +1089,8 @@ function anioDlg(despues){if(document.getElementById("anioDlg"))return;const w=d
   draw();if(ANIO)w.onclick=e=>{if(e.target===w)w.remove()};document.body.appendChild(w)}
 // ——— novedades: al publicar una actualización, todos ven qué cambió (su avance se queda igual) ———
 // Para anunciar algo nuevo: subir VERSION y poner los cambios arriba de NOVEDADES.
-const VERSION="2026-11-06h",K_VER=PFX+"version_v1";
-const NOVEDADES=[["🔊","Ahora suena: cada acierto es una moneda (más aguda con el combo) y hay sonidos de cofre, subir de rango, logros y coleccionables. Silencia con 🔊 en tu tarjeta; en el simulador real y el modo examen no suena nada."],["👾","Mientras practicas pueden aparecer sorpresas: el <b>jefe oculto Dr. Papoi</b> (caso de 5 preguntas, hasta +80 pts; lo puedes guardar para después) y las <b>IC de ACA</b> (caso de urgencias con una pregunta clave, +30 pts)."],["🏁","El inicio cambió: arriba está tu tarjeta con puntos, rango, racha, meta del día y tu PUEM. «Tu avance completo» y la cuenta regresiva se pliegan con un toque (y se quedan como las dejes)."],["🎒","¡Llegaron los <b>Coleccionables</b>! Para empezar, a todos les regalamos la <b>Pluma de adri</b> 🌸. Hay 12 objetos más con poderes pequeños (más puntos a cierta hora, escudo de racha, cofres más gordos…). Son difíciles: se ganan con muchos puntos, rachas largas o logros, y uno sale escondido en los cofres. Se equipa uno y se pueden intercambiar."],["🎓","Elige tu año (R1–R4): R1 ya no ve preguntas de R2–R4 y R4 trae también el Consejo. Arriba del inicio dice qué año eres y lo cambias con un toque."],
+const VERSION="2026-11-06i",K_VER=PFX+"version_v1";
+const NOVEDADES=[["🙏","Nuevo <b>Modo Dorimé</b>: universos alternos de las preguntas del banco (el mismo caso con un dato cambiado que voltea la respuesta, o con otra pregunta). Se abre cuando ya viste el 85 % de tu banco o llegas a Dorimé. +15 por acierto."],["🔊","Ahora suena: cada acierto es una moneda (más aguda con el combo) y hay sonidos de cofre, subir de rango, logros y coleccionables. Silencia con 🔊 en tu tarjeta; en el simulador real y el modo examen no suena nada."],["👾","Mientras practicas pueden aparecer sorpresas: el <b>jefe oculto Dr. Papoi</b> (caso de 5 preguntas, hasta +80 pts; lo puedes guardar para después) y las <b>IC de ACA</b> (caso de urgencias con una pregunta clave, +30 pts)."],["🏁","El inicio cambió: arriba está tu tarjeta con puntos, rango, racha, meta del día y tu PUEM. «Tu avance completo» y la cuenta regresiva se pliegan con un toque (y se quedan como las dejes)."],["🎒","¡Llegaron los <b>Coleccionables</b>! Para empezar, a todos les regalamos la <b>Pluma de adri</b> 🌸. Hay 12 objetos más con poderes pequeños (más puntos a cierta hora, escudo de racha, cofres más gordos…). Son difíciles: se ganan con muchos puntos, rachas largas o logros, y uno sale escondido en los cofres. Se equipa uno y se pueden intercambiar."],["🎓","Elige tu año (R1–R4): R1 ya no ve preguntas de R2–R4 y R4 trae también el Consejo. Arriba del inicio dice qué año eres y lo cambias con un toque."],
   ["🔁","Intercambia personajes con un compañero con un código de 4 dígitos (en «Elige tu personaje» → 🔁 Intercambiar). El que das se te va y el que recibes es tuyo."],
   ["🏛️","Tema secreto La Academia 🏛️ y 10 personajes nuevos por desbloquear 👀 (ya son 45)."],
   ["🧭","¿Te perdiste? Arriba de cada pantalla está el botón <b>← ¿Qué quieres practicar?</b> para volver al inicio, y en el inicio está <b>❓ Cómo funciona</b>."],
@@ -1477,7 +1482,7 @@ function pcard(){const el=$("pcard");if(!el)return;const p=PJ&&pjOf(PJ.id),xp=(X
   const cs=$("cdSum");if(cs)cs.textContent=ex.map(e=>`${e.y}: ${e.n} d`).join(" · ");
   const ms=$("mineSum");if(ms){const sp=$("pSeen"),tt=$("pTot");ms.textContent=`${dom||"0 %"} dominado · ${sp?sp.textContent:0}/${tt?tt.textContent:0} contestadas`}
   if(PJ)$("home").classList.add("vet")}
-{const _rm=renderMine;renderMine=function(){_rm.apply(this,arguments);try{pcard()}catch(e){}}}
+{const _rm=renderMine;renderMine=function(){_rm.apply(this,arguments);try{pcard()}catch(e){}try{dorTile()}catch(e){}}}
 {const _h=hud;hud=function(){_h.apply(this,arguments);try{pcard()}catch(e){}}}
 folds();
 // en el celular los botones flotantes se esconden al bajar y regresan al subir
@@ -1540,6 +1545,42 @@ function evPendientes(){const l=EV.pend.map(id=>EVD&&EVD.boss.find(c=>c.id===id)
   w.querySelectorAll(".evpl button").forEach(b=>b.onclick=()=>evBossJuega(EVD.boss.find(c=>c.id===b.dataset.id)));w.querySelector("#evX").onclick=evCierra}
 ACCESO.ready().then(()=>ACCESO.json("eventos.enc")).then(d=>{if(d&&d.boss){EVD=d;try{pcard()}catch(e){}
   if(/^(localhost|127\.0\.0\.1)$/.test(location.hostname)){const h=location.hash;if(h==="#papoi")setTimeout(()=>evBoss(EVD.boss[0]),1500);if(h==="#ic")setTimeout(()=>evIc(EVD.ic[0]),1500)}}}).catch(()=>{}); // #papoi / #ic solo para probar en local
+// ——— Modo Dorimé: «universos alternos» de preguntas del banco (mismo caso con un dato cambiado o con otra pregunta), más difíciles ———
+// Se abre cuando ya viste el 85 % de las preguntas de tu año o llegas al rango Dorimé. Paquetes nuevos se agregan en dorime.enc.
+const K_DOR=PFX+"dorime_v1";let DORD=null,DOR=(()=>{const x=ld(K_DOR,null)||{};return {open:!!x.open,done:x.done||{}}})();
+const dorSv=()=>sv(K_DOR,DOR);
+function dorVisto(){const q=DATA.filter(d=>d.type==="mcq");if(!q.length)return 0;return q.filter(d=>PROG[d.key]).length/q.length}
+const dorAbre=()=>((XP&&XP.xp)||0)>=7000||dorVisto()>=0.85;
+const dorPool=()=>DORD?DORD.items.filter(x=>YRS().includes(x.y)):[];
+function dorTile(){const el=$("tDorN");if(!el)return;const t=$("tDor");if(!DORD){el.textContent="🔒 Universos alternos: se abre cuando casi termines tu banco";return}
+  if(dorAbre()){const P=dorPool(),n=P.filter(x=>DOR.done[x.id]).length;t.classList.remove("lock");el.textContent=`Universos alternos: el mismo caso con otro giro · ${n} de ${P.length} · +15 por acierto`;
+    if(!DOR.open&&!dlgAbierto()&&!document.getElementById("evDlg")&&!document.documentElement.classList.contains("foco")){DOR.open=true;dorSv();setTimeout(dorAnuncio,1200)}}
+  else{t.classList.add("lock");el.textContent=`🔒 Universos alternos: se abre cuando hayas visto el 85 % de tu banco (llevas ${Math.round(dorVisto()*100)} %) o llegues a Dorimé`}}
+function dorAnuncio(){const w=evShell("evboss dor",`<div class="evc"><div class="pp"><img src="niveles/5.png" alt=""></div><small>🙏 Paquete de continuidad</small><h3>Se abrió el Modo Dorimé</h3>
+  <p>Ya casi te acabas tu banco. Llegan los <b>universos alternos</b>: preguntas que ya conoces con <b>un dato cambiado que voltea la respuesta</b>, o el mismo caso con <b>otra pregunta</b>. Más difíciles, como en el PUEM. <b>+15 pts</b> por acierto.</p>
+  <button type="button" class="ok" id="dGo">🌌 Entrar al Modo Dorimé</button><button type="button" class="ok sec2" id="dX">Después</button></div>`);
+  try{sfx("rare")}catch(e){}w.querySelector("#dGo").onclick=dorRonda;w.querySelector("#dX").onclick=evCierra}
+function dorRonda(){const P=dorPool();if(!P.length){toast("Todavía no hay universos alternos para tu año");return}
+  let L=shuffle(P.filter(x=>!DOR.done[x.id]));let rep=false;if(!L.length){L=shuffle(P.filter(x=>DOR.done[x.id]&&!DOR.done[x.id].ok));rep=true}
+  if(!L.length){const w=evShell("evboss dor",`<div class="evc"><div class="pp"><img src="niveles/5.png" alt=""></div><small>🙏 Modo Dorimé</small><h3>Dominaste todos los universos</h3><p>Contestaste bien todas las variantes de este paquete. Pronto llega el siguiente.</p><button type="button" class="ok" id="dX">Cerrar</button></div>`);w.querySelector("#dX").onclick=evCierra;return}
+  dorJuega(L.slice(0,10),0,[],rep)}
+function dorJuega(R,k,res,rep){const x=R[k];
+  const w=evShell("evboss evplay dor",`<div class="evc"><div class="evh"><img src="niveles/5.png" alt=""><div><small>🙏 Modo Dorimé${rep?" · repaso":""} · ${k+1} de ${R.length}</small><b>${x.tipo==="giro"?"🌀 Universo alterno: cambió un dato":"🔭 Mismo caso, otra pregunta"}</b></div></div>
+    <div class="evcaso"><p>${x.caso}</p></div><p class="evq">${x.q}</p><div class="evo">${x.opts.map((o,j)=>`<button type="button" data-j="${j}"><b>${evLetra(j)}</b><span>${o}</span></button>`).join("")}</div>
+    <div class="evexp hidden" id="evExp"></div><div class="evdots">${R.map((_,j)=>`<i class="${j<res.length?(res[j]?"g":"r"):j===k?"a":""}"></i>`).join("")}</div>
+    <button type="button" class="ok hidden" id="evNext">${k<R.length-1?"Siguiente universo ▶":"Ver resultado"}</button><button type="button" class="ok sec2" id="evPause">Salir</button></div>`);
+  w.querySelector("#evPause").onclick=()=>{if(res.length)dorFin(R,res);else evCierra()};
+  w.querySelectorAll(".evo button").forEach(b=>b.onclick=()=>{const j=+b.dataset.j,ok=j===x.ok;res.push(ok);DOR.done[x.id]={ok,f:todayStr()};dorSv();addXP(ok?15:2);if(ok)try{sfx("coin",6+res.filter(Boolean).length)}catch(e){}
+    w.querySelectorAll(".evo button").forEach(y=>{y.disabled=true;const jj=+y.dataset.j;if(jj===x.ok)y.classList.add("g");else if(jj===j)y.classList.add("r")});
+    const e=w.querySelector("#evExp");e.innerHTML=`<b>${ok?"✅ ¡Bien! +15":"❌ Era la "+evLetra(x.ok)+" · +2"}</b> ${x.exp}<div class="dcam"><b>🌌 Qué cambió:</b> ${x.cambio}${x.orig?`<br><span>${x.tipo==="giro"?"En el universo original la respuesta era":"En el original te preguntaban otra cosa; ahí la respuesta era"}: <i>${x.orig}</i></span>`:""}</div>`;e.classList.remove("hidden");
+    w.querySelector("#evNext").classList.remove("hidden");w.querySelector("#evPause").classList.add("hidden");
+    w.querySelector("#evNext").onclick=()=>k<R.length-1?dorJuega(R,k+1,res,rep):dorFin(R,res)})}
+function dorFin(R,res){const n=res.filter(Boolean).length;dorTile();
+  const w=evShell("evboss dor",`<div class="evc"><div class="pp${n===res.length&&n>=5?"":""}"><img src="niveles/5.png" alt=""></div><small>🙏 Modo Dorimé</small><h3>${n===res.length?"Dominaste estos universos 🙏":n>=res.length/2?"Vas cruzando dimensiones":"Los universos te ganaron esta vez"}</h3>
+    <p class="evscore">${n} de ${res.length}</p><p>⭐ +${n*15+(res.length-n)*2} pts</p><button type="button" class="ok" id="dOtra">🌌 Otra ronda</button><button type="button" class="ok sec2" id="dX">Salir</button></div>`);
+  if(n===res.length&&n>=5){try{confetti(180);sfx("level")}catch(e){}}w.querySelector("#dOtra").onclick=dorRonda;w.querySelector("#dX").onclick=evCierra}
+$("tDor").onclick=()=>{if(!DORD){toast("Cargando…");return}if(!dorAbre()){big("🔒 Modo Dorimé",`se abre al ver el 85 % de tu banco (llevas ${Math.round(dorVisto()*100)} %) o al llegar a Dorimé`);return}dorRonda()};
+ACCESO.ready().then(()=>ACCESO.json("dorime.enc")).then(d=>{if(d&&Array.isArray(d.items)){DORD=d;dorTile()}}).catch(()=>{});
 // teclado y foco en los avisos: Esc cierra el de arriba y el foco entra al primer botón
 document.addEventListener("keydown",e=>{if(e.key!=="Escape")return;
   const ev=document.getElementById("evDlg");if(ev){const pz=ev.querySelector("#evPause:not(.hidden),#evSkip:not(.hidden),#evLater,#evX,#evOk,#evNext:not(.hidden)");if(pz)pz.click();else evCierra();return}
@@ -1960,7 +2001,7 @@ const pick=f=>{const it=allMcq().filter(f);if(!it.length){toast("No hay pregunta
 $("goWeak").onclick=()=>pick(it=>status(it)==="bad");
 $("goNew").onclick=()=>pick(it=>status(it)==="new");
 $("exp").onclick=()=>{
-  const blob=new Blob([JSON.stringify({app:PFX,version:1,exportedAt:new Date().toISOString(),data:{progress:PROG,stats:STAT,ach:ACH,daily:DAY,xp:XP,read:READ,tema:TEMA,jugador:PJ,mipersonaje:MIPJ,anio:ANIO,pjOrden:ld(K_PJORD,null),trueque:ld(K_TQ,null),col:COL,ev:EV}},null,1)],{type:"application/json"});
+  const blob=new Blob([JSON.stringify({app:PFX,version:1,exportedAt:new Date().toISOString(),data:{progress:PROG,stats:STAT,ach:ACH,daily:DAY,xp:XP,read:READ,tema:TEMA,jugador:PJ,mipersonaje:MIPJ,anio:ANIO,pjOrden:ld(K_PJORD,null),trueque:ld(K_TQ,null),col:COL,ev:EV,dor:DOR}},null,1)],{type:"application/json"});
   const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="puem_sim_progreso_"+todayStr()+".json";document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),1000);toast("💾 Avance exportado");
 };
 $("imp").onclick=()=>$("impf").click();
@@ -1971,7 +2012,7 @@ $("impf").onchange=ev=>{
     const o=x=>x&&typeof x==="object"&&!Array.isArray(x);
     if(!o(p)||p.app!==PFX||!o(p.data)||!o(p.data.progress)||!o(p.data.stats)){alert("Este archivo no es un avance de este simulador.");return}
     if(!confirm("Esto reemplaza el avance de este navegador por el del archivo. ¿Continuar?"))return;
-    if(o(p.data.xp)){XP=p.data.xp;sv(K_XP,XP)}if(o(p.data.read)){READ=p.data.read;sv(K_READ,READ)}if(typeof p.data.tema==="string")setTema(p.data.tema);if(o(p.data.mipersonaje)){MIPJ=p.data.mipersonaje;sv(K_MIPJ,MIPJ)}if(o(p.data.jugador)){PJ=p.data.jugador;sv(K_PJ,PJ);hud()}if(Array.isArray(p.data.pjOrden)){sv(K_PJORD,p.data.pjOrden);try{pjOrden()}catch(e){}}if(o(p.data.trueque))sv(K_TQ,p.data.trueque);if(o(p.data.ev)){const e=p.data.ev;EV={done:o(e.done)?e.done:{},pend:Array.isArray(e.pend)?e.pend:[],last:o(e.last)?e.last:{},n:o(e.n)?e.n:{b:0,i:0}};evSv()}if(o(p.data.col)){const c=p.data.col;COL={have:Array.isArray(c.have)?c.have:[],out:Array.isArray(c.out)?c.out:[],eq:c.eq||null,esc:c.esc||null,h:Array.isArray(c.h)?c.h:[]};colSv();colTile()}if(o(p.data.anio)&&ANIOS.includes(p.data.anio.y)){ANIO=p.data.anio;sv(K_ANIO,ANIO);aplicaAnio()}
+    if(o(p.data.xp)){XP=p.data.xp;sv(K_XP,XP)}if(o(p.data.read)){READ=p.data.read;sv(K_READ,READ)}if(typeof p.data.tema==="string")setTema(p.data.tema);if(o(p.data.mipersonaje)){MIPJ=p.data.mipersonaje;sv(K_MIPJ,MIPJ)}if(o(p.data.jugador)){PJ=p.data.jugador;sv(K_PJ,PJ);hud()}if(Array.isArray(p.data.pjOrden)){sv(K_PJORD,p.data.pjOrden);try{pjOrden()}catch(e){}}if(o(p.data.trueque))sv(K_TQ,p.data.trueque);if(o(p.data.dor)){DOR={open:!!p.data.dor.open,done:o(p.data.dor.done)?p.data.dor.done:{}};dorSv()}if(o(p.data.ev)){const e=p.data.ev;EV={done:o(e.done)?e.done:{},pend:Array.isArray(e.pend)?e.pend:[],last:o(e.last)?e.last:{},n:o(e.n)?e.n:{b:0,i:0}};evSv()}if(o(p.data.col)){const c=p.data.col;COL={have:Array.isArray(c.have)?c.have:[],out:Array.isArray(c.out)?c.out:[],eq:c.eq||null,esc:c.esc||null,h:Array.isArray(c.h)?c.h:[]};colSv();colTile()}if(o(p.data.anio)&&ANIOS.includes(p.data.anio.y)){ANIO=p.data.anio;sv(K_ANIO,ANIO);aplicaAnio()}
     PROG=p.data.progress;STAT=p.data.stats;ACH=o(p.data.ach)?p.data.ach:{};DAY=o(p.data.daily)?{count:+p.data.daily.count||0,last:typeof p.data.daily.last==="string"?p.data.daily.last:null}:{count:0,last:null};
     sv(K_PROG,PROG);sv(K_STAT,STAT);sv(K_ACH,ACH);sv(K_DAY,DAY);renderMine();toast("✅ Avance importado");
   };rd.readAsText(f);
