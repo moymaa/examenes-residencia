@@ -266,6 +266,7 @@ html[data-tema="academia"] #acaHero{display:block;position:relative;margin:0 0 1
 .evw.dor .evc{border-color:#e2c46b;background:linear-gradient(180deg,color-mix(in srgb,#e2c46b 10%,var(--card)),var(--card) 40%)}
 .evw.dor .pp{border-color:#e2c46b}.evw .dcam{margin-top:10px;padding:10px 12px;border-radius:12px;background:color-mix(in srgb,#7a5cff 12%,var(--bg));border:1px dashed #7a5cff;font-size:14px}.evw .dcam span{color:var(--mut);font-size:13px}
 #tDor .ti{background:linear-gradient(135deg,#e2c46b,#7a5cff)!important}#tDor.lock{opacity:.7}
+.errata{background:color-mix(in srgb,var(--warn,#8a5a00) 12%,transparent);border-left:3px solid var(--warn,#8a5a00);padding:6px 10px;border-radius:8px;font-size:14px}
 /* eventos sorpresa */
 .evw{position:fixed;inset:0;z-index:75;display:grid;place-items:center;padding:16px;background:rgba(8,8,16,.62);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);overflow:auto}
 .evw .evc{position:relative;width:100%;max-width:520px;max-height:calc(100dvh - 32px);overflow:auto;background:var(--card);color:var(--fg);border-radius:24px;padding:20px 18px 18px;border:1px solid var(--line);box-shadow:0 30px 90px rgba(0,0,0,.5)}
@@ -1057,7 +1058,7 @@ let PROG=ld(K_PROG,{}),STAT=ld(K_STAT,{}),ACH=ld(K_ACH,{}),DAY=ld(K_DAY,{count:0
 // llave estable por contenido: agregar o reordenar preguntas no mueve el avance
 const fnv=s=>{let h=2166136261;for(let k=0;k<s.length;k++){h^=s.charCodeAt(k);h=Math.imul(h,16777619)}return (h>>>0).toString(36)};
 const keyOf=it=>fnv([it.simu?"S":"B",it.bank,it.case?it.case.title:"",strip(it.q||""),(it.opts||[]).map(o=>strip(o.t)).join("|")].join("¦"));
-const prep=(it,k)=>{it.id=k;it.tag=it.tag||"OTROS";if(it.type==="mcq")it.key=keyOf(it);it.hay=norm(strip((it.case?it.case.text:"")+" "+(it.vig||"")+" "+(it.q||"")+" "+(it.topic||"")+" "+(it.opts||[]).map(o=>o.t).join(" ")+" "+(it.sub&&it.sub.map?it.sub.map(s=>s.q+" "+s.a).join(" "):"")));return it};
+const prep=(it,k)=>{it.id=k;it.tag=it.tag||"OTROS";if(it.type==="mcq"){it.key=keyOf(it);if(it.prev){const ok=keyOf({...it,q:it.prev.q||it.q,opts:(it.prev.opts||[]).map(t=>({t}))});if(ok!==it.key&&PROG[ok]&&!PROG[it.key]){PROG[it.key]=PROG[ok];sv(K_PROG,PROG)}}}it.hay=norm(strip((it.case?it.case.text:"")+" "+(it.vig||"")+" "+(it.q||"")+" "+(it.topic||"")+" "+(it.opts||[]).map(o=>o.t).join(" ")+" "+(it.sub&&it.sub.map?it.sub.map(s=>s.q+" "+s.a).join(" "):"")));return it};
 const SRC=()=>mode==="real"?DATA:SIMD;
 Promise.all([ACCESO.json("banco.enc"),ACCESO.json("temario.enc"),ACCESO.json("simulados.enc").catch(()=>[])]).then(([d,t,sd])=>{
   TM=t;DATA_ALL=d.map(prep);SIMD_ALL=sd.map((it,k)=>{it.simu=true;return prep(it,100000+k)});aplicaAnio();
